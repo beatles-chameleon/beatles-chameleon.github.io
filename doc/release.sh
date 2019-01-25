@@ -20,6 +20,7 @@ fi
 cd ./website/
 npm i
 npm run build
+cp CNAME ../${PROJECT_NAME}/
 cp -rf ./target/* ../${PROJECT_NAME}/
 cd ../
 
