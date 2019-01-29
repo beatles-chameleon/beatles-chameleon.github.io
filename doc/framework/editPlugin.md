@@ -67,3 +67,18 @@ customFileTypes:
 #### 3 然后重启atom，即可生效
 
 <img src="../assets/atom-highlight.png" width="350" />
+
+
+### Webstrom
+
+### 1 配置vue模板
+
+```
+ command + ,(逗号)
+```
+选择左侧`editor`-> `File Types`,
+
+<img src="../assets/webstrom.png" width="800" height="600" />
+
+找到上面的html类型，将`*.vue`和`*.cml`和添加进其中。
+确定的时候会提示被占用了，要把那个清除掉，重启webstrom就OK了。
