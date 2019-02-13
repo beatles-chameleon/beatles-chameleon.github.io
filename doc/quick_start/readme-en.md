@@ -1,5 +1,7 @@
 # <img src="https://cmljs.org/doc/assets/100*100.png"/> Chameleon [![Build Status](https://www.travis-ci.org/didi/chameleon.svg?branch=master)](https://www.travis-ci.org/didi/chameleon) [![license](https://img.shields.io/npm/l/chameleon-tool.svg?registry_uri=https%3A%2F%2Fregistry.npmjs.com&style=popout-square)](https://www.npmjs.com/package/chameleon-tool) [![version](https://img.shields.io/npm/v/chameleon-tool.svg?style=flat)](https://www.npmjs.com/package/chameleon-tool)
 
+English Introduction | [中文介绍](https://github.com/didi/chameleon)
+
 **Chameleon**/kəˈmiːlɪən/,also named CML for short, "变色龙" in Chinese. We named our framework Chameleon as we believe it can  perfectly run on different platforms.
 
 ## Documents
