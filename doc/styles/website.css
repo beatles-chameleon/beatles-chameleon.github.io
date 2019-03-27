@@ -1,3 +1,13 @@
 .gitbook-link {
   display: none !important;
 }
+.copyright {
+  display: none !important;
+}
+nav.bg-inverse {
+  background-color: #19263E !important;
+  color: #fff;
+}
+nav.navbar-inverse .navbar-nav .nav-link {
+  color: #fff;
+}
