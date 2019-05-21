@@ -4495,7 +4495,6 @@ interface uiInterface {
 </code></pre><p>&#x7528;&#x6237;&#x5B9E;&#x73B0;&#x7684;<code>interface</code>&#x6587;&#x4EF6;&#x4E2D;&#x91C7;&#x7528;<code>&lt;include&gt;&lt;/include&gt;</code>&#x8BED;&#x6CD5;&#x5F15;&#x5165;<code>chameleon-api</code>&#x4E2D;<code>alert</code>&#x65B9;&#x6CD5;&#x7684; interface &#x6587;&#x4EF6;, &#x5B9E;&#x73B0;<code>uiInterface</code>&#x3002;</p>
 <pre><code class="lang-js"><span class="hljs-comment">// &#x5F15;&#x5165;&#x5B98;&#x65B9;&#x6807;&#x51C6;interface&#x6587;&#x4EF6;</span>
 &lt;include src=<span class="hljs-string">&quot;chameleon-api/src/interfaces/alert/index.interface&quot;</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span></span>
-
 <span class="hljs-comment">// &#x6269;&#x5C55;&#x5B9E;&#x73B0;&#x65B0;&#x7AEF;&#xFF08;&#x4EE5;&#x5934;&#x6761;&#x5C0F;&#x7A0B;&#x5E8F;&#x4E3A;&#x4F8B;&#xFF0C;&#x5047;&#x8BBE;&#x7AEF;&#x6269;&#x5C55;&#x6807;&#x8BC6;&#x4E3A;&#xFF1A;tt&#xFF09;</span>
 &lt;script cml-type=<span class="hljs-string">&quot;tt&quot;</span>&gt;
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Method</span> <span class="hljs-title">implements</span> <span class="hljs-title">uiInterface</span> </span>{
@@ -4503,16 +4502,9 @@ interface uiInterface {
     <span class="hljs-comment">// &#x6839;&#x636E;&#x5934;&#x6761;&#x5C0F;&#x7A0B;&#x5E8F;&#x5B9E;&#x73B0;alert&#x5F39;&#x7A97;</span>
     <span class="hljs-keyword">let</span> { message, confirmTitle} = opt;
     tt.showModal({
-      <span class="hljs-attr">showCancel</span>: <span class="hljs-literal">false</span>,
-      <span class="hljs-attr">title</span>: <span class="hljs-string">&apos;&apos;</span>,
       <span class="hljs-attr">content</span>: message,
       <span class="hljs-attr">confirmText</span>: confirmTitle,
-      success() {
-        successCallBack(confirmTitle);
-      },
-      fail() {
-        failCallBack(confirmTitle);
-      }
+      ......
     });
   }
 }
@@ -4532,10 +4524,7 @@ interface uiInterface {
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">origin-button</span>
     <span class="hljs-attr">c-bind:tap</span>=<span class="hljs-string">&quot;onclick&quot;</span>
-    <span class="hljs-attr">open-type</span>=<span class="hljs-string">&quot;{{openType}}&quot;</span>
-    <span class="hljs-attr">c-bind:getuserinfo</span>=<span class="hljs-string">&quot;getuserinfo&quot;</span>
-    <span class="hljs-attr">c-bind:contact</span>=<span class="hljs-string">&quot;contact&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn-text&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;{{mrTextStyle}}&quot;</span>&gt;</span>{{text}}<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+    <span class="hljs-attr">open-type</span>=<span class="hljs-string">&quot;{{openType}}&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">origin-button</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
@@ -4548,7 +4537,7 @@ interface uiInterface {
   <span class="hljs-comment">// json&#x914D;&#x7F6E;</span>
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-<p>&#x72EC;&#x7ACB;&#x5B9E;&#x73B0;&#x7684;<code>my-ui-builtin/components/button/button.demo.cml</code>&#x6587;&#x4EF6;&#x5C5E;&#x4E8E;<a href="https://cml.js.org/doc/framework/polymorphism/component.html" target="_blank">&#x591A;&#x6001;&#x7EC4;&#x4EF6;</a>&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x591A;&#x6001;&#x7EC4;&#x4EF6;&#x5C5E;&#x4E8E;&#x7070;&#x5EA6;&#x5C42;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x5404;&#x7AEF;&#x5E95;&#x5C42;&#x7EC4;&#x4EF6;&#x548C; api&#xFF0C;&#x5177;&#x4F53;&#x4F8B;&#x5B50;&#x53C2;&#x89C1;<a href="https://github.com/chameleon-team/chameleon-ui-builtin/tree/master/src/components/button" target="_blank">button</a>&#x548C;<a href="https://github.com/chameleon-team/chameleon-ui-builtin/tree/master/src/components/scroller" target="_blank">scroller</a>&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x72EC;&#x7ACB;&#x5B9E;&#x73B0;&#x7684;<code>my-ui-builtin/components/button/button.demo.cml</code>&#x6587;&#x4EF6;&#x5C5E;&#x4E8E;<a href="https://cml.js.org/doc/framework/polymorphism/component.html" target="_blank">&#x591A;&#x6001;&#x7EC4;&#x4EF6;</a>&#x7684;&#x7070;&#x5EA6;&#x5C42;&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x5404;&#x7AEF;&#x5E95;&#x5C42;&#x7EC4;&#x4EF6;&#x548C; api&#xFF0C;&#x5177;&#x4F53;&#x4F8B;&#x5B50;&#x53C2;&#x89C1;<a href="https://github.com/chameleon-team/chameleon-ui-builtin/tree/master/src/components/button" target="_blank">button</a>&#x548C;<a href="https://github.com/chameleon-team/chameleon-ui-builtin/tree/master/src/components/scroller" target="_blank">scroller</a>&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
 <h5 id="&#x65B0;&#x7AEF;&#x590D;&#x7528;&#x73B0;&#x6709;&#x7EC4;&#x4EF6;"><a name="&#x65B0;&#x7AEF;&#x590D;&#x7528;&#x73B0;&#x6709;&#x7EC4;&#x4EF6;" class="anchor-navigation-ex-anchor" href="#&#x65B0;&#x7AEF;&#x590D;&#x7528;&#x73B0;&#x6709;&#x7EC4;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x65B0;&#x7AEF;&#x590D;&#x7528;&#x73B0;&#x6709;&#x7EC4;&#x4EF6;" class="plugin-anchor" href="#&#x65B0;&#x7AEF;&#x590D;&#x7528;&#x73B0;&#x6709;&#x7EC4;&#x4EF6;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x65B0;&#x7AEF;&#x590D;&#x7528;&#x73B0;&#x6709;&#x7EC4;&#x4EF6;</h5>
 <p>&#x7F16;&#x5199; <code>my-ui-builtin/components/radio/button.interface</code></p>
 <pre><code class="lang-js"><span class="hljs-comment">// &#x5F15;&#x5165;&#x5B98;&#x65B9;&#x6807;&#x51C6;interface&#x6587;&#x4EF6;</span>
@@ -4563,13 +4552,11 @@ interface uiInterface {
 <pre><code>class CMLNode {
   constructor(options = {}) {
     this.realPath; // &#x6587;&#x4EF6;&#x7269;&#x7406;&#x5730;&#x5740;  &#x4F1A;&#x5E26;&#x53C2;&#x6570;
-    this.nodeType; // app/page/component/module // &#x8282;&#x70B9;&#x7C7B;&#x578B;     app/page/component  &#x5176;&#x4ED6;&#x7684;&#x4E3A;module  cml&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x90E8;&#x5206;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;Node&#x8282;&#x70B9;
     this.moduleType; // template/style/script/json/asset
     this.dependencies = []; // &#x8BE5;&#x8282;&#x70B9;&#x7684;&#x76F4;&#x63A5;&#x4F9D;&#x8D56;       app.cml&#x4F9D;&#x8D56;pages.cml pages.cml&#x4F9D;&#x8D56;components.cml js&#x4F9D;&#x8D56;js
     this.childrens = []; // &#x5B50;&#x6A21;&#x5757; cml&#x6587;&#x4EF6;&#x624D;&#x6709;&#x5B50;&#x6A21;&#x5757;
     this.source; // &#x6A21;&#x5757;&#x6E90;&#x4EE3;&#x7801;
     this.output; // &#x6A21;&#x5757;&#x8F93;&#x51FA;  &#x5404;&#x79CD;&#x8FC7;&#x7A0B;&#x64CD;&#x4F5C;&#x8BE5;&#x5B57;&#x6BB5;
-    this.identifier; // &#x8282;&#x70B9;&#x552F;&#x4E00;&#x6807;&#x8BC6;
     ......
   }
 }
@@ -4583,11 +4570,7 @@ interface uiInterface {
    * @param {compiler} &#x7F16;&#x8BD1;&#x5BF9;&#x8C61;
    * */
   register(compiler) {
-    /**
-      * &#x7F16;&#x8BD1;script&#x8282;&#x70B9;&#xFF0C;&#x6BD4;&#x5982;&#x505A;&#x6A21;&#x5757;&#x5316;
-      * currentNode &#x5F53;&#x524D;&#x8282;&#x70B9;
-      * parentNodeType &#x7236;&#x8282;&#x70B9;&#x7684;nodeType
-      */
+    // &#x7F16;&#x8BD1;script&#x8282;&#x70B9;&#xFF0C;&#x6BD4;&#x5982;&#x505A;&#x6A21;&#x5757;&#x5316;
     compiler.hook(&apos;compile-script&apos;, function(currentNode, parentNodeType) {
     })
     // &#x7F16;&#x8BD1;template&#x8282;&#x70B9; &#x8BED;&#x6CD5;&#x8F6C;&#x4E49;
@@ -4599,7 +4582,7 @@ interface uiInterface {
     // &#x7F16;&#x8BD1;&#x7ED3;&#x675F;&#x8FDB;&#x5165;&#x6253;&#x5305;&#x9636;&#x6BB5;
     compiler.hook(&apos;pack&apos;, function(projectGraph) {
       // &#x904D;&#x5386;&#x7F16;&#x8BD1;&#x56FE;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x8FDB;&#x884C;&#x5404;&#x9879;&#x76EE;&#x7684;&#x62FC;&#x63A5;
-      //&#x8C03;&#x7528;writeFile&#x65B9;&#x6CD5;&#x5199;&#x5165;&#x6587;&#x4EF6;
+      // &#x8C03;&#x7528;writeFile&#x65B9;&#x6CD5;&#x5199;&#x5165;&#x6587;&#x4EF6;
       // compiler.writeFile()
     })
     ......
@@ -4715,7 +4698,7 @@ createPage(exports.default);
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"扩展新端","level":"5.1.5","depth":2,"next":{"title":"操作教程","level":"5.1.5.1","depth":3,"path":"extend/quickstart.md","ref":"extend/quickstart.md","articles":[]},"previous":{"title":"端 JS 包资源缓存、更新和预加载","level":"5.1.4.2","depth":3,"path":"chameleon_client/js_cache.md","ref":"chameleon_client/js_cache.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","alerts","favicon","expandable-chapters-small","highlight-code","splitter","github","-sharing","code3","-lunr","-search","search-plus","anchor-navigation-ex","include","theme-custom"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy; DIDI 2019","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-solarizedlight.css"]},"github":{"url":"https://github.com/didi/chameleon"},"highlight-code":{},"code3":{"copyButtons":true},"splitter":{},"include":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"showGoTop":true,"isShowTocTitleIcon":false,"printLog":false,"multipleH1":false,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":true}},"favicon":{"shortcut":"./assets/favicon.ico"},"theme-custom":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"navbar":{"brand":{"url":"/","logo":{"alt":"Chameleon","path":"assets/cml-logo.png"}},"nav":[{"text":"快速上手","url":"/doc/quick_start/quick_start.html","part":"quick_start"},{"text":"框架","url":"/doc/framework/framework.html","part":"framework"},{"text":"组件","url":"/doc/component/component.html","part":"component"},{"text":"API","url":"/doc/api/api.html","part":"api"},{"text":"高级使用","url":"/doc/extend/advanced_use.html","part":"example"},{"text":"教程","url":"/doc/example/main.html","part":"tutorial"},{"text":"FAQ","url":"/doc/framework/faq.html","part":"faq"},{"text":"更新记录","url":"/doc/update_record.html","part":"log"}]}},"alerts":{},"expandable-chapters-small":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"search-plus":{}},"Settings":{"title":"chameleon"},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"chameleon","gitbook":"*"},"file":{"path":"extend/extend.md","mtime":"2019-05-20T12:10:39.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-20T12:39:14.969Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"扩展新端","level":"5.1.5","depth":2,"next":{"title":"操作教程","level":"5.1.5.1","depth":3,"path":"extend/quickstart.md","ref":"extend/quickstart.md","articles":[]},"previous":{"title":"端 JS 包资源缓存、更新和预加载","level":"5.1.4.2","depth":3,"path":"chameleon_client/js_cache.md","ref":"chameleon_client/js_cache.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","alerts","favicon","expandable-chapters-small","highlight-code","splitter","github","-sharing","code3","-lunr","-search","search-plus","anchor-navigation-ex","include","theme-custom"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy; DIDI 2019","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-solarizedlight.css"]},"github":{"url":"https://github.com/didi/chameleon"},"highlight-code":{},"code3":{"copyButtons":true},"splitter":{},"include":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"showGoTop":true,"isShowTocTitleIcon":false,"printLog":false,"multipleH1":false,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":true}},"favicon":{"shortcut":"./assets/favicon.ico"},"theme-custom":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"navbar":{"brand":{"url":"/","logo":{"alt":"Chameleon","path":"assets/cml-logo.png"}},"nav":[{"text":"快速上手","url":"/doc/quick_start/quick_start.html","part":"quick_start"},{"text":"框架","url":"/doc/framework/framework.html","part":"framework"},{"text":"组件","url":"/doc/component/component.html","part":"component"},{"text":"API","url":"/doc/api/api.html","part":"api"},{"text":"高级使用","url":"/doc/extend/advanced_use.html","part":"example"},{"text":"教程","url":"/doc/example/main.html","part":"tutorial"},{"text":"FAQ","url":"/doc/framework/faq.html","part":"faq"},{"text":"更新记录","url":"/doc/update_record.html","part":"log"}]}},"alerts":{},"expandable-chapters-small":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"search-plus":{}},"Settings":{"title":"chameleon"},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"chameleon","gitbook":"*"},"file":{"path":"extend/extend.md","mtime":"2019-05-20T12:57:10.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-21T07:31:49.548Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
