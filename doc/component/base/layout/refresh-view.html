@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>carousel-item · chameleon</title>
+        <title>refresh-view · chameleon</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -78,10 +78,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="refresh-view.html" />
+    <link rel="next" href="../form/button.html" />
     
     
-    <link rel="prev" href="carousel.html" />
+    <link rel="prev" href="carousel-item.html" />
     
 
     
@@ -1232,7 +1232,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.1.1.2.7" data-path="carousel-item.html" data-part="component">
+        <li class="chapter " data-level="3.1.1.2.7" data-path="carousel-item.html" data-part="component">
             
                 <a href="carousel-item.html">
             
@@ -1245,7 +1245,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.1.2.8" data-path="refresh-view.html" data-part="component">
+        <li class="chapter active" data-level="3.1.1.2.8" data-path="refresh-view.html" data-part="component">
             
                 <a href="refresh-view.html">
             
@@ -4547,7 +4547,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >carousel-item</a>
+        <a href="../../.." >refresh-view</a>
     </h1>
 </div>
 
@@ -4560,12 +4560,205 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#carousel-item"><b></b>carousel-item</a></li><ul><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x5C5E;&#x6027;"><b></b>&#x5C5E;&#x6027;</a></li></ul></ul></ul></div><a href="#carousel-item" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="carousel-item"><a name="carousel-item" class="anchor-navigation-ex-anchor" href="#carousel-item"><i class="fa fa-link" aria-hidden="true"></i></a><a name="carousel-item" class="plugin-anchor" href="#carousel-item"><i class="fa fa-link" aria-hidden="true"></i></a>carousel-item</h1>
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#refresh-view"><b></b>refresh-view</a></li><ul><ul><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x5C5E;&#x6027;"><b></b>&#x5C5E;&#x6027;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#&#x793A;&#x4F8B;"><b></b>&#x793A;&#x4F8B;</a></li><li><span class="title-icon fa fa-hand-o-right"></span><a href="#bug--tip"><b></b>Bug &amp; Tip</a></li></ul></ul></ul></div><a href="#refresh-view" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="refresh-view"><a name="refresh-view" class="anchor-navigation-ex-anchor" href="#refresh-view"><i class="fa fa-link" aria-hidden="true"></i></a><a name="refresh-view" class="plugin-anchor" href="#refresh-view"><i class="fa fa-link" aria-hidden="true"></i></a>refresh-view</h1>
 <hr>
-<p>&#x8F6E;&#x64AD;&#x56FE;&#x5B50;&#x5BB9;&#x5668;</p>
-<p>&#x4EC5;&#x53EF;&#x653E;&#x7F6E;&#x5728;<code>&lt;carousel&gt;</code>&#x7EC4;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x4F7F;&#x7528;&#x6587;&#x6863;&#x8BF7;&#x67E5;&#x770B; <a href="carousel.html">carousel</a>&#x3002;</p>
+<p>&#x652F;&#x6301;&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x3001;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x7684;&#x6EDA;&#x52A8;&#x5BB9;&#x5668;&#x3002;</p>
 <h3 id="&#x5C5E;&#x6027;"><a name="&#x5C5E;&#x6027;" class="anchor-navigation-ex-anchor" href="#&#x5C5E;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x5C5E;&#x6027;" class="plugin-anchor" href="#&#x5C5E;&#x6027;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5C5E;&#x6027;</h3>
-<p>&#x65E0;</p>
+<table>
+  <tr>
+    <th width="200px">&#x5C5E;&#x6027;&#x540D;</th>
+    <th>&#x7C7B;&#x578B;</th>
+    <th width="60px">&#x5FC5;&#x586B;</th>
+    <th>&#x9ED8;&#x8BA4;&#x503C;</th>
+    <th>&#x8BF4;&#x660E;</th>
+  </tr>
+  <tr>
+    <td>enablePullUpLoad</td>
+    <td>Boolean</td>
+    <td>&#x5426;</td>
+    <td>false</td>
+    <td>&#x662F;&#x5426;&#x5F00;&#x542F;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;</td>
+  </tr>
+  <tr>
+    <td>pullUpLoadComplete</td>
+    <td>Boolean</td>
+    <td>&#x4F7F;&#x7528;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x65F6;&#x5FC5;&#x4F20;</td>
+    <td>false</td>
+    <td>&#x5F53;&#x6570;&#x636E;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#x4FEE;&#x6539;&#x8BE5;&#x503C;&#x66F4;&#x65B0;&#x72B6;&#x6001;</td>
+  </tr>
+  <tr>
+    <td>pullingUp</td>
+    <td>Boolean</td>
+    <td></td>
+    <td>&#x65E0;</td>
+    <td>&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x4E2D;</td>
+  </tr>
+  <tr>
+    <td>pullUpStart</td>
+    <td>Number</td>
+    <td>&#x5426;</td>
+    <td>50</td>
+    <td>&#x89E6;&#x53D1;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x7684;&#x7684;&#x8DDD;&#x79BB;</td>
+  </tr>
+  <tr>
+    <td>pullUpStop</td>
+    <td>Number</td>
+    <td>&#x5426;</td>
+    <td>80</td>
+    <td>&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x52A8;&#x753B;&#x505C;&#x7559;&#x7684;&#x4F4D;&#x7F6E;&#x9AD8;&#x5EA6;</td>
+  </tr>
+  <tr>
+    <td>pullDownStart</td>
+    <td>Number</td>
+    <td>&#x5426;</td>
+    <td>50</td>
+    <td>&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;&#x8DDD;&#x79BB;</td>
+  </tr>
+  <tr>
+    <td>pullDownStop</td>
+    <td>Number</td>
+    <td>&#x5426;</td>
+    <td>80</td>
+    <td>&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x52A8;&#x753B;&#x505C;&#x7559;&#x7684;&#x4F4D;&#x7F6E;&#x9AD8;&#x5EA6;</td>
+  </tr>
+  <tr>
+    <td>pullingDown</td>
+    <td>Boolean</td>
+    <td>&#x5426;</td>
+    <td>false</td>
+    <td>&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x4E2D;</td>
+  </tr>
+  <!-- <tr>
+    <td>c-bind:onscroll</td>
+    <td>EventHandle</td>
+    <td>否</td>
+    <td></td>
+    <td>滚动时触发，
+        <br/>
+        返回事件对象：
+        <br/>
+        event.type = 'scroll'
+        <br/>
+        event.detail = {scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY}
+    </td>
+  </tr> -->
+  <tr>
+    <td>c-bind:onPullUpLoad</td>
+    <td>EventHandle</td>
+    <td>&#x5426;</td>
+    <td></td>
+    <td>&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&#x65F6;&#x89E6;&#x53D1;</td>
+  </tr>
+  <tr>
+    <td>c-bind:onPullDownRefresh</td>
+    <td>EventHandle</td>
+    <td>&#x5426;</td>
+    <td></td>
+    <td>&#x4E0B;&#x62C9;&#x5237;&#x65B0;&#x65F6;&#x89E6;&#x53D1;</td>
+  </tr>
+</table>
+
+<h3 id="&#x793A;&#x4F8B;"><a name="&#x793A;&#x4F8B;" class="anchor-navigation-ex-anchor" href="#&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a><a name="&#x793A;&#x4F8B;" class="plugin-anchor" href="#&#x793A;&#x4F8B;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x793A;&#x4F8B;</h3>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">refresh-view</span> <span class="hljs-attr">enablePullUpLoad</span>=<span class="hljs-string">&quot;{{true}}&quot;</span>
+              <span class="hljs-attr">pullingDown</span>=<span class="hljs-string">&quot;{{pullingDown}}&quot;</span>
+              <span class="hljs-attr">pullingUp</span>=<span class="hljs-string">&quot;{{pullingUp}}&quot;</span>
+              <span class="hljs-attr">c-bind:onPullDownRefresh</span>=<span class="hljs-string">&quot;pullDownRefreshHandle&quot;</span>
+              <span class="hljs-attr">c-bind:onPullUpLoad</span>=<span class="hljs-string">&quot;pullUploadHandle&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">c-header</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;refresh-view&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">c-header</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">c-for</span>=<span class="hljs-string">&quot;{{texts}}&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;text-item&quot;</span>&gt;</span>{{item}}<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;loading-text&quot;</span>&gt;</span>{{loadingText}}<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">refresh-view</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">import</span> cml <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;chameleon-api&apos;</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Refresh_view</span>   </span>{
+
+  data = {
+    <span class="hljs-attr">imgGif</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;../../../components/refresh-loading/img/loading.gif&apos;</span>),
+    <span class="hljs-attr">texts</span>: [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>],
+    <span class="hljs-attr">pullingDown</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">pullingUp</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">loadingText</span>: <span class="hljs-string">&apos;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&apos;</span>
+  }
+
+  computed = {
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    pullDownRefreshHandle(e) {
+      <span class="hljs-keyword">this</span>.pullingDown = <span class="hljs-literal">true</span>;
+      setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">let</span> length = <span class="hljs-keyword">this</span>.texts.length;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = length; i &lt; length + <span class="hljs-number">5</span>; i ++) {
+          <span class="hljs-keyword">this</span>.texts.unshift(i);
+        }
+        <span class="hljs-keyword">this</span>.pullingDown = <span class="hljs-literal">false</span>;
+      }, <span class="hljs-number">2000</span>);
+    },
+    pullUploadHandle(e) {
+      <span class="hljs-keyword">this</span>.pullingUp = <span class="hljs-literal">true</span>;
+      <span class="hljs-keyword">this</span>.loadingText = <span class="hljs-string">&apos;&#x52A0;&#x8F7D;&#x4E2D;...&apos;</span>
+      setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.loadingText = <span class="hljs-string">&apos;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&apos;</span>
+        <span class="hljs-keyword">let</span> length = <span class="hljs-keyword">this</span>.texts.length;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = length; i &lt; length + <span class="hljs-number">5</span>; i ++) {
+          <span class="hljs-keyword">this</span>.texts.push(i);
+        }
+        <span class="hljs-keyword">this</span>.loadingText = <span class="hljs-string">&apos;&#x4E0A;&#x62C9;&#x52A0;&#x8F7D;&apos;</span>
+        <span class="hljs-keyword">this</span>.pullingUp = <span class="hljs-literal">false</span>;
+      }, <span class="hljs-number">2000</span>);
+    }
+  }
+
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Refresh_view();
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-class">.container</span> {
+  <span class="hljs-attribute">flex</span>: <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">750</span>cpx;
+}
+<span class="hljs-selector-class">.text-item</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">710</span>cpx;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">160</span>cpx;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">160</span>cpx;
+  <span class="hljs-attribute">background</span>: <span class="hljs-number">#69BE96</span>;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#666</span>;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10</span>cpx;
+  <span class="hljs-attribute">align-self</span>: center;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">60</span>cpx;
+  <span class="hljs-attribute">color</span>: white;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20</span>cpx;
+}
+<span class="hljs-selector-class">.loading-text</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">80</span>cpx;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">80</span>cpx;
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#999</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">24</span>cpx;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">cml-type</span>=<span class="hljs-string">&quot;json&quot;</span>&gt;</span><span class="actionscript">
+{
+  <span class="hljs-string">&quot;base&quot;</span>: {}
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h3 id="bug--tip"><a name="bug--tip" class="anchor-navigation-ex-anchor" href="#bug--tip"><i class="fa fa-link" aria-hidden="true"></i></a><a name="bug--tip" class="plugin-anchor" href="#bug--tip"><i class="fa fa-link" aria-hidden="true"></i></a>Bug &amp; Tip</h3>
+<ol>
+<li><code>refresh-view</code>&#x4E3A;&#x5168;&#x5C4F;&#x7EC4;&#x4EF6;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x5B50;&#x7EC4;&#x4EF6;&#x7684;&#x603B;&#x9AD8;&#x5EA6;&#x9AD8;&#x4E8E;&#x5176;&#x672C;&#x8EAB;&#xFF0C;&#x90A3;&#x4E48;&#x6240;&#x6709;&#x7684;&#x5B50;&#x7EC4;&#x4EF6;&#x90FD;&#x53EF;&#x6EDA;&#x52A8;&#x3002;</li>
+</ol>
 
                                 
                                 </section>
@@ -4593,12 +4786,12 @@
 
             
                 
-                <a href="carousel.html" class="navigation navigation-prev " aria-label="Previous page: carousel">
+                <a href="carousel-item.html" class="navigation navigation-prev " aria-label="Previous page: carousel-item">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="refresh-view.html" class="navigation navigation-next " aria-label="Next page: refresh-view">
+                <a href="../form/button.html" class="navigation navigation-next " aria-label="Next page: 表单组件">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -4609,7 +4802,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"carousel-item","level":"3.1.1.2.7","depth":4,"next":{"title":"refresh-view","level":"3.1.1.2.8","depth":4,"path":"component/base/layout/refresh-view.md","ref":"component/base/layout/refresh-view.md","articles":[]},"previous":{"title":"carousel","level":"3.1.1.2.6","depth":4,"path":"component/base/layout/carousel.md","ref":"component/base/layout/carousel.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","alerts","favicon","expandable-chapters-small","highlight-code","splitter","github","-sharing","code3","-lunr","-search","search-plus","anchor-navigation-ex","include","theme-custom"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy; DIDI 2019","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-solarizedlight.css"]},"github":{"url":"https://github.com/didi/chameleon"},"highlight-code":{},"code3":{"copyButtons":true},"splitter":{},"include":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"showGoTop":true,"isShowTocTitleIcon":false,"printLog":false,"multipleH1":false,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":true}},"favicon":{"shortcut":"./assets/favicon.ico"},"theme-custom":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"navbar":{"brand":{"url":"/","logo":{"alt":"Chameleon","path":"assets/cml-logo.png"}},"nav":[{"text":"快速上手","url":"/doc/quick_start/quick_start.html","part":"quick_start"},{"text":"框架","url":"/doc/framework/framework.html","part":"framework"},{"text":"组件","url":"/doc/component/component.html","part":"component"},{"text":"API","url":"/doc/api/api.html","part":"api"},{"text":"高级使用","url":"/doc/extend/advanced_use.html","part":"example"},{"text":"教程","url":"/doc/example/main.html","part":"tutorial"},{"text":"FAQ","url":"/doc/framework/faq.html","part":"faq"},{"text":"更新记录","url":"/doc/update_record.html","part":"log"}]}},"alerts":{},"expandable-chapters-small":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"search-plus":{}},"Settings":{"title":"chameleon"},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"chameleon","gitbook":"*"},"file":{"path":"component/base/layout/carousel-item.md","mtime":"2019-08-19T11:25:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-19T11:39:23.370Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"refresh-view","level":"3.1.1.2.8","depth":4,"next":{"title":"表单组件","level":"3.1.1.3","depth":3,"path":"component/base/form/button.md","ref":"component/base/form/button.md","articles":[{"title":"button","level":"3.1.1.3.1","depth":4,"path":"component/base/form/button.md","ref":"component/base/form/button.md","articles":[]},{"title":"input","level":"3.1.1.3.2","depth":4,"path":"component/base/form/input.md","ref":"component/base/form/input.md","articles":[]},{"title":"textarea","level":"3.1.1.3.3","depth":4,"path":"component/base/form/textarea.md","ref":"component/base/form/textarea.md","articles":[]},{"title":"switch","level":"3.1.1.3.4","depth":4,"path":"component/base/form/switch.md","ref":"component/base/form/switch.md","articles":[]},{"title":"radio","level":"3.1.1.3.5","depth":4,"path":"component/base/form/radio.md","ref":"component/base/form/radio.md","articles":[]},{"title":"checkbox","level":"3.1.1.3.6","depth":4,"path":"component/base/form/checkbox.md","ref":"component/base/form/checkbox.md","articles":[]}]},"previous":{"title":"carousel-item","level":"3.1.1.2.7","depth":4,"path":"component/base/layout/carousel-item.md","ref":"component/base/layout/carousel-item.md","articles":[]},"dir":"ltr"},"config":{"plugins":["anchors","alerts","favicon","expandable-chapters-small","highlight-code","splitter","github","-sharing","code3","-lunr","-search","search-plus","anchor-navigation-ex","include","theme-custom"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy; DIDI 2019","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-solarizedlight.css"]},"github":{"url":"https://github.com/didi/chameleon"},"highlight-code":{},"code3":{"copyButtons":true},"splitter":{},"include":{},"code":{"copyButtons":true},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"anchor-navigation-ex":{"mode":"float","pageTop":{"level1Icon":"","level2Icon":"","level3Icon":"","showLevelIcon":false},"showLevel":false,"showGoTop":true,"isShowTocTitleIcon":false,"printLog":false,"multipleH1":false,"associatedWithSummary":true,"float":{"floatIcon":"fa fa-navicon","level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":true}},"favicon":{"shortcut":"./assets/favicon.ico"},"theme-custom":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"navbar":{"brand":{"url":"/","logo":{"alt":"Chameleon","path":"assets/cml-logo.png"}},"nav":[{"text":"快速上手","url":"/doc/quick_start/quick_start.html","part":"quick_start"},{"text":"框架","url":"/doc/framework/framework.html","part":"framework"},{"text":"组件","url":"/doc/component/component.html","part":"component"},{"text":"API","url":"/doc/api/api.html","part":"api"},{"text":"高级使用","url":"/doc/extend/advanced_use.html","part":"example"},{"text":"教程","url":"/doc/example/main.html","part":"tutorial"},{"text":"FAQ","url":"/doc/framework/faq.html","part":"faq"},{"text":"更新记录","url":"/doc/update_record.html","part":"log"}]}},"alerts":{},"expandable-chapters-small":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"search-plus":{}},"Settings":{"title":"chameleon"},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"chameleon","gitbook":"*"},"file":{"path":"component/base/layout/refresh-view.md","mtime":"2019-08-19T11:25:36.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-19T11:39:23.370Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
