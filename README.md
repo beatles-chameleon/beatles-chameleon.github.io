@@ -1,8 +1,4 @@
-# cml 新官网
-
-> Next Generation of cml Website.
-
----
+# Next Generation of cml Website
 
 本网站使用 [VuePress](https://vuepress.vuejs.org/zh/) 生成。
 
