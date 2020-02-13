@@ -1,6 +1,6 @@
-# Next Generation of cml Website
+# cml 新官网
 
-本网站使用 [VuePress](https://vuepress.vuejs.org/zh/) 生成。
+本仓库为 cml 新官网的源码与文档，使用 [VuePress](https://vuepress.vuejs.org/zh/) 搭建。
 
 ## 起步
 
@@ -11,7 +11,7 @@ cd cml-website-new
 
 ## 开发
 
-推荐使用 [yarn](https://classic.yarnpkg.com/zh-Hans/)。
+推荐使用 [yarn](https://classic.yarnpkg.com/zh-Hans/)，请确保 Node 版本 >= 8.6（VuePress 需要）。
 
 ```shell script
 yarn
