@@ -1,1 +1,7 @@
-# Hello cml!
+---
+home: true
+heroText:
+tagline:
+---
+
+<Home />
