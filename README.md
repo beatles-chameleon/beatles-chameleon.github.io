@@ -10,7 +10,7 @@
 
 ## 起步
 
-`git clone` 本仓库到本地机器，然后：
+`git clone` 项目到本地，然后：
 
 ```shell script
 cd cml-website-new
