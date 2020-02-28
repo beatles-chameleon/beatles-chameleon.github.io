@@ -2,4 +2,5 @@
 yarn.lock
 yarn-error.log
 
+# Ignore the theme variables configuration file
 docs/.vuepress/styles/palette.styl
