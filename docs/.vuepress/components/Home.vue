@@ -6,7 +6,7 @@
 export default {
   data() {
     return {
-      title: 'cml',
+      title: 'CML',
     };
   },
 };

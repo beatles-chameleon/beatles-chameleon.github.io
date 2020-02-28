@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'cml',
+  title: 'CML',
   description: '小程序跨端开发解决方案',
   dest: './dist',
   themeConfig: {
