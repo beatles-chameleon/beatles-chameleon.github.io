@@ -47,7 +47,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     margin-top: 6.4rem;
-    @media (max-width: 766px) {
+    @media (max-width: $MQMobile) {
       .left {
         width: 100%;
         .logo {
@@ -55,10 +55,16 @@ export default {
         }
       }
       .right {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+        .links {
+          justify-content: center;
+        }
       }
     }
-    @media (min-width: 767px) {
+    @media (min-width: $MQMobile + 1px) {
       .left {
         width: 44%;
         .logo {
@@ -83,11 +89,12 @@ export default {
       }
       .desc {
         margin-top: .2rem;
-        margin-bottom: 2.4rem;
+        margin-bottom: 1.4rem;
         font-size: 1.5rem;
         font-weight: 500;
       }
       .links {
+        display: flex;
         .btn {
           position: relative;
           box-sizing border-box;
@@ -107,7 +114,7 @@ export default {
             &::before {
               content: '';
               position: absolute;
-              left: -2.2rem;
+              left: -2.4rem;
               top: 0;
               display: block;
               height: 100%;
