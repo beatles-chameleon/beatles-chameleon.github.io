@@ -1,3 +1,50 @@
-body {
-  background: #fff;
+@import './palette.styl';
+
+/* Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.theme-container {
+  .navbar {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+    background: rgba(#fff, 0.6);
+    .logo {
+      margin-right: 0.4rem;
+    }
+    .site-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .search-box {
+      margin-right: 0;
+      input:not(:focus) {
+        border-color: $borderColor;
+      }
+    }
+    .links {
+      right: 3.2rem;
+      background: transparent;
+      .nav-links .nav-item {
+        margin-left: 1.6rem;
+        a.router-link-active {
+          color: $accentColor;
+        }
+      }
+    }
+  }
+  &.home-page {
+    .navbar {
+      border-bottom: 0;
+      .logo {
+        display: none;
+      }
+    }
+    .sidebar-mask,
+    .sidebar,
+    .hero {
+      display: none;
+    }
+    .home {
+      padding: 0;
+    }
+  }
 }
