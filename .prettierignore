@@ -1,6 +1,10 @@
+.env
 .*ignore
+
 yarn.lock
 yarn-error.log
+
+*.svg
 
 # Ignore the theme variables configuration file
 docs/.vuepress/styles/palette.styl
