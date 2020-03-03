@@ -4,7 +4,9 @@
 yarn.lock
 yarn-error.log
 
+# Images
 *.svg
+*.ico
 
 # Ignore the theme variables configuration file
 docs/.vuepress/styles/palette.styl
