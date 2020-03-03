@@ -1,8 +1,9 @@
 ---
 home: true
-pageClass: home-page
+pageClass: the-home
+title: Blogging Like a Hacker
 heroText:
 tagline:
 ---
 
-<HomePage />
+<TheHome />
