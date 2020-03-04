@@ -11,4 +11,4 @@ yarn-error.log
 
 # Ignore the Stylus syntax files
 docs/.vuepress/styles/palette.styl
-docs/.vuepress/components/TheHome.styl
+docs/.vuepress/components/HomeView.styl
