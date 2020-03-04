@@ -7,10 +7,7 @@ module.exports = {
   dest: './dist',
   themeConfig: {
     logo: '/brand/logo.svg',
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/' },
-    ],
+    nav: [{ text: 'Guide', link: '/guide/' }],
     sidebar: ['/', '/guide/'],
     activeHeaderLinks: false,
   },
