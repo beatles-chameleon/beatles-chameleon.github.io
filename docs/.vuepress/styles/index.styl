@@ -1,6 +1,6 @@
 @import './palette.styl';
 
-/* Styles
+/* Global
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .theme-container {
   .navbar {
@@ -53,17 +53,39 @@
       }
     }
   }
-  &.the-home {
-    .navbar {
-      border-bottom: 0;
-      .logo {
-        display: none;
-      }
+}
+
+/* The Home
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.the-home {
+  * {
+    box-sizing: border-box;
+  }
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  h2 {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .navbar {
+    border-bottom: 0;
+    .logo {
+      display: none;
     }
-    .home {
-      max-width: none;
-      padding: 0;
-    }
+  }
+  .home {
+    max-width: none;
+    padding: 0;
   }
 }
 
