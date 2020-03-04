@@ -55,28 +55,9 @@
   }
 }
 
-/* The Home
+/* Home Page
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.the-home {
-  * {
-    box-sizing: border-box;
-  }
-  h1,
-  h2,
-  h3,
-  p {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  h2 {
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
+.home-page {
   .navbar {
     border-bottom: 0;
     .logo {
@@ -91,6 +72,9 @@
 
 /* Root "rem"
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+html {
+  font-size: $baseFontSize;
+}
 @media (max-width: $MQMobile) {
   html {
     font-size: 14px;
