@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <section class="brand">
+    <section class="hello">
       <div class="left">
-        <img class="logo" :src="logo" />
+        <img class="logo" :src="logo" alt="logo" />
       </div>
       <div class="right">
         <h1 class="title">{{ title }}</h1>
@@ -19,7 +19,7 @@
         </div>
       </div>
     </section>
-    <section class="cards">
+    <section class="flows gray">
       <div class="card platforms">
         <h2>多端支持</h2>
         <ul>
@@ -52,17 +52,49 @@
         </ul>
       </div>
     </section>
+    <section class="cycle normal">
+      <h2>组件生态圈</h2>
+      <ul>
+        <li v-for="item in eco">
+          <img :src="item.icon" alt="icon" />
+          <div>
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.desc }}</p>
+          </div>
+          <span v-if="item.link" class="right link">查看详情<i>→</i></span>
+          <span v-else-if="item.link !== undefined" class="right disable">敬请期待</span>
+          <span v-else class="right"></span>
+          <a v-if="item.link" class="cover-link" :href="item.link"></a>
+        </li>
+      </ul>
+    </section>
+    <section class="cycle gray reverse">
+      <h2>全方位能力供应</h2>
+      <ul>
+        <li v-for="item in supply">
+          <img :src="item.icon" alt="icon" />
+          <div>
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.desc }}</p>
+          </div>
+          <span v-if="item.link" class="right link">查看详情<i>→</i></span>
+          <span v-else-if="item.link !== undefined" class="right disable">敬请期待</span>
+          <span v-else class="right"></span>
+          <a v-if="item.link" class="cover-link" :href="item.link"></a>
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
 
 <script>
 /**
  * TheHome - 官网首页
- * 命名为 "TheHome" 是因为 VuePress 默认主题中存在 "Home.vue" 组件，避免冲突
+ * (因 VuePress 默认主题存在 "Home.vue" 组件，故命名为 "TheHome" 避免冲突)
  */
 import config from '@/config';
 import logo from '@/public/brand/logo.svg';
-// platforms
+// 多端支持
 import iconH5 from '@/public/images/icon_h5.png';
 import iconHy from '@/public/images/icon_hy.png';
 import iconWx from '@/public/images/icon_wx.png';
@@ -71,9 +103,17 @@ import iconBd from '@/public/images/icon_bd.png';
 import iconQQ from '@/public/images/icon_qq.png';
 import iconTt from '@/public/images/icon_tt.png';
 import iconQa from '@/public/images/icon_qa.png';
-// handles
-import iconEntry from '@/public/images/icon_Entry.png';
-import iconEasy from '@/public/images/icon_easy.png';
+// 渐进式接入
+import iconEntry from '@/public/images/icon_entry.svg';
+import iconEasy from '@/public/images/icon_easy.svg';
+// 组件生态圈
+import iconBase from '@/public/images/icon_base.svg';
+import iconExpand from '@/public/images/icon_expand.svg';
+import iconLight from '@/public/images/icon_light.svg';
+// 全方位能力供应
+import iconPlugin from '@/public/images/icon_plugin.svg';
+import iconLinter from '@/public/images/icon_linter.svg';
+import iconGitHub from '@/public/images/icon_github.svg';
 
 const { title, description } = config;
 
@@ -113,6 +153,46 @@ export default {
           icon: iconEasy,
         },
       ],
+      // 组件生态圈
+      eco: [
+        {
+          name: 'chameleon-ui-builtin',
+          desc: '内置基础组件，多端适配性强',
+          link: 'ui-base.html',
+          icon: iconBase,
+        },
+        {
+          name: 'CML UI',
+          desc: '丰富基础组件，支持按需引用',
+          link: 'ui-expand.html',
+          icon: iconExpand,
+        },
+        {
+          name: 'Light UI',
+          desc: '配置灵活多样，可定制化程度高',
+          link: '',
+          icon: iconLight,
+        },
+      ],
+      // 全方位能力供应
+      supply: [
+        {
+          name: '编辑器插件',
+          desc: 'VS Code、Atom、WebStorm、Sublime 插件，语法高亮、指令补全支持',
+          icon: iconPlugin,
+        },
+        {
+          name: 'Chameleon Linter',
+          desc: '多端规范检查，语法错误提示，运行时多态检查',
+          icon: iconLinter,
+        },
+        {
+          name: 'GitHub 社区',
+          desc: 'Star 数 7000+，氛围活跃，有问必答',
+          link: 'https://github.com/didi/chameleon',
+          icon: iconGitHub,
+        },
+      ],
     };
   },
   created() {
@@ -122,234 +202,5 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import "~@/styles/palette.styl";
-
-.container {
-  * {
-    box-sizing: border-box;
-  }
-  h1, h2, h3, p {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  h2 {
-    padding-bottom: 0;
-    border-bottom: 0;
-  }
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  @media (min-width: $MQMobile + 1px) {
-    section {
-      padding-left: 3rem;
-      padding-right: 3rem;
-    }
-    .brand {
-      .left {
-        width: 45%;
-        .logo {
-          margin-right: 5rem;
-        }
-      }
-    }
-    .cards {
-      display: flex;
-      justify-content: center;
-      .card {
-        width: 20rem;
-      }
-    }
-  }
-  @media (max-width: $MQMobile) {
-    section {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-    .brand {
-      .left {
-        width: 100%;
-        .logo {
-          margin-right: auto;
-        }
-      }
-      .right {
-        align-items: center;
-        margin-top: 2rem;
-        .links {
-          justify-content: center;
-        }
-      }
-    }
-    .cards {
-      .card + .card {
-        margin-top: 2rem;
-      }
-    }
-  }
-  .brand {
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-    .left {
-      display: flex;
-      .logo {
-        width: 14.5rem;
-        margin-left: auto;
-      }
-    }
-    .right {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      .title {
-        font-size: 5rem;
-        font-weight: 700;
-      }
-      .desc {
-        margin-top: .1rem;
-        margin-bottom: 1.2rem;
-        font-size: 1.5rem;
-        font-weight: 500;
-      }
-      .links {
-        display: flex;
-        .btn {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 3.2rem;
-          padding-left: 2.5rem;
-          padding-right: 2.5rem;
-          font-size: 1.1rem;
-          font-weight: 500;
-          border-radius: 3rem;
-          + .btn {
-            margin-left: 1rem;
-          }
-          &.btn-primary {
-            color: #fff;
-            background: $accentColor;
-          }
-          &.btn-default {
-            border: 2px solid $accentColor;
-          }
-        }
-      }
-    }
-  }
-  .cards {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    background: $bgColor;
-    .card {
-      margin-left: 1rem;
-      margin-right: 1rem;
-      padding: 2rem;
-      background: #fff;
-      border-radius: .5rem;
-      box-shadow: 0 0 4rem rgba(#000, 0.05);
-      h2 {
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-        font-weight: 600;
-      }
-      h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-      }
-      li {
-        color: $minorColor;
-      }
-
-      &.platforms {
-        li {
-          display: flex;
-          align-items: center
-        }
-        li + li {
-          margin-top: .5rem;
-        }
-        img {
-          flex-shrink: 0;
-          width: 20px;
-          height: 20px;
-          margin-right: .6rem;
-        }
-
-        .icon-check {
-          flex-shrink: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 18px;
-          height: 18px;
-          margin-left: auto;
-          background: $greenColor;
-          border-radius: 100%;
-
-          &::before {
-            content: '';
-            width: 8px;
-            height: 4px;
-            border-left: 2px solid #fff;
-            border-bottom: 2px solid #fff;
-            transform: translateY(-1px) rotate(-45deg);
-          }
-        }
-      }
-      &.binders {
-        li {
-          padding: .8rem;
-          text-align: center;
-          border-radius: .5rem;
-          &.model {
-            background: linear-gradient(to right, #ec72da 0%, #f59249 57%, #f6b926 100%);
-          }
-          &.view {
-            background: linear-gradient(to right, #a377ff 0%, #3296ff 61%);
-          }
-          &.view-model {
-            background: linear-gradient(to right, #23c435 0%, #55bbf9 100%);
-          }
-        }
-        li + li {
-          margin-top: 1.2rem;
-        }
-        h3 {
-          margin-bottom: .2rem;
-          color: #fff;
-        }
-        p {
-          color: rgba(#fff, .8);
-        }
-      }
-      &.handlers {
-        li {
-          display: flex;
-        }
-        li + li {
-          margin-top: 2rem;
-        }
-        img {
-          flex-shrink: 0;
-          width: 3rem;
-          height: 3rem;
-          margin-right: 1rem;
-          padding: .5rem;
-          background: #a694ff;
-          border-radius: .5rem;
-        }
-        h3 {
-          margin-bottom: .5rem;
-        }
-        p {
-          color: $hintColor;
-        }
-      }
-    }
-  }
-}
+@import './TheHome.styl';
 </style>
