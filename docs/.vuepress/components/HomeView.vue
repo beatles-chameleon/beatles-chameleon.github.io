@@ -49,10 +49,10 @@
         </ul>
       </div>
     </section>
-    <section class="cycle">
-      <h2>组件生态圈</h2>
+    <section v-for="group in cycles" class="cycle" :class="group.className">
+      <h2>{{ group.name }}</h2>
       <ul>
-        <li v-for="item in uis">
+        <li v-for="item in group.list">
           <img :src="item.icon" alt="icon" />
           <div>
             <h3>{{ item.name }}</h3>
@@ -61,37 +61,10 @@
           <span v-if="item.link" class="entry link">查看详情<i>→</i></span>
           <span v-else-if="item.link !== undefined" class="entry disable">敬请期待</span>
           <span v-else class="entry"></span>
-          <a
-            v-if="item.link && item.link.includes('http')"
-            class="cover-link"
-            :href="item.link"
-            target="_blank"
-            rel="noopener"
-          ></a>
-          <a v-else-if="item.link" class="cover-link" :href="item.link"></a>
-        </li>
-      </ul>
-    </section>
-    <section class="cycle gray reverse">
-      <h2>全方位能力供应</h2>
-      <ul>
-        <li v-for="item in eco">
-          <img :src="item.icon" alt="icon" />
-          <div>
-            <h3>{{ item.name }}</h3>
-            <p>{{ item.desc }}</p>
-          </div>
-          <span v-if="item.link" class="entry link">查看详情<i>→</i></span>
-          <span v-else-if="item.link !== undefined" class="entry disable">敬请期待</span>
-          <span v-else class="entry"></span>
-          <a
-            v-if="item.link && item.link.includes('http')"
-            class="cover-link"
-            :href="item.link"
-            target="_blank"
-            rel="noopener"
-          ></a>
-          <a v-else-if="item.link" class="cover-link" :href="item.link"></a>
+          <template v-if="item.link">
+            <a v-if="isExternal(item.link)" :href="item.link" target="_blank" rel="noopener"></a>
+            <a v-else :href="item.link"></a>
+          </template>
         </li>
       </ul>
     </section>
@@ -138,14 +111,12 @@
           <h4>{{ group.name }}</h4>
           <ul>
             <li v-for="item in group.list">
-              <a
-                v-if="item.link && item.link.includes('http')"
-                :href="item.link"
-                target="_blank"
-                rel="noopener"
-                >{{ item.name }}
-              </a>
-              <a v-else-if="item.link" :href="item.link">{{ item.name }}</a>
+              <template v-if="item.link">
+                <a v-if="isExternal(item.link)" :href="item.link" target="_blank" rel="noopener">
+                  {{ item.name }}
+                </a>
+                <a v-else :href="item.link">{{ item.name }}</a>
+              </template>
               <a v-else-if="item.img">
                 <span>{{ item.name }}</span>
                 <img :src="item.img" alt="image" />
@@ -180,11 +151,10 @@ import iconEndQuickApp from '@/public/images/icon_end_quickapp.png';
 // 渐进式接入
 import iconHelperIO from '@/public/images/icon_helper_io.svg';
 import iconHelperEasy from '@/public/images/icon_helper_easy.svg';
-// 组件生态圈
+// 组件生态圈 & 全方位能力供应
 import iconUIBase from '@/public/images/icon_ui_base.svg';
 import iconUICML from '@/public/images/icon_ui_cml.svg';
 import iconUILight from '@/public/images/icon_ui_light.svg';
-// 全方位能力供应
 import iconEcoPlugin from '@/public/images/icon_eco_plugin.svg';
 import iconEcoLinter from '@/public/images/icon_eco_linter.svg';
 import iconEcoGitHub from '@/public/images/icon_eco_github.svg';
@@ -261,44 +231,52 @@ export default {
           icon: iconHelperEasy,
         },
       ],
-      // 组件生态圈
-      uis: [
+      // 组件生态圈 & 全方位能力供应
+      cycles: [
         {
-          name: 'chameleon-ui-builtin',
-          desc: '内置基础组件，多端适配性强',
-          link: 'base-ui.html',
-          icon: iconUIBase,
+          name: '组件生态圈',
+          list: [
+            {
+              name: 'chameleon-ui-builtin',
+              desc: '内置基础组件，多端适配性强',
+              link: 'base-ui.html',
+              icon: iconUIBase,
+            },
+            {
+              name: 'CML UI',
+              desc: '丰富基础组件，支持按需引用',
+              link: 'cml-ui.html',
+              icon: iconUICML,
+            },
+            {
+              name: 'Light UI',
+              desc: '配置灵活多样，可定制化程度高',
+              link: '',
+              icon: iconUILight,
+            },
+          ],
         },
         {
-          name: 'CML UI',
-          desc: '丰富基础组件，支持按需引用',
-          link: 'cml-ui.html',
-          icon: iconUICML,
-        },
-        {
-          name: 'Light UI',
-          desc: '配置灵活多样，可定制化程度高',
-          link: '',
-          icon: iconUILight,
-        },
-      ],
-      // 全方位能力供应
-      eco: [
-        {
-          name: '编辑器插件',
-          desc: 'VS Code、WebStorm、Sublime、Atom 插件，语法高亮、指令补全',
-          icon: iconEcoPlugin,
-        },
-        {
-          name: 'Chameleon Linter',
-          desc: '多端规范检查，语法错误提示，运行时多态检查',
-          icon: iconEcoLinter,
-        },
-        {
-          name: 'GitHub 社区',
-          desc: '7000+ Star，氛围活跃，有问必答',
-          link: linkGitHub,
-          icon: iconEcoGitHub,
+          name: '全方位能力供应',
+          className: 'gray reverse',
+          list: [
+            {
+              name: '编辑器插件',
+              desc: 'VS Code、WebStorm、Sublime、Atom 插件，语法高亮、指令补全',
+              icon: iconEcoPlugin,
+            },
+            {
+              name: 'Chameleon Linter',
+              desc: '多端规范检查，语法错误提示，运行时多态检查',
+              icon: iconEcoLinter,
+            },
+            {
+              name: 'GitHub 社区',
+              desc: '7000+ Star，氛围活跃，有问必答',
+              link: linkGitHub,
+              icon: iconEcoGitHub,
+            },
+          ],
         },
       ],
       // MVVM+ 跨端标准协议
@@ -368,6 +346,11 @@ export default {
   },
   created() {
     document.title = `${title} - ${description}`;
+  },
+  methods: {
+    isExternal(link) {
+      return link.includes('http') || link.includes('mailto');
+    },
   },
 };
 </script>
