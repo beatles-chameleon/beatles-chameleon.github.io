@@ -83,6 +83,7 @@
       <carousel
         :per-page-custom="[
           [0, 1],
+          [720, 2],
           [960, 3], // if (window >= 960) then show 3 slides per page
         ]"
         :navigation-enabled="true"
@@ -151,7 +152,7 @@ import iconEndQuickApp from '@/public/images/icon_end_quickapp.png';
 // 渐进式接入
 import iconHelperIO from '@/public/images/icon_helper_io.svg';
 import iconHelperEasy from '@/public/images/icon_helper_easy.svg';
-// 组件生态圈 & 全方位能力供应
+// 组件生态圈 & // 全方位能力供应
 import iconUIBase from '@/public/images/icon_ui_base.svg';
 import iconUICML from '@/public/images/icon_ui_cml.svg';
 import iconUILight from '@/public/images/icon_ui_light.svg';
