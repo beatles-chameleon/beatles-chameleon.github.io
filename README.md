@@ -4,13 +4,12 @@
 
 ## 环境
 
-- Git
 - Node 版本 >= 8.6（VuePress 需要）
 - [yarn](https://classic.yarnpkg.com/zh-Hans/)（推荐）
 
 ## 起步
 
-`git clone` 项目到本地，然后：
+`git clone` 本仓库到本地，然后：
 
 ```shell script
 cd cml-website-new
