@@ -4,8 +4,8 @@
 
 ## 环境
 
-- Node 版本 >= 8.6（VuePress 需要）
-- [yarn](https://classic.yarnpkg.com/zh-Hans/)（推荐）
+- Node >= 8.6（VuePress 需要）
+- [Yarn](https://classic.yarnpkg.com/zh-Hans/)（推荐）
 
 ## 起步
 
