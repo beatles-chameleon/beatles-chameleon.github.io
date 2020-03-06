@@ -1,6 +1,8 @@
+# Misc
 .env
 .*ignore
 
+# Yarn
 yarn.lock
 yarn-error.log
 
