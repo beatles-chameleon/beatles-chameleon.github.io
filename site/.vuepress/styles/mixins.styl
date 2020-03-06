@@ -1,0 +1,25 @@
+/* Block mixins
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+desktop()
+  @media (min-width: $MQMobile + 1)
+    {block}
+
+tablet()
+  @media (min-width: $MQMobile + 1) and (max-width: $MQNarrow)
+    {block}
+
+mobile()
+  @media (max-width: $MQMobile)
+    {block}
+
+small()
+  @media (max-width: $MQMobileNarrow)
+    {block}
+
+/* Mixins
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+box-view() {
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}

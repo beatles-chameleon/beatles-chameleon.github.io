@@ -1,4 +1,5 @@
 @import './palette.styl';
+@import './mixins.styl';
 
 /* Global
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -55,9 +56,9 @@
   }
 }
 
-/* Home Page
+/* Customize
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.home-page {
+.theme-container.home-page {
   .navbar {
     border-bottom: 0;
     .logo {
@@ -65,7 +66,50 @@
     }
   }
   .home {
-    max-width: none;
-    padding: 0;
+    .footer {
+      .content {
+        +desktop() {
+          box-view();
+        }
+        +mobile() {
+          padding: 3rem 1.5rem;
+        }
+      }
+    }
+  }
+}
+.theme-container {
+  .page {
+    .footer {
+      border-top: 1px solid $borderColor;
+      .content {
+        +desktop() {
+          max-width 740px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        +tablet() {
+          display: block;
+          .left {
+            margin-bottom: 3rem;
+            .brand {
+              margin-bottom: 1rem;
+            }
+          }
+          .right {
+            .col {
+              margin-left: 0;
+              margin-right: auto;
+            }
+          }
+        }
+        +mobile() {
+          padding: 2rem;
+        }
+        +small() {
+          padding: 1.5rem;
+        }
+      }
+    }
   }
 }
