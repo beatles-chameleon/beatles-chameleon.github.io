@@ -281,9 +281,30 @@ export default {
   created() {
     document.title = `${title} - ${description}`;
   },
+  mounted() {
+    this.headerLogo = document.querySelector('.logo');
+    window.addEventListener('scroll', this.onScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.onScroll);
+  },
   methods: {
     isExternal(link) {
       return link.includes('http') || link.includes('mailto');
+    },
+    onScroll() {
+      const { scrollY } = window;
+
+      if (!this.headerLogoShow && scrollY > 270) {
+        this.headerLogoShow = true;
+        this.headerLogo.classList.add('show');
+        return;
+      }
+
+      if (this.headerLogoShow && scrollY <= 270) {
+        this.headerLogoShow = false;
+        this.headerLogo.classList.remove('show');
+      }
     },
   },
 };
