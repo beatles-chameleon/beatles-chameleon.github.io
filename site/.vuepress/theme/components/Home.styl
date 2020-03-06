@@ -30,11 +30,16 @@
       font-size: 2.4rem;
     }
     +mobile() {
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
   }
   h3 {
-    font-size: 1.2rem;
+    +desktop() {
+      font-size: 1.2rem;
+    }
+    +mobile() {
+      font-size: 1.1rem;
+    }
   }
   ul {
     margin: 0;
@@ -75,7 +80,7 @@
   }
 }
 
-/* Styles
+/* Sections
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .home {
   section {
@@ -203,8 +208,12 @@
       }
       h2 {
         margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-        font-weight: 600;
+        +desktop() {
+          font-size: 1.5rem;
+        }
+        +mobile() {
+          font-size: 1.3rem;
+        }
       }
       li {
         color: $minorColor;
@@ -444,6 +453,9 @@
         margin-top: 1.1rem;
         margin-bottom: .7rem;
         color: $textColor;
+        +mobile() {
+          font-size: 1.2rem;
+        }
       }
       p {
         text-align: center
