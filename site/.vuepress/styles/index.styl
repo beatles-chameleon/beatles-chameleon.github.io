@@ -23,12 +23,15 @@
       margin-right: auto;
       +mobile() {
         margin-left: auto;
-        .logo {
+      }
+      .logo {
+        margin-right: .7rem;
+        +mobile() {
           margin-right: 0;
         }
       }
       .site-name {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 700;
       }
     }
@@ -71,6 +74,9 @@
   &.home-page {
     .navbar {
       border-bottom: 0;
+      +mobile() {
+        padding-left: 1.5rem;
+      }
       .home-link .logo {
         +desktop() {
           display: none;
