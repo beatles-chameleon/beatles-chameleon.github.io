@@ -52,7 +52,7 @@ export default {
           name: '资源',
           list: [
             { name: `${title} UI`, link: '/cml-ui.html' },
-            { name: `${title} DEMO`, link: 'https://github.com/beatles-chameleon/cml-demo' },
+            { name: `${title} Demo`, link: 'https://github.com/beatles-chameleon/cml-demo' },
             { name: `Awesome ${title}`, link: 'https://github.com/chameleon-team/awesome-cml' },
             { name: '更新记录', link: 'https://github.com/didi/chameleon/releases' },
           ],
