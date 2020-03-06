@@ -6,8 +6,8 @@ module.exports = {
   head: [['link', { rel: 'shortcut icon', type: 'image/x-icon', href: `/favicon.ico` }]],
   dest: './dist',
   themeConfig: {
-    logo: '/brand/logo.svg',
-    nav: [{ text: 'Guide', link: '/guide/' }],
+    logo: '/logo.svg',
+    nav: [{ text: '文档', link: '/guide/' }],
     sidebar: ['/', '/guide/'],
     activeHeaderLinks: false,
   },
