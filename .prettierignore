@@ -8,6 +8,7 @@ yarn-error.log
 *.svg
 *.ico
 *.png
+*.jpg
 
 # Ignore the Stylus syntax files
 docs/.vuepress/styles/palette.styl
