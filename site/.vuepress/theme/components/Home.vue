@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <section class="hello">
+  <div class="home">
+    <section class="hero">
       <div class="left">
         <img class="logo" :src="logo" alt="logo" />
       </div>
@@ -17,7 +17,7 @@
       </div>
     </section>
     <section class="cards gray">
-      <div class="card checklist">
+      <div class="card sticks">
         <h2>多端支持</h2>
         <ul>
           <li v-for="item in apps">
@@ -36,7 +36,7 @@
           </li>
         </ul>
       </div>
-      <div class="card contents">
+      <div class="card sets">
         <h2>渐进式接入</h2>
         <ul>
           <li v-for="item in run">
@@ -99,47 +99,20 @@
       <a class="btn btn-primary" href="/get-started.html">快速开始</a>
       <a class="btn btn-default" :href="gitHubUrl" target="_blank" rel="noopener">GitHub</a>
     </section>
-    <footer class="world">
-      <div class="left">
-        <div class="logo">
-          <img :src="logoDark" alt="logo" />
-          <span>CML</span>
-        </div>
-        <div class="copyright">{{ copyright }}</div>
-      </div>
-      <div class="right">
-        <div v-for="group in world" class="col">
-          <h4>{{ group.name }}</h4>
-          <ul>
-            <li v-for="item in group.list">
-              <template v-if="item.link">
-                <a v-if="isExternal(item.link)" :href="item.link" target="_blank" rel="noopener">
-                  {{ item.name }}
-                </a>
-                <a v-else :href="item.link">{{ item.name }}</a>
-              </template>
-              <a v-else-if="item.img">
-                <span>{{ item.name }}</span>
-                <img :src="item.img" alt="image" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </div>
 </template>
 
 <script>
 /**
- * HomeView - 官网首页 (除导航栏外内容)
- * (因 VuePress 默认主题存在 "Home.vue" 组件，故命名为 "HomeView" 避免冲突)
+ * 官网首页 (除 Header、Footer 外内容)
  */
 import { Carousel, Slide } from 'vue-carousel';
+import Footer from './Footer';
+
 import config from '@/config';
 // Brand
 import logo from '@/public/logo.svg';
-import logoDark from '@/public/logo_dark.svg';
 // 多端支持
 import appH5 from '@/public/app_h5.png';
 import appHybrid from '@/public/app_hybrid.png';
@@ -173,36 +146,23 @@ import case3 from '@/public/case_3.png';
 import case4 from '@/public/case_4.png';
 import case5 from '@/public/case_5.png';
 import case6 from '@/public/case_6.png';
-// Footer
-import qrWeixin from '@/public/qr_weixin.png';
-import qrQQ from '@/public/qr_qq.jpg';
-import qrDeer from '@/public/qr_deer.png';
 
-// 信息
 const { title, description } = config;
-const nowYear = new Date().getFullYear();
-// 链接
 const gitHubUrl = 'https://github.com/didi/chameleon';
-const teamUrl = 'https://github.com/didi/chameleon/wiki/Chameleon%E5%9B%A2%E9%98%9F';
-const joinUsUrl = 'https://github.com/didi/chameleon/wiki/%E5%8A%A0%E5%85%A5%E6%88%91%E4%BB%AC';
-const emailUrl = 'mailto:CML@didichuxing.com';
-const codersUrl = 'https://github.com/didi/chameleon/wiki/Contributors';
 
 export default {
   components: {
     Carousel,
     Slide,
+    Footer,
   },
   data() {
     return {
       // Brand
       logo,
-      logoDark,
       title,
       description,
-      // Footer
       gitHubUrl,
-      copyright: `Copyright © ${nowYear} DiDi Chuxing Inc.`,
       // 多端支持
       apps: [
         { name: 'Web 端', icon: appH5 },
@@ -316,34 +276,6 @@ export default {
       ],
       // 应用案例
       cases: [case1, case2, case3, case4, case5, case6],
-      // Footer
-      world: [
-        {
-          name: '品牌',
-          list: [
-            { name: 'CML', link: '/' },
-            { name: 'CML UI', link: '/cml-ui.html' },
-          ],
-        },
-        {
-          name: '社区',
-          list: [
-            { name: 'GitHub', link: gitHubUrl },
-            { name: '微信交流群', img: qrWeixin },
-            { name: 'QQ 交流群', img: qrQQ },
-            { name: '顺风公鹿', img: qrDeer },
-          ],
-        },
-        {
-          name: '关于',
-          list: [
-            { name: 'CML 团队', link: teamUrl },
-            { name: '加入我们', link: joinUsUrl },
-            { name: '联系我们', link: emailUrl },
-            { name: '贡献者', link: codersUrl },
-          ],
-        },
-      ],
     };
   },
   created() {
@@ -358,5 +290,5 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import './HomeView.styl';
+@import './Home.styl';
 </style>
