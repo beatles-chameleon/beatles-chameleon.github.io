@@ -9,7 +9,7 @@ yarn-error.log
 *.ico
 *.png
 *.jpg
+*.jpeg
 
-# Ignore the Stylus syntax files
-docs/.vuepress/styles/palette.styl
-docs/.vuepress/components/HomeView.styl
+# Stylus
+*.styl
