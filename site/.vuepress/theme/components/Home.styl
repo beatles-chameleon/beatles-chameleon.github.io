@@ -34,12 +34,7 @@
     }
   }
   h3 {
-    +desktop() {
-      font-size: 1.2rem;
-    }
-    +mobile() {
-      font-size: 1.1rem;
-    }
+    font-size: 1.2rem;
   }
   ul {
     margin: 0;
@@ -57,18 +52,15 @@
       padding-left: 2.5rem;
       padding-right: 2.5rem;
       font-size: 1.1rem;
-      + .btn {
-        margin-left: 1rem;
-      }
     }
     +mobile() {
-      height: 3rem;
-      padding-left: 2.2rem;
-      padding-right: 2.2rem;
+      height: 2.8rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
       font-size: 1rem;
-      + .btn {
-        margin-left: .8rem;
-      }
+    }
+    + .btn {
+      margin-left: 1rem;
     }
     &.btn-primary {
       color: #fff;
@@ -115,7 +107,7 @@
           margin-right: 5rem;
         }
         +mobile() {
-          width: 12rem;
+          width: 11.5rem;
         }
       }
     }
@@ -141,25 +133,21 @@
             font-size: 5rem;
           }
           +mobile() {
-            font-size: 4rem;
+            font-size: 4.5rem;
           }
         }
         sup {
           padding: .3rem .6rem;
           color: $accentColor;
-          font-weight: 600;
+          font-size: 0.85rem;
+          font-weight: 500;
           white-space: nowrap;
           background: rgba($accentColor, .1);
           border-radius: .4rem;
           +desktop() {
             position: absolute;
             top: .4rem;
-            left: 94%;
-            font-size: 0.85rem;
-          }
-          +mobile() {
-            margin-bottom: -.2rem;
-            font-size: 0.8rem;
+            left: 96%;
           }
         }
       }
@@ -171,7 +159,7 @@
           font-size: 1.5rem;
         }
         +mobile() {
-          font-size: 1.3rem;
+          font-size: 1.2rem;
           text-align: center;
         }
       }
@@ -197,21 +185,22 @@
       box-shadow: 0 0 4rem rgba(#000, 0.05);
       +desktop() {
         width: 20rem;
-        margin: 1rem;
+        margin: 1.2rem;
         padding: 2rem;
       }
       +mobile() {
-        padding: 1.2rem;
+        padding: 1.5rem;
         + .card {
           margin-top: 2rem;
         }
       }
       h2 {
-        margin-bottom: 1.5rem;
         +desktop() {
+          margin-bottom: 1.5rem;
           font-size: 1.5rem;
         }
         +mobile() {
+          margin-bottom: 1.3rem;
           font-size: 1.3rem;
         }
       }
@@ -223,7 +212,7 @@
           display: flex;
           align-items: center;
           + li {
-            margin-top: 0.5rem;
+            margin-top: .6rem;
           }
         }
         img {
@@ -243,6 +232,10 @@
       }
       &.blocks {
         li {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 5.1rem;
           padding: 0.8rem;
           text-align: center;
           border-radius: 0.5rem;
@@ -260,7 +253,6 @@
           }
         }
         h3 {
-          margin-bottom: 0.1rem;
           color: #fff;
         }
         p {
@@ -329,12 +321,15 @@
       li {
         position: relative;
         display: flex;
-        padding: 1.2rem;
         background: #fff;
         border-radius: 0.8rem;
         box-shadow: 0 0.2rem 2rem rgba(#000, 0.1);
         +desktop() {
+          padding: 1.2rem;
           width: 28rem;
+        }
+        +mobile() {
+          padding: 1rem;
         }
         &:hover i {
           right: 0;
@@ -362,21 +357,20 @@
         flex: 1;
         h3 {
           +desktop() {
-            line-height: 1.8rem;
+            line-height: 1.9rem;
           }
           +mobile() {
             line-height: 1.5rem;
           }
         }
         p {
+          margin-top: .2rem;
           color: $hintColor;
           line-height: 1.5rem;
           +desktop() {
-            margin-top: .3rem;
             margin-bottom: -.1rem;
           }
           +mobile() {
-            margin-top: .2rem;
             margin-bottom: -.2rem;
           }
         }
@@ -450,15 +444,12 @@
         height: 3.5rem;
       }
       h3 {
-        margin-top: 1.1rem;
-        margin-bottom: .7rem;
+        margin-top: 1.2rem;
+        margin-bottom: .8rem;
         color: $textColor;
-        +mobile() {
-          font-size: 1.2rem;
-        }
       }
       p {
-        text-align: center
+        text-align: center;
       }
     }
   }

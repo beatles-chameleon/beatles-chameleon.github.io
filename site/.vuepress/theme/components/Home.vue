@@ -22,7 +22,7 @@
         <ul>
           <li v-for="item in apps">
             <img :src="item.icon" alt="icon" />
-            <span>{{ item.name }}</span>
+            <p>{{ item.name }}</p>
             <span class="icon-check"></span>
           </li>
         </ul>
