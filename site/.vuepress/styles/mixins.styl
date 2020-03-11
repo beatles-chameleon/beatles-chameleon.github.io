@@ -3,22 +3,26 @@
 desktop()
   @media (min-width: $MQMobile + 1)
     {block}
-
-tablet()
-  @media (min-width: $MQMobile + 1) and (max-width: $MQNarrow)
-    {block}
-
 mobile()
   @media (max-width: $MQMobile)
     {block}
 
+large()
+  @media (min-width: $MQNarrow + 1)
+    {block}
+medium()
+  @media (max-width: $MQNarrow)
+    {block}
 small()
+  @media (max-width: $MQMobile)
+    {block}
+mini()
   @media (max-width: $MQMobileNarrow)
     {block}
 
 /* Mixins
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-box-view() {
+max-view() {
   max-width: 60rem;
   margin-left: auto;
   margin-right: auto;

@@ -742,7 +742,7 @@ export default {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        box-view();
+        max-view();
       }
       li {
         display: flex;
@@ -792,7 +792,7 @@ export default {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .VueCarousel {
   +desktop() {
-    box-view();
+    max-view();
   }
   /deep/ .VueCarousel-wrapper {
     /deep/ .VueCarousel-inner {
