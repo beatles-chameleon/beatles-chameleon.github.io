@@ -26,7 +26,7 @@ const sidebar = {
       children: ['poly', 'project', 'io', 'sdk', 'mvvm'],
     },
     {
-      title: '接入',
+      title: '迁移',
       children: [
         'migrate-guide',
         'migrate-wx-to-cml',
