@@ -9,6 +9,7 @@ yarn-error.log
 # Images
 *.svg
 *.ico
+*.gif
 *.png
 *.jpg
 *.jpeg
