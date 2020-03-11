@@ -366,8 +366,8 @@ export default {
     border-radius: 3rem;
     +desktop() {
       height: 3.2rem;
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
+      padding-left: 2.4rem;
+      padding-right: 2.4rem;
       font-size: 1.1rem;
     }
     +mobile() {
