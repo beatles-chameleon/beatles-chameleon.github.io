@@ -112,8 +112,21 @@
       &.is-sub-group > {
         // "/components" 2nd title
         .sidebar-heading {
-          font-size: 1em;
+          font-size: .9rem;
           font-weight: 700;
+          span {
+            position: relative;
+            &::before {
+              content: '';
+              position: absolute;
+              left: -2px;
+              right: -.8rem;
+              top: .6rem;
+              bottom: -1px;
+              background: linear-gradient(to right, rgba($accentColor, .4), rgba($accentColor,.05));
+              border-radius: .4rem;
+            }
+          }
           &:not(.clickable) {
             opacity: 1;
           }
