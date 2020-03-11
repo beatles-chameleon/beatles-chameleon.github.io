@@ -2,10 +2,10 @@ const path = require('path');
 
 // 顶栏
 const nav = [
-  { text: '文档', link: '/docs/introduction' },
+  { text: '文档', link: '/docs/' },
+  { text: '组件', link: '/components/' },
   { text: 'API', link: '/api/' },
-  { text: '组件', link: '/components/base' },
-  { text: '教程', link: '/tutorial/cml-app' },
+  { text: '教程', link: '/tutorial/' },
   { text: 'FAQ', link: '/faq/' },
 ];
 
@@ -38,7 +38,6 @@ const sidebar = {
       sidebarDepth: 0,
     },
   ],
-  '/api/': [''],
   '/components/': [
     {
       title: '内置组件',
@@ -95,6 +94,7 @@ const sidebar = {
       ],
     },
   ],
+  '/api/': [''],
   '/tutorial/': [
     {
       title: '教程',
@@ -117,7 +117,12 @@ const sidebar = {
       sidebarDepth: 0,
     },
   ],
-  '/faq/': [''],
+  '/faq/': [
+    {
+      title: 'FAQ',
+      children: [['', '问题列表']],
+    },
+  ],
 };
 
 const setCollapse = (list) => {
