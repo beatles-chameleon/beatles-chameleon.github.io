@@ -34,9 +34,9 @@
 <script>
 import config from '@/config';
 import logo from '@/public/logo_dark.svg';
-import qrWeixin from '@/public/qr_weixin.png';
-import qrQQ from '@/public/qr_qq.jpg';
-import qrDeer from '@/public/qr_deer.png';
+import qrWeixin from '../images/qr_weixin.png';
+import qrQQ from '../images/qr_qq.jpg';
+import qrDeer from '../images/qr_deer.png';
 
 const { title } = config;
 const nowYear = new Date().getFullYear();
@@ -51,7 +51,7 @@ export default {
         {
           name: '资源',
           list: [
-            { name: `${title} UI`, link: '/cml-ui.html' },
+            { name: `${title} UI`, link: '/components/expand.html' },
             { name: `${title} Demo`, link: 'https://github.com/beatles-chameleon/cml-demo' },
             { name: `Awesome ${title}`, link: 'https://github.com/chameleon-team/awesome-cml' },
             { name: '更新记录', link: 'https://github.com/didi/chameleon/releases' },
@@ -93,5 +93,112 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import './Footer.styl';
+@import '~@/styles/palette.styl';
+@import '~@/styles/mixins.styl';
+
+.footer {
+  .content {
+    +desktop() {
+      display: flex;
+      justify-content: space-between;
+      padding: 7rem 2.5rem;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      +desktop() {
+        justify-content: space-between;
+        margin-bottom: .4rem;
+      }
+      +mobile() {
+        margin-bottom: 1.3rem;
+      }
+      .brand {
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        img {
+          +desktop() {
+            width: 3.5rem;
+            margin-right: 1rem;
+          }
+          +mobile() {
+            width: 3rem;
+            margin-right: .8rem;
+          }
+        }
+        span {
+          color: $textColor;
+          font-weight: 700;
+          +desktop() {
+            font-size: 2.4em;
+          }
+          +mobile() {
+            font-size: 2em;
+          }
+        }
+      }
+      .info {
+        color: $hintColor;
+        font-size: .75rem;
+        line-height: 1.6;
+      }
+    }
+    .right {
+      +desktop() {
+        display: flex;
+      }
+      .col {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        +desktop() {
+          margin-left: 6vw;
+        }
+        +mobile() {
+          padding-top: 1.4rem;
+          padding-bottom: 1rem;
+          border-top: 1px solid $borderColor;
+        }
+        h4 {
+          margin-top: 0;
+          margin-bottom: .5rem;
+        }
+        a {
+          color: $hintColor;
+          line-height: 2.2;
+          font-size: .9rem;
+          cursor: pointer;
+          white-space: nowrap;
+          img {
+            display: none;
+            position: absolute;
+            z-index: 1;
+            bottom: 50%;
+            max-width: none;
+            width: 14rem;
+            padding: .8rem;
+            background: #fff;
+            border-radius: .8rem;
+            box-shadow: 0 .2rem 2rem rgba(#000, .12);
+            transform: translateY(50%);
+            +desktop() {
+              right: calc(100% + 1.5rem);
+            }
+            +mobile() {
+              right: 0;
+            }
+          }
+          &:hover {
+            img {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </style>

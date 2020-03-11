@@ -4,11 +4,14 @@
 /* Base
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .theme-container {
+  h3 {
+    font-size: 1.2rem;
+  }
   .navbar {
     display: flex;
     align-items: center;
     backdrop-filter: saturate(180%) blur(1rem);
-    background-color: rgba(#fff, 0.8);
+    background-color: rgba(#fff, 0.9);
     +desktop() {
       padding-left: 2.5rem;
       padding-right: 2.5rem;
@@ -114,37 +117,45 @@
         padding-right: 1.5rem;
       }
     }
-    .page .footer {
-      border-top: 1px solid $borderColor;
-      .content {
-        +desktop() {
-          max-width 740px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        +tablet() {
-          display: block;
-          padding-left: 2rem;
-          padding-right: 2rem;
-          .left {
-            margin-bottom: 3rem;
-          }
-          .right .col {
-            margin-left: 0;
+    .page {
+      padding-bottom: 0;
+      .theme-default-content  {
+        min-height: calc(100vh - 6rem);
+      }
+      .footer {
+        margin-top: auto;
+        background: $grayBg;
+        border-top: 1px solid $borderColor;
+        .content {
+          +desktop() {
+            max-width 740px;
+            margin-left: auto;
             margin-right: auto;
-            img {
-              bottom: calc(100% + 1.5rem);
-              right: 50%;
-              transform: translateX(50%);
+          }
+          +tablet() {
+            display: block;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            .left {
+              margin-bottom: 3rem;
+            }
+            .right .col {
+              margin-left: 0;
+              margin-right: auto;
+              img {
+                bottom: calc(100% + 1.5rem);
+                right: 50%;
+                transform: translateX(50%);
+              }
             }
           }
-        }
-        +mobile() {
-          padding: 3rem 2rem;
-        }
-        +small() {
-          padding-left: 1.5rem;
-          padding-right: 1.5rem;
+          +mobile() {
+            padding: 3rem 2rem;
+          }
+          +small() {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+          }
         }
       }
     }
