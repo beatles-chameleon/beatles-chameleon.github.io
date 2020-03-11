@@ -1,3 +1,7 @@
+---
+sidebarDepth: 2
+---
+
 # API
 
 chameleon 支持大量基础 API，对外提供统一的接口，以模块的方式引入`chameleon-api`进行使用。
@@ -1220,7 +1224,7 @@ try {
 
 ## 动画关键帧
 
-### requestAnimationFrame(callback: function)
+### requestAnimationFrame()
 
 方法告诉客户在下一次重绘之前需要调用的函数。（回调次数：web 端通常是每秒 60 次，大多数浏览器通常匹配 W3C 所建议的刷新频率，其它端为 60 次）
 
@@ -1230,7 +1234,7 @@ try {
 | :------: | :------: | :--: | :--------------------------------------------------------------------------------------: |
 | callback | function |  是  | 该函数在下次重绘前调用。只有一个参数，即开始触发回调的时间（performance.now() 的返回值） |
 
-### cancelAnimationFrame(id: number)
+### cancelAnimationFrame()
 
 取消由 requestAnimationFrame 方法设置的关键帧
 
@@ -1276,7 +1280,7 @@ try {
 | :-------------------------------------------------: | :-------: | :------: |
 | [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
 
-### animation
+### animation 方法
 
 动画实例方法
 
@@ -2347,7 +2351,7 @@ export default store;
 
 类型: Object
 
-chameleon store 实例的根 state 对象。[详细介绍](../../logic/store/state.md)
+chameleon store 实例的根 state 对象。[详细介绍](../docs/store.md#state)
 
 #### mutations
 
@@ -2355,7 +2359,7 @@ chameleon store 实例的根 state 对象。[详细介绍](../../logic/store/sta
 
 在 store 上注册 mutation，处理函数总是接受 state 作为第一个参数（如果定义在模块中，则为模块的局部状态），payload 作为第二个参数（可选）。
 
-[详细介绍](../../logic/store/mutation.md)
+[详细介绍](../docs/store.md#mutations)
 
 #### actions
 
@@ -2378,7 +2382,7 @@ context 对象包含以下属性：
 
 同时如果有第二个参数 payload 的话也能够接收。
 
-[详细介绍](../../logic/store/action.md)
+[详细介绍](../docs/store.md#action)
 
 #### getters
 
@@ -2401,7 +2405,7 @@ rootGetters, // 所有 getters
 
 注册的 getter 暴露为 store.getters。
 
-[详细介绍](../../logic/store/getters.md)
+[详细介绍](../docs/store.md#getter)
 
 #### Modules
 
@@ -2425,13 +2429,13 @@ rootGetters, // 所有 getters
 
 与根模块的选项一样，每个模块也包含 state 和 mutations 选项。模块的状态使用 key 关联到 store 的根状态。模块的 mutation 和 getter 只会接收 Module 的局部状态作为第一个参数，而不是根状态，并且模块 action 的 context.state 同样指向局部状态。
 
-### ChameleonStore.Store 实例方法
+### store 方法
 
-通过 `chameleon-store` 创建的`Store`实例,有以下方法：
+通过 `chameleon-store` 创建的 `store` 实例，有以下方法：
 
-#### Store.commit()
+#### store.commit()
 
-提交 mutation。 [详细介绍](../docs/store.md#Mutation)
+提交 mutation。 [详细介绍](../docs/store.md#mutation)
 
 ##### 参数说明
 
@@ -2477,9 +2481,9 @@ export default store;
 store.commit('increment');
 ```
 
-#### Store.dispatch()
+#### store.dispatch()
 
-分发 action。返回一个解析所有被触发的 action 处理器的 Promise。[详细介绍](../../logic/store/action.md)
+分发 action。返回一个解析所有被触发的 action 处理器的 Promise。[详细介绍](../docs/store.md#action)
 
 ##### 参数说明
 
@@ -2532,9 +2536,9 @@ export default store;
 store.dispatch('incrementAsync');
 ```
 
-#### Store.mapState()
+#### store.mapState()
 
-为组件创建计算属性以返回 chameleon store 中的状态。[详细介绍](../../logic/store/state.md)
+为组件创建计算属性以返回 chameleon store 中的状态。[详细介绍](../docs/store.md#state)
 
 ##### 参数说明
 
@@ -2580,9 +2584,9 @@ class Index {
 export default new Index();
 ```
 
-#### Store.mapGetters()
+#### store.mapGetters()
 
-为组件创建计算属性以返回 getter 的返回值。[详细介绍](../../logic/store/getters.md)
+为组件创建计算属性以返回 getter 的返回值。[详细介绍](../docs/store.md#getters)
 
 ##### 参数说明
 
@@ -2625,9 +2629,9 @@ class Index {
 export default new Index();
 ```
 
-#### Store.mapMutations()
+#### store.mapMutations()
 
-创建组件方法提交 mutation。[详细介绍](../../logic/store/mutation.md)
+创建组件方法提交 mutation。[详细介绍](../docs/store.md#mutation)
 
 ##### 参数说明
 
@@ -2669,9 +2673,9 @@ class Index {
 export default new Index();
 ```
 
-#### Store.mapActions()
+#### store.mapActions()
 
-创建组件方法分发 action。[详细介绍](../../logic/store/action.md)
+创建组件方法分发 action。[详细介绍](../docs/store.md#action)
 
 ##### 参数说明
 
@@ -2717,9 +2721,9 @@ class Index {
 export default new Index();
 ```
 
-#### Store.registerModule()
+#### store.registerModule()
 
-注册一个动态模块。[详细介绍](../../logic/store/module.md)
+注册一个动态模块。[详细介绍](../docs/store.md#modules)
 
 ##### 参数说明
 
