@@ -80,20 +80,24 @@
     </section>
     <section class="slider">
       <h2>应用案例</h2>
-      <carousel
-        :per-page-custom="[
-          [0, 1],
-          [720, 2],
-          [960, 3], // if (window >= 960) then show 3 slides per page
-        ]"
-        :navigation-enabled="true"
-        :pagination-enabled="false"
-        :scroll-per-page="false"
-      >
-        <slide v-for="item in cases">
-          <img :src="item" alt="image" />
-        </slide>
-      </carousel>
+      <ClientOnly>
+        <component
+          v-if="Carousel"
+          :is="Carousel"
+          :per-page-custom="[
+            [0, 1],
+            [720, 2],
+            [960, 3], // if (window >= 960) then show 3 slides per page
+          ]"
+          :navigation-enabled="true"
+          :pagination-enabled="false"
+          :scroll-per-page="false"
+        >
+          <component v-if="Slide" :is="Slide" v-for="item in cases">
+            <img :src="item" alt="image" />
+          </component>
+        </component>
+      </ClientOnly>
     </section>
     <section class="entry gray">
       <a class="btn btn-primary" :href="docsEntry">快速开始</a>
@@ -105,14 +109,13 @@
 
 <script>
 /**
- * 官网首页 (除 Header、Footer 外内容)
+ * 官网首页
  */
-import { Carousel, Slide } from 'vue-carousel';
 import Footer from './Footer';
 
 import config from '@/config';
 // Brand
-import logo from '@/public/logo.svg';
+import logo from '@/public/brand/logo.svg';
 // 多端支持
 import appH5 from '../images/app_h5.png';
 import appHybrid from '../images/app_hybrid.png';
@@ -156,12 +159,13 @@ const expandUIUrl = '/components/expand.html';
 
 export default {
   components: {
-    Carousel,
-    Slide,
     Footer,
   },
   data() {
     return {
+      // Components
+      Carousel: null,
+      Slide: null,
       // Brand
       logo,
       title,
@@ -285,11 +289,21 @@ export default {
     };
   },
   mounted() {
+    // 设置页面 title
     document.title = `${title} - ${description}`;
+
+    // 动态注册 vue-carousel 组件（SSR 需要）
+    import('vue-carousel').then(({ Carousel, Slide }) => {
+      this.Carousel = Carousel;
+      this.Slide = Slide;
+    });
+
+    // 添加滚动事件监听
     this.navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', this.onScroll);
   },
   destroyed() {
+    // 删除滚动事件监听
     window.removeEventListener('scroll', this.onScroll);
   },
   methods: {
