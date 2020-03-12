@@ -1,12 +1,12 @@
-# CML 如何上线
+# 项目上线指南
 
 ## 是否添加 polyfill
 
-chameleon 框架中 js 代码都是经过了 babel 编译，但是 babel 默认只转换语法，而不处理新的 API，例如`Object.assign,Object.entries`。如果<b>项目中使用了一些不经过 babel 的 API，并且线上产品需要兼容低版本系统的手机</b>，chameleon 提供了在各端添加 polyfill 的配置 参见<a href="./config.html#babelPolyfill">babelPolyfill</a>。
+CML 框架中 js 代码都是经过了 babel 编译，但是 babel 默认只转换语法，而不处理新的 API，例如`Object.assign,Object.entries`。如果<b>项目中使用了一些不经过 babel 的 API，并且线上产品需要兼容低版本系统的手机</b>，CML 提供了在各端添加 polyfill 的配置 参见 [babelPolyfill](../docs/config.md#babelpolyfill)。
 
 ## 静态资源发布路径
 
-静态资源发布路径 <b>是配合项目静态资源最终线上地址</b>,设置方法参见<a href="./config.html#babelPolyfill">资源发布路径</a>。
+静态资源发布路径 <b>是配合项目静态资源最终线上地址</b>,设置方法参见[资源发布路径](../docs/config.md#babelpolyfill)。
 例如： 项目中引用了一个本地图片：
 
 ```
@@ -39,7 +39,7 @@ cml.config.merge({
 });
 ```
 
-这样代码中的图片地址线上就能够正确访问。 同理适用于 web 端 html 页面中注入的`link和script`标签。
+这样代码中的图片地址线上就能够正确访问。 同理适用于 Web 端 html 页面中注入的`link和script`标签。
 
 ### 小程序中的静态资源上线
 
@@ -59,13 +59,13 @@ cml.config.merge({
 
 <b>注：百度小程序中必须将静态资源单独上线, 因为不支持静态资源的</b>。
 
-## api 请求前缀
+## API 请求前缀
 
-请求前缀的配置可以灵活的控制项目中所有 ajax 请求的服务器地址，上线时记得将其改成正确的线上地址。具体讲解参见 <a href="./config.html#api请求前缀">api 请求前缀</a>和<a href="./config.html#domain-多域名请求前缀">domain 多域名请求前缀</a>。
+请求前缀的配置可以灵活的控制项目中所有 ajax 请求的服务器地址，上线时记得将其改成正确的线上地址。具体讲解参见 [API 请求前缀](../docs/config.md#api-请求前缀)和 [Domain 多域名请求前缀](../docs/config.md#domain-多域名请求前缀)。
 
-## web 端的路由模式
+## Web 端的路由模式
 
-很多人将 web 端的 html 页面上线之后访问是空白页面。就是没有注意 web 端路由模式。web 端路由模式分为`history`和`hash`，在项目的`src/router.config.json`中配置。如果 web 端的页面没有后端服务提供路由，那么应该路由设置成`hash`模式，然后用页面地址+hash 值访问到相应的页面。`history`模式适用于有后端路由服务，访问设置的路由可以返回该 html 页面。
+很多人将 Web 端的 html 页面上线之后访问是空白页面。就是没有注意 Web 端路由模式。Web 端路由模式分为 `history` 和 `hash`，在项目的 `src/router.config.json` 中配置。如果 Web 端的页面没有后端服务提供路由，那么应该路由设置成 `hash` 模式，然后用页面地址+hash 值访问到相应的页面。`history` 模式适用于有后端路由服务，访问设置的路由可以返回该 html 页面。
 例如路由如下：
 
 ```
@@ -95,9 +95,9 @@ cml.config.merge({
 如果直接访问`https://static.cml.com/project/page1.html` 则会寻找路由为/的页面
 `https://static.cml.com/project/page1.html#/`
 
-## 跨端 chameleonUrl 与 config.json 的关系
+## 跨端 cmlUrl 与 config.json 的关系
 
-跨端项目之间的跳转，chameleon 提供的解决方式是使用<a href="../api/open.html">open</a>方法传入统一的<a href="./chameleon_url.html">chameleonUrl 地址</a>，chameleonUrl 地址的生成就是需要根据项目 build 模式打包出的`config.json`信息。
+跨端项目之间的跳转，CML 提供的解决方式是使用 `cml.open()` 方法传入统一的 cmlUrl，cmlUrl 地址的生成就是需要根据项目 build 模式打包出的`config.json`信息。
 例如：
 
 ```
@@ -128,7 +128,7 @@ cml.config.merge({
 ]
 ```
 
-`config.json`中包含了每一个页面在各端的访问路径信息，用户可以根据这些信息拼接成 chameleonUrl，由后端下发给页面进行跳转。
+`config.json` 中包含了每一个页面在各端的访问路径信息，用户可以根据这些信息拼接成 cmlUrl，由后端下发给页面进行跳转。
 
 weex 信息构成：
 
@@ -185,10 +185,10 @@ cml.config.merge({
 })
 ```
 
-## apiPrefix、publicPath、router.config.json、chameleonUrl 的关系
+## apiPrefix、publicPath、router.config.json、cmlUrl 的关系
 
 <img src="../images/some_relation.png" />
 
 ## 微信小程序分包加载
 
-参见 ../tutorial/subpage.html
+参见 [使用分包](bundle-splitting.md)

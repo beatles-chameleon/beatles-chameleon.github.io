@@ -1,20 +1,18 @@
 # CML 迁移指南
 
-<img src="../images/efficient.gif" width="375px" />
+CML 作为真正让一套代码运行多端的框架，提供标准的 MVVM 模式，统一开发各类终端。
 
-cml 作为真正让一套代码运行多端的框架，提供标准的 MVVM 模式，统一开发各类终端。
+同时，拥有各端独立的运行时框架(Runtime)、数据管理(Store)、组件库(UI)、接口(API)。
 
-同时，拥有各端独立的 `运行时框架(runtime)`、`数据管理(store)`、`组件库(ui)`、`接口(api)`。
+此外，CML 在跨端能力加强、能力统一、表现一致等方面做了许多工作。
 
-此外，CML 在跨端`能力加强`、`能力统一`、`表现一致`等方面做了许多工作。
-
-今天，为了让大家的项目优雅升级，快速接入，给你带来一份丰盛的**cml 迁移指南**~
+今天，为了让大家的项目优雅升级，快速接入，给你带来一份丰盛的**CML 迁移指南**~
 
 ## 目录结构
 
-和微信小程序一样，`cml` 包含一个描述整体程序的 `app` 和多个描述各自页面的 `page`。
+和微信小程序一样，CML 包含一个描述整体程序的 `app` 和多个描述各自页面的 `pages`。
 
-#### 小程序目录结构
+### 小程序目录结构
 
 ```javascript
 .
@@ -27,7 +25,7 @@ cml 作为真正让一套代码运行多端的框架，提供标准的 MVVM 模�
 
 ```
 
-#### cml 目录结构
+### cml 目录结构
 
 ```javascript
 .
@@ -58,7 +56,7 @@ cml 作为真正让一套代码运行多端的框架，提供标准的 MVVM 模�
 
 在小程序项目里面，分为：
 
-#### [小程序 —— 项目配置](https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.md)
+### [小程序 —— 项目配置](https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html)
 
 可以在项目根目录使用 `project.config.json` 文件对项目进行配置。
 
@@ -71,7 +69,7 @@ cml 作为真正让一套代码运行多端的框架，提供标准的 MVVM 模�
 }
 ```
 
-#### [小程序 —— 全局配置](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE)
+### [小程序 —— 全局配置](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE)
 
 小程序根目录下的 `app.json` 文件用来对微信小程序进行全局配置，决定页面文件的路径、窗口表现、设置网络超时时间、设置多 tab 等
 
@@ -90,7 +88,7 @@ cml 作为真正让一套代码运行多端的框架，提供标准的 MVVM 模�
 }
 ```
 
-#### [小程序 —— 页面配置](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE)
+### [小程序 —— 页面配置](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE)
 
 每一个小程序页面也可以使用 `.json` 文件来对本页面的窗口表现进行配置。
 
@@ -108,9 +106,9 @@ cml 作为真正让一套代码运行多端的框架，提供标准的 MVVM 模�
 }
 ```
 
-同样，在 `cml`项目里面，分为：
+同样，在 CML 项目里面，分为：
 
-#### [cml —— 项目配置](../framework/config.md)
+### [cml —— 项目配置](config.md)
 
 `chameleon.config.js` 为项目的配置文件，你可以定制化构建，比如是否带 hash，是否  压缩等等。
 
@@ -119,7 +117,7 @@ cml 作为真正让一套代码运行多端的框架，提供标准的 MVVM 模�
 ```javascript
 // 设置静态资源的线上路径
 const publicPath = '//www.static.chameleon.com/static';
-// 设置api请求前缀
+// 设置 API 请求前缀
 const apiPrefix = 'https://api.chameleon.com';
 // 合并配置
 cml.config.merge({
@@ -151,9 +149,9 @@ cml.config.merge({
 });
 ```
 
-#### cml —— 全局配置
+### cml —— 全局配置
 
-`cml` 项目 `app` 目录下的 `app.cml` 文件的 `<script cml-type="json" />` 用来对 `cml`应用 进行全局配置，具有 跨端配置 和 差异化 的能力
+CML 项目 `app` 目录下的 `app.cml` 文件的 `<script cml-type="json" />` 用来对 CML 应用 进行全局配置，具有跨端配置和差异化的能力
 
 **配置示例：**
 
@@ -192,7 +190,7 @@ cml.config.merge({
 </script>
 ```
 
-#### [cml —— 页面/组件配置](../framework/json.md)
+### [cml —— 页面/组件配置](cml.md)
 
 通过 `usingComponents` 配置 `组件路径` 注册引用的组件。
 
@@ -223,9 +221,9 @@ cml.config.merge({
 
 ### 如何使用路由能力
 
-#### 小程序配置路由
+### 小程序配置路由
 
-[app.json](https://developers.weixin.qq.com/miniprogram/dev/framework/config.md) 配置项列表的 `pages` 字段用于指定小程序由哪些页面组成，每一项都对应一个页面的 `路径+文件名` 信息。
+[app.json](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html) 配置项列表的 `pages` 字段用于指定小程序由哪些页面组成，每一项都对应一个页面的 `路径+文件名` 信息。
 
 **数组的第一项代表小程序的初始页面（首页）。新增/减少页面，需要对 `pages` 数组进行修改。**
 
@@ -237,9 +235,9 @@ cml.config.merge({
 }
 ```
 
-#### cml 配置路由
+### cml 配置路由
 
-[src/router.config.json](../framework/router.md) 是路由的配置文件，`cml` 内置了一套各端统一的路由管理方式。相应有 `cml` 路由配置映射如下：
+[src/router.config.json](config.md#路由配置文件) 是路由的配置文件，CML 内置了一套各端统一的路由配置方式。相应有 CML 路由配置映射如下：
 
 ```javascript
 {
@@ -260,31 +258,31 @@ cml.config.merge({
 }
 ```
 
-文件名不需要写文件后缀，`cml`框架会自动去寻找对于位置的 `.cml` 文件进行处理。
+文件名不需要写文件后缀，CML 框架会自动去寻找对于位置的 `.cml` 文件进行处理。
 
-#### 小程序使用路由
+### 小程序使用路由
 
-- 打开新页面：调用 API [wx.navigateTo](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateTo.md)
-- 页面重定向：调用 API [wx.redirectTo](https://developers.weixin.qq.com/miniprogram/dev/api/wx.redirectTo.md)
-- 页面返回：调用 API [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateBack.md)
-- 打开另一个小程序：调用 API [wx.navigateToMiniProgram](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateToMiniProgram.md)
-- 返回到上一个小程序：调用 API [wx.navigateBackMiniProgram](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateBackMiniProgram.md)
+- 打开新页面：调用 API[wx.navigateTo](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateTo.html)
+- 页面重定向：调用 API[wx.redirectTo](https://developers.weixin.qq.com/miniprogram/dev/api/wx.redirectTo.html)
+- 页面返回：调用 API[wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateBack.html)
+- 打开另一个小程序：调用 API[wx.navigateToMiniProgram](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateToMiniProgram.html)
+- 返回到上一个小程序：调用 API[wx.navigateBackMiniProgram](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateBackMiniProgram.html)
 
-#### cml 使用路由
+### cml 使用路由
 
 依据统一资源索引 URI，自适应打开不同环境同一路由 PATH：
 
-- 打开新页面：调用 chameleon-api [cml.navigateTo](../api/navigate.md)
-- 页面重定向：调用 chameleon-api [cml.redirectTo](../api/navigate.html#redirectto)
-- 页面返回：调用 chameleon-api [cml.navigateBack](../api/navigate.html#navigateback)
-- 打开另一个跨端应用：调用 chameleon-api [cml.open](../api/open.md)
-- 返回到上一个跨端应用：调用 chameleon-api [cml.close](../api/open.html#close)
+- 打开新页面：调用 chameleon-api[cml.navigateTo](../api/#navigateto)
+- 页面重定向：调用 chameleon-api[cml.redirectTo](../api/#redirectto)
+- 页面返回：调用 chameleon-api[cml.navigateBack](../api/#navigateback)
+- 打开另一个跨端应用：调用 chameleon-api[cml.open](../api/#open)
+- 返回到上一个跨端应用：调用 chameleon-api[cml.close](../api/#close)
 
 ## 如何注册
 
 ### 如何注册程序
 
-#### 小程序注册程序
+### 小程序注册程序
 
 在小程序项目里面，`App()` 函数用来注册一个小程序。接受一个 `Object` 参数，其指定小程序的生命周期回调等。
 
@@ -299,7 +297,7 @@ App({
 });
 ```
 
-#### cml 注册程序
+### cml 注册程序
 
 **示例代码**
 
@@ -324,7 +322,7 @@ export default new App();
 
 小程序中`app.json app.js app.wxss`和 `src/app/app.cml`的对应关系如下
 
-| 小程序 app.js | cml 项目 src/app/app.cml            |
+| 小程序 app.js | CML 项目 src/app/app.cml            |
 | ------------- | ----------------------------------- |
 | app.js        | `<script></script>`                 |
 | app.wxss      | `<style></style>`                   |
@@ -332,7 +330,7 @@ export default new App();
 
 ### 如何注册页面
 
-#### 小程序注册页面
+### 小程序注册页面
 
 在小程序项目里面，`Page(Object)` 函数用来注册一个页面。接受一个 `Object` 类型参数，其指定页面的初始数据、生命周期回调、事件处理函数等。
 
@@ -353,7 +351,7 @@ Page({
 });
 ```
 
-#### cml 注册页面
+### cml 注册页面
 
 **示例代码**
 
@@ -378,7 +376,7 @@ export default new Index();
 
 ### 如何注册组件
 
-#### 小程序注册组件
+### 小程序注册组件
 
 在小程序项目里面，
 `Component(Object)` 构造器可用于定义组件，调用 `Component` 构造器时可以指定组件的属性、数据、方法等。
@@ -413,7 +411,7 @@ Component({
 });
 ```
 
-#### cml 注册组件
+### cml 注册组件
 
 **示例代码**
 
@@ -450,7 +448,7 @@ export default new MyComponent();
 
 统一各端应用生命周期的定义，是跨端框架的重要组成，也是迁移的必经之路。
 
-#### 小程序声明生命周期
+### 小程序声明生命周期
 
 可以在 `App(Object)`、`Page(Object)`、`Component(Object)` 传入`Object`参数，其指定小程序的生命周期回调等
 
@@ -480,7 +478,7 @@ Page({
 });
 ```
 
-#### cml 声明生命周期
+### cml 声明生命周期
 
 在`.cml` 文件 `<script />` 代码块返回的对象实例，其指定生命周期回调
 
@@ -523,7 +521,7 @@ export default new Index();
 
 小程序 `app.js`中的生命周期 -> cml `src/app/app.cml`
 
-| 小程序   | chameleon    |
+| 小程序   | CML          |
 | -------- | ------------ |
 | onLaunch | beforeCreate |
 | onShow   | mounted      |
@@ -533,20 +531,20 @@ export default new Index();
 
 小程序 `Page()`中的生命周期 -> cml `src/pages/mypage/mypage.cml`
 
-| 小程序            | chameleon                                                       |
-| ----------------- | --------------------------------------------------------------- |
-| onLoad            | beforeCreate                                                    |
-| onShow            | mounted                                                         |
-| onUnload          | destroyed                                                       |
-| onReady           | <a href="../logic/lifecycle.html#生命周期多态">生命周期多态</a> |
-| onHide            | <a href="../logic/lifecycle.html#生命周期多态">生命周期多态</a> |
-| onShareAppMessage | <a href="../logic/lifecycle.html#生命周期多态">生命周期多态</a> |
+| 小程序            | CML          |
+| ----------------- | ------------ |
+| onLoad            | beforeCreate |
+| onShow            | mounted      |
+| onUnload          | destroyed    |
+| onReady           | 生命周期多态 |
+| onHide            | 生命周期多态 |
+| onShareAppMessage | 生命周期多态 |
 
 ### Component 生命周期 映射
 
 小程序 `Component()`中的生命周期 -> cml `src/components/mycomponent/mycomponent.cml`
 
-| 小程序   | chameleon   |
+| 小程序   | CML         |
 | -------- | ----------- |
 | created  | created     |
 | attached | beforeMount |
@@ -555,23 +553,23 @@ export default new Index();
 
 ### 生命周期总结
 
-每个 `cml` 实例(`App`、`Page`、`Component`)在被创建时都要经过一系列的初始化过程 ————
+每个 CML 实例(App、Page、Component)在被创建时都要经过一系列的初始化过程 ————
 
-例如，需要设置数据监听、编译模板、将实例挂载到 `CML节点` 并在数据变化时更新 `CML节点` 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给开发者在不同阶段添加自己的代码的机会。
+例如，需要设置数据监听、编译模板、将实例挂载到 CML 节点并在数据变化时更新 CML 节点等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给开发者在不同阶段添加自己的代码的机会。
 
-`cml` 为`App`、`页面Page`、`组件Component` 提供了一系列生命周期事件，保障应用有序执行。
+CML 为 App、Page、Component 提供了一系列生命周期事件，保障应用有序执行。
 
-另外，如果你想使用某个端特定的生命周期，你可以从业务出发使用 [生命周期多态](../logic/lifecycle.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%A4%9A%E6%80%81)。
+另外，如果你想使用某个端特定的生命周期，你可以从业务出发使用生命周期多态。
 
 ## 数据如何响应到视图
 
 如今，双向数据绑定&单向数据流 已深入开发者日常，MVMM 开发模式算是框架标配。
 
-[数据绑定](../view/databind.md)、[条件渲染](../view/condition.md)、[列表渲染](../view/iterator.md) 是如何书写的呢？
+数据绑定、条件渲染、列表渲染是如何书写的呢？
 
 **示例代码**
 
-#### 小程序使用数据响应
+### 小程序使用数据响应
 
 ```vue
 <!--wxml-->
@@ -603,7 +601,7 @@ Page({
 });
 ```
 
-#### cml 使用数据响应
+### cml 使用数据响应
 
 ```vue
 <template>
@@ -637,17 +635,17 @@ export default new Index();
 
 ### 数据响应总结
 
-`cml`运行时框架 提供了跨端响应式数据绑定系统(Data binding)，当做数据修改的时候，只需要在逻辑层修改数据，视图层就会做相应的更新。
+CML 运行时框架 提供了跨端响应式数据绑定系统，当做数据修改的时候，只需要在逻辑层修改数据，视图层就会做相应的更新。
 
 只需要将 `view<-->model` 交互部分逻辑，作简单迁移，便可使它成为跨多端的数据响应系统。
 
 ## 事件交互
 
-`cml` 支持一些基础的[事件](../view/event.md)，保障各端效果(`类型`、`绑定`、`事件对象`)一致运行。
+CML 支持一些基础的[事件](cml.md#事件)，保障各端效果(`类型`、`绑定`、`事件对象`)一致运行。
 
 **示例代码**
 
-#### 小程序使用事件
+### 小程序使用事件
 
 ```vue
 <!--wxml-->
@@ -663,7 +661,7 @@ Page({
 });
 ```
 
-#### cml 使用事件
+### cml 使用事件
 
 ```vue
 <template>
@@ -686,23 +684,23 @@ export default new Index();
 
 ### 事件使用总结
 
-同时，还支持[自定义事件](#如何实现父子组件事件通信)，用于父子组件之间的通信。
+同时，还支持自定义事件，用于父子组件之间的通信。
 
-另外，如果你想要使用某个端特定的事件，`cml` 并不会限制你的自由发挥，你可以从业务出发使用 [组件多态](../framework/poly/component.md) 或者 [接口多态](../framework/poly/api.md) 差异化实现功能。
+另外，如果你想要使用某个端特定的事件，CML 并不会限制你的自由发挥，你可以从业务出发使用[多态组件](poly.md#多态组件) 或者[多态接口](poly.md#多态接口)差异化实现功能。
 
 ## 布局和外观
 
-各端描述 `布局和外观` 的 [层叠样式表(CSS)](https://www.w3.org/Style/CSS/) 实现存在差异，包括不限于 `布局`、`盒模型`、`定位`、`文本`。
+各端描述 `布局和外观` 的[层叠样式表(CSS)](https://www.w3.org/Style/CSS/)实现存在差异，包括不限于 `布局`、`盒模型`、`定位`、`文本`。
 
-所以，CML 框架内置 [跨端一致性基础样式](cmss.md#一致性基础样式) 能力。
+所以，CML 框架内置[跨端一致性基础样式](cmss.md#一致性基础样式)能力。
 
-并且，定义了用于描述页面的样式规范 [CMSS(Chameleon Style Sheet)](cmss.md)。
+并且，定义了用于描述页面的样式规范[CMSS(Chameleon Style Sheet)](cmss.md)。
 
 ### 如何导入外部样式
 
 使用 `@import` 语句可以导入外联样式表，`@import` 后跟需要导入的外联样式表的相对路径，用 `;` 表示语句结束。
 
-#### 小程序导入外部样式
+### 小程序导入外部样式
 
 **示例代码：**
 
@@ -721,9 +719,9 @@ export default new Index();
 }
 ```
 
-#### cml 导入外部样式
+### cml 导入外部样式
 
-[详细文档](../api/runtime/@import.md)
+[详细文档](../api/#import)
 
 **示例代码：**
 
@@ -746,19 +744,19 @@ export default new Index();
 
 ### 样式使用总结
 
-同时，为了统一多端尺寸单位，呈现效果一致，同时页面响应式布局，`cml` 项目统一采用 [cpx](../../docs/cmss.md#尺寸) 作为尺寸单位，规定以屏幕 750px（占满屏幕）视觉稿作为标准。
+同时，为了统一多端尺寸单位，呈现效果一致，同时页面响应式布局，CML 项目统一采用 [cpx](cmss.md#尺寸) 作为尺寸单位，规定以屏幕 750px（占满屏幕）视觉稿作为标准。
 
-而且，各端样式表拥有的能力 [不尽相同](cml-web-wx-only-app.md)，是项目迁移的主要阵地之一。
+而且，各端样式表拥有的能力不尽相同，是项目迁移的主要阵地之一。
 
-另外，如果你想要使用某个端特定的样式能力，`cml` 并不会限制你的自由发挥，你可以从业务出发使用 [样式多态](cmss.md#样式多态)
+另外，如果你想要使用某个端特定的样式能力，CML 并不会限制你的自由发挥，你可以从业务出发使用[样式多态](cmss.md#样式多态)
 
-**注意：由于 chameleon 应用是 跨多端`web native 小程序`框架，如果需要跨`native`，必须使用 [flexbox](cmss.md#布局) 进行样式布局！！！**
+**注意：由于 CML 应用是跨多端 Web Native 小程序框架，如果需要跨 Native，必须使用[flexbox](cmss.md#布局)进行样式布局！！！**
 
 ## 组件
 
-`cml` 项目一切皆组件。组件(Component)是视图的基本组成单元。
+CML 项目一切皆组件。组件是视图的基本组成单元。
 
-框架为开发者提供了一系列[基础组件](cml.md#基础组件)，开发者可以通过组合这些[基础组件](cml.md#基础组件)进行快速开发。
+框架为开发者提供了一系列[基础组件](cml.md#基础组件)，开发者可以通过组合这些基础组件进行快速开发。
 
 如：
 
@@ -771,15 +769,15 @@ export default new Index();
 </template>
 ```
 
-同时，`cml` 支持简洁的组件化编程。
+同时，CML 支持简洁的组件化编程。
 
 ### 自定义组件
 
 开发者可以将页面内的功能模块抽象成自定义组件，以便在不同的页面中重复使用。自定义组件在使用时与基础组件非常相似。
 
-#### 如何创建自定义组件
+### 如何创建自定义组件
 
-##### 小程序创建自定义组件
+#### 小程序创建自定义组件
 
 **代码示例：**
 
@@ -803,7 +801,7 @@ Component({
 });
 ```
 
-##### cml 创建自定义组件
+#### cml 创建自定义组件
 
 **示例代码**
 
@@ -832,11 +830,11 @@ export default new MyComponent();
 </script>
 ```
 
-#### 如何使用自定义组件
+### 如何使用自定义组件
 
 使用已注册的自定义组件前，首先要进行引用声明。此时需要提供每个自定义组件的标签名和对应的自定义组件文件路径。
 
-##### 小程序使用自定义组件
+#### 小程序使用自定义组件
 
 **代码示例：**
 
@@ -859,7 +857,7 @@ export default new MyComponent();
 </view>
 ```
 
-##### cml 使用自定义组件
+#### cml 使用自定义组件
 
 **代码示例：**
 
@@ -888,11 +886,11 @@ export default new MyComponent();
 </template>
 ```
 
-#### 如何实现父子组件事件通信
+### 如何实现父子组件事件通信
 
-事件系统是组件间通信的主要方式之一。自定义组件可以触发任意的[事件](../view/event.md)，引用组件的页面可以监听这些事件。
+事件系统是组件间通信的主要方式之一。自定义组件可以触发任意的[事件](cml.md#事件)，引用组件的页面可以监听这些事件。
 
-##### 小程序组件通信
+#### 小程序组件通信
 
 **代码示例：**
 
@@ -932,7 +930,7 @@ Component({
 });
 ```
 
-##### cml 组件通信
+#### cml 组件通信
 
 **代码示例：**
 
@@ -991,7 +989,7 @@ export default new MyComponent();
 
 ### 组件使用总结
 
-和小程序一样，`cml框架` 提供了大量 [内置组件](../components/base.md) 和 [扩展组件](../components/expand.md)，抹平多端差异，便于开发者通过组合这些组件，创建出强大的应用程序。
+和小程序一样，`cml框架` 提供了大量[内置组件](../components/base.md)和[扩展组件](../components/expand.md)，抹平多端差异，便于开发者通过组合这些组件，创建出强大的应用程序。
 
 扩展组件需要额外引入。如：
 
@@ -1009,11 +1007,11 @@ export default new MyComponent();
 
 在执行 `cml build` 构建打包时，`cml 框架` 会按需打包引用的内置组件和扩展组件，为代码瘦身。
 
-[内置组件](../components/base.md) 和 [扩展组件](../components/expand.md) 都是支持跨多端的，对于一些没有提供的某个端的组件，可以通过 [组件多态](../framework/poly/component.md) 来实现。
+[内置组件](../components/base.md)和[扩展组件](../components/expand.md)都是支持跨多端的，对于一些没有提供的某个端的组件，可以通过[多态组件](poly.md#多态组件)来实现。
 
-如果希望使用小程序端的原生组件，那么可以在原生标签前加上 `origin-*`，`cml`框架会渲染原生组件[参考](../framework/linter/cml-template.html#%08%E5%BC%95%E7%94%A8%E5%B9%B3%E5%8F%B0%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6)
+如果希望使用小程序端的原生组件，那么可以在原生标签前加上 `origin-*`，CML 框架会渲染原生组件。
 
-**注意：`origin-*` 只能在[灰度区文件](../framework/poly/component.html#webweexwxalipaybaiducml)中使用！！**
+**注意：`origin-*` 只能在灰度区文件中使用！！**
 
 如在 `map.wx.cml` 文件中使用原生地图组件 `<map/>`：
 
@@ -1045,7 +1043,7 @@ try {
 }
 ```
 
-同样，在 cml 项目里面可以这样调用：
+同样，在 CML 项目里面可以这样调用：
 
 **示例代码**
 
@@ -1063,15 +1061,15 @@ cml.setStorage('name', 'Hanks').then(
 
 ### 接口使用总结
 
-`cml` 框架提供了丰富的多态接口，可以调起各端提供的原生能力，如系统信息、元素节点信息、动画效果、本地存储、网络请求、地理位置等。请参考 [API](../api/api.md) 文档。
+CML 框架提供了丰富的多态接口，可以调起各端提供的原生能力，如系统信息、元素节点信息、动画效果、本地存储、网络请求、地理位置等。请参考[API](../api/)文档。
 
-`chameleon-api`提供的接口都是支持跨多端的，对于一些没有提供的某个端的原生接口，可以通过[接口多态](../framework/poly/api.html?h=%E5%A4%9A%E6%80%81%E6%8E%A5%E5%8F%A3)来调用。
+`chameleon-api` 提供的接口都是支持跨多端的，对于一些没有提供的某个端的原生接口，可以通过多态接口来调用。
 
 ## 迁移总结
 
 CML 作为一端代码运行多端的框架，所有接口设计都考虑的是具备跨端要求的设计，没有使用任何一端的接口设计规范，而是全新一套框架，所以不要”想当然“用微信小程序或者 vue 的接口来开发 CML。
 
-例如，如果你是微信小程序开发者，当你想使用 `tabbar` 功能时，可能会在[app.json 里面配置](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/custom-tabbar.md)，这是错误的，这是微信特有模式，只在微信里面有效。在 cml 中请使用 [c-tabbar](https://cml.js.org/doc/components/compound/c-tabbar.md) 来实现，这样所有端都有效。
+例如，如果你是微信小程序开发者，当你想使用 `tabbar` 功能时，可能会在[app.json 里面配置](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/custom-tabbar.html)，这是错误的，这是微信特有模式，只在微信里面有效。在 cml 中请使用[c-tabbar](../components/c-tabbar.md)来实现，这样所有端都有效。
 
 ## 迁移实例
 
@@ -1080,4 +1078,3 @@ CML 作为一端代码运行多端的框架，所有接口设计都考虑的是�
 - [如何迁移一个 Vue 项目到 chameleon](migrate-vue-to-cml.md)
 - [如何迁移一个 Weex 项目到 chameleon](migrate-weex-to-cml.md)
 - [如何迁移一个微信小程序到 chameleon](migrate-wx-to-cml.md)
-- [普通项目使用 chameleon 跨端 dialog 组件](../tutorial/use-cml-component.md)

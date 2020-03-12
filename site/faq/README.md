@@ -5,9 +5,9 @@
 实现原理图
 ![原理图](../images/architecture_hierarchy.png)
 
-## 我想使用 chameleon，是否需要大刀阔斧的重构项目？
+## 我想使用 CML，是否需要大刀阔斧的重构项目？
 
-不需要，可以使用 chameleon 开发公用组件，<a href="../terminal/io.html">导出</a>到各端原有项目中使用。
+不需要，可以使用 CML 开发公用组件，[导出](../docs/io.md)到各端原有项目中使用。
 
 ## 用 CML 标准编写代码，是否增加调试成本？
 
@@ -23,7 +23,7 @@
 ## 框架有多大，性能是否有影响？
 
 1、小程序的主要运行性能瓶颈是 webview 和 js 虚拟机的传输性能，我们在这里会做优化，尽可能 diff 出修改的部分进行传输，性能会更好。
-2、包大小，小程序有包大小限制，web 端包大小也是工程师关心的点。首先基于多态协议，产出包纯净保留单端代码；其次框架的 api 和组件会按需打包。包大小是我们重点发力点，会持续优化到极致。目前 build 模式包大小测试结果如下:
+2、包大小，小程序有包大小限制，Web 端包大小也是工程师关心的点。首先基于多态协议，产出包纯净保留单端代码；其次框架的 api 和组件会按需打包。包大小是我们重点发力点，会持续优化到极致。目前 build 模式包大小测试结果如下:
 <span style="color: #ff534d;">minimize</span><span style="color: #edd0be;"> | </span><span style="color: #25c6fc;">minimize + gzip</span>
 
 <table style="color: #edd0be;">
@@ -135,8 +135,7 @@
 
 ## 我只想跨 web 和各类小程序，是否可以不使用 Flexbox 布局模型？
 
-可以，如果你的项目不在 快应用、react-native、weex 等平台运行，可以更便捷开发项目，特别是 CSS 的限制更少：
-<a href="../tutorial/cml-web-wx-only-app.html">只跨 web 和小程序的应用</a>
+可以，如果你的项目不在快应用、React Native、Weex 等平台运行，可以更便捷开发项目，特别是 CSS 的限制更少：[只跨 Web 和小程序的应用](../tutorial/web-wx-only-app.md)
 
 ## 一套代码运行多端，如何保证各个端充分的定制化空间？
 
@@ -154,21 +153,21 @@
 
 2、怎么使用小程序登录？
 
-这个功能是微信小程序等特有的功能，所以不建议写在公用跨端部分，用[多态组件](https://cml.js.org/doc/framework/poly/component.md)封装适合自己业务的 `<passport>`组件，在 `passport.wx.cml` 里面使用 `<origin-button>`来调用微信小程序原生组件。
+这个功能是微信小程序等特有的功能，所以不建议写在公用跨端部分，用[多态组件](../docs/poly.md#多态组件)封装适合自己业务的 `<passport>`组件，在 `passport.wx.cml` 里面使用 `<origin-button>`来调用微信小程序原生组件。
 
 CML 框架方为什么不直接提供组件？
 
-目前提供的封装的组件都是可跨所有端。而微信小程序的免密授权登录功能时小程序所特有的功能，在 web 端时用户可能需要用账号密码登录，各个公司业务的登录功能设计不一致，平台无法提供统一的 passport 组件；所以在你第一次使用 CML 时需要自己用多态组件封装一次`<passport>`登录组件，后续所有项目都可以使用这个`<passport>`登录组件.
+目前提供的封装的组件都是可跨所有端。而微信小程序的免密授权登录功能时小程序所特有的功能，在 Web 端时用户可能需要用账号密码登录，各个公司业务的登录功能设计不一致，平台无法提供统一的 passport 组件；所以在你第一次使用 CML 时需要自己用多态组件封装一次`<passport>`登录组件，后续所有项目都可以使用这个`<passport>`登录组件.
 
 ## 现在提供的组件是针对三端通用，很多小程序特有功能不能使用，后续有什么改进规划吗？
 
 目前我们正在开发只针对小程序的组件库，用户可以直接使用各类小程序统一版本的登录组件库。
-同时基于[多态组件的重载能力](https://cml.js.org/doc/framework/poly/component_extend.md)可以重载登录组件的 web 端实现，这样既能在各类小程序使用统一登录，又能定制化 web 端等登录能力。
+同时基于[多态组件的重载能力](../docs/mvvm.md#多态组件扩展)可以重载登录组件的 Web 端实现，这样既能在各类小程序使用统一登录，又能定制化 Web 端等登录能力。
 
 ## 我的项目只运行微信小程序端，官方提供的某个组件灵活性不够？
 
 不仅仅是微信小程序端，任意端想实现自己想要的功能时皆可适用。
-找到改组件原来的代码，使用[多态组件的重载能力](https://cml.js.org/doc/framework/poly/component_extend.md)或者 [多态接口的重载能力](https://cml.js.org/doc/framework/poly/api_extend.md)重新实现微信小程序端的实现，实现自己定制化能力。
+找到改组件原来的代码，使用[多态组件的重载能力](../docs/mvvm.md#多态组件扩展) 或者[多态接口的重载能力](../docs/mvvm.md#多态接口扩展)重新实现微信小程序端的实现，实现自己定制化能力。
 
 ## 是否支持类似 vue 的 ref？
 
@@ -176,9 +175,7 @@ CML 框架方为什么不直接提供组件？
 
 ## 小程序端分包大小超过 2M 的限制改如何优化？
 
-具体优化步骤参考：https://github.com/beatles-chameleon/cml-subpage
-
-[issue332](https://github.com/didi/chameleon/issues/332)
+具体优化步骤参考：[使用分包](../tutorial/bundle-splitting.md)、[issue332](https://github.com/didi/chameleon/issues/332)
 
 ## 模板中支持函数吗？
 
@@ -201,7 +198,7 @@ CML 框架方为什么不直接提供组件？
 
 支持，具体参考 [issue119](https://github.com/didi/chameleon/issues/119)
 
-## 怎么在接口多态中定义一个含可选属性的对象
+## 怎么在多态接口中定义一个含可选属性的对象
 
 具体参考 [issue327](https://github.com/didi/chameleon/issues/327)
 
@@ -211,7 +208,7 @@ CML 框架方为什么不直接提供组件？
 
 ## build 模式下图片静态资源地址找不到？
 
-具体参考 [publicPath](../framework/deploy.html#apiPrefix%E3%80%81publicPath%E3%80%81router.config.json%E3%80%81chameleonUrl%E7%9A%84%E5%85%B3%E7%B3%BB)
+具体参考 [publicPath](../tutorial/deploy-guide.md#apiprefix、publicpath、router-config-json、cmlurl-的关系)
 
 ## process.env 获取不到值
 
@@ -221,22 +218,17 @@ CML 框架方为什么不直接提供组件？
 
 ## 数据存储有同步方法吗？
 
-store 部分请参考：
+store 部分请参考：[Mutation](../docs/store.md#mutation)、[Action](../docs/store.md#action)
 
-[store-mutation](https://cml.js.org/doc/logic/store/mutation.md)
-[store-action](https://cml.js.org/doc/logic/store/action.md)
-
-备注：mutation 是数据的同步操作,action 是数据的异步操作
+备注：mutation 是数据的同步操作，action 是数据的异步操作。
 
 ## 为什么图片切换有延迟？
 
-可以参考 https://cml.js.org/doc/framework/source_location.html?h=inline
-
-将图片改为 base64 的形式；
+可以参考：[图片 base64](../docs/build.md#图片-base64)，将图片改为 base64 的形式。
 
 ## build 模式不支持传参，导致无法灵活区分环境
 
-如果我们需要多套构建配置，可以自定义一个构建类型，具体参考[项目配置-自定义配置](https://cml.js.org/doc/framework/config.md)
+如果我们需要多套构建配置，可以自定义一个构建类型，具体参考[项目配置-自定义配置](../docs/config.md#自定义构建配置)
 
 假如你在构建微信小程序端，一个构建模式下要求不压缩代码，一个构建模式下要求显示模块名字，那么可以如下配置
 
@@ -261,15 +253,15 @@ cml.config.merge({
 
 ## v-model 不支持对象的属性吗？
 
-目前不支持对象的属性；参考[issue340](https://github.com/didi/chameleon/issues/340)
+目前不支持对象的属性；参考 [issue340](https://github.com/didi/chameleon/issues/340)
 
-## web 端页面切换动画怎么加？
+## Web 端页面切换动画怎么加？
 
 参考 [issue234](https://github.com/didi/chameleon/issues/234)
 
 ## 我想通过别名引用项目中的资源，该如何配置?
 
-可以通过[chameleon 提供的回调函数](https://cml.js.org/doc/framework/config.html#%E4%BF%AE%E6%94%B9webpack%E9%85%8D%E7%BD%AE)，对 webpack 进行配置；利用 resolve.alias 选项；具体参考 [webpack-resolvealias](https://webpack.js.org/configuration/resolve/#resolvealias)
+可以通过[CML 提供的回调函数](../docs/config.md#修改-webpack-配置)，对 webpack 进行配置；利用 resolve.alias 选项；具体参考 [webpack-resolvealias](https://webpack.js.org/configuration/resolve/#resolvealias)
 
 比如想提供一个对于 `src` 目录的访问别名
 修改 `chameleon.config.js`
@@ -291,7 +283,7 @@ cml.utils.plugin('webpackConfig', function(params) {
 import utils from 'SRC/utils/utils.js';
 ```
 
-注意：chameleon 内置了一些别名
+注意：CML 内置了一些别名
 
 ```javascript
 '$CMLPROJECT';
@@ -308,18 +300,15 @@ import utils from 'SRC/utils/utils.js';
 
 如果是新初始化的项目，可以根据 [issue358](https://github.com/didi/chameleon/issues/358)中《如何使用 eslint 规范 CML 项目》部分进行配置；
 
-如果是已开发一段时间的 CML 项目，想渐进式的对项目进行 eslint 规范，那么可以参考 [issue358](https://github.com/didi/chameleon/issues/358) 中《如何使用 eslint 校验本次提交》部分进行配置；
+如果是已开发一段时间的 CML 项目，想渐进式的对项目进行 eslint 规范，那么可以参考 [issue358](https://github.com/didi/chameleon/issues/358)中《如何使用 eslint 校验本次提交》部分进行配置；
 
 ## 微信预览为什么显示不了图片
 
-首先要参考下
-
-- [资源定位](../framework/source_location.html?h=publicpath)
-- [chameleon 上线指南](../framework/deploy.html?h=publicpath)
+首先参考：[资源定位](../docs/build.md#静态资源引用)、[上线指南](../tutorial/deploy-guide.md)
 
 在 build 模式下会定位到配置的 publicPath 路径下，所以如果要预览的话，务必配置正确的 publicPath
 
-## web 端开发模式下，如何修改资源协议?
+## Web 端开发模式下，如何修改资源协议?
 
 cml web dev 之后，我们可以在 `node_modules/.chameleon` 文件夹中看到资源的具体内容
 
@@ -336,21 +325,19 @@ cml.utils.plugin('webpackConfig', function(params) {
 });
 ```
 
-## 如何将 weex 端输出的文件打包成 apk
+## 如何将 Weex 端输出的文件打包成 apk
 
-测试的话可以把 jsbundle 放到 android 工程 app 模块的 assets 目录下，clone 并参考：
-https://github.com/chameleon-team/chameleon-sdk-android
-这里有 demo 工程示例的 jsbundle，直接读取 assets 目录下并渲染
-https://github.com/chameleon-team/chameleon-sdk-android/tree/master/app/src/main/assets
+测试的话可以把 jsbundle 放到 Android 工程 App 模块的 assets 目录下，clone 并参考：[https://github.com/chameleon-team/chameleon-sdk-android](https://github.com/chameleon-team/chameleon-sdk-android)
 
-另，这里的 android 相关文章建议先读一遍。
-../chameleon_client/android/introduction.html
+这里有 Demo 工程示例的 jsbundle，直接读取 assets 目录下并渲染：[https://github.com/chameleon-team/chameleon-sdk-android/tree/master/app/src/main/assets](https://github.com/chameleon-team/chameleon-sdk-android/tree/master/app/src/main/assets)
 
-## 如何调试 chameleon 的工程化配置
+另，这里的 [Android 相关文章](../docs/sdk.md#android-sdk)建议先读一遍。
+
+## 如何调试 CML 的工程化配置
 
 第一步：
 
-`cml -v` 找到当前使用 chameleon-tool 的路径
+`cml -v` 找到当前使用 `chameleon-tool` 的路径
 
 第二步：
 

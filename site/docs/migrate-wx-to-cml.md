@@ -14,7 +14,7 @@
 
 #### 小程序多文件结构 -> cml 单文件页面
 
-| 小程序   | chameleon                           |
+| 小程序   | CML                                 |
 | -------- | ----------------------------------- |
 | xxx.wxml | `<template></template>`             |
 | xxx.js   | `<script></script>`                 |
@@ -28,13 +28,13 @@ cml init project
 
 ```
 
-初始化后，cml 项目如下：
+初始化后，CML 项目如下：
 
 <img src="../images/to_chameleon/cml-project.png" width="150px" />
 
-依具体情况 [配置构建平台](../framework/config.md?h=platforms) 和 [配置平台基础样式](cml-web-wx-only-app.md)
+依具体情况配置构建平台和配置平台基础样式。
 
-可修改 [chameleon.config.js](../framework/config.md?h=chameleon.config.js) 的 platforms 和 baseStyle 字段，如下：
+可修改 `chameleon.config.js` 的 `platforms` 和 `baseStyle` 字段，如下：
 
 <img src="../images/to_chameleon/project-config.png" width="400px" />
 
@@ -46,7 +46,7 @@ pages 下包含各个页面，components 下包含各个组件代码
 
 ## 迁移 app.js、app.json
 
-**小程序代码配置** [微信应用的配置](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE)
+**小程序代码配置**[微信应用的配置](https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE)
 
 app.json
 
@@ -125,11 +125,11 @@ app.json
 </script>
 ```
 
-### 迁移 app.js ———— [生命周期](../logic/lifecycle.md)映射
+### 迁移 app.js ———— 生命周期映射
 
 小程序 `app.js`中的生命周期 -> `src/app/app.cml`
 
-| 小程序   | chameleon    |
+| 小程序   | CML          |
 | -------- | ------------ |
 | onLaunch | beforeCreate |
 | onShow   | mounted      |
@@ -139,7 +139,7 @@ app.json
 
 小程序中`app.json app.js app.wxss`和 `src/app/app.cml`的对应关系如下
 
-| 小程序 app.js | cml 项目 src/app/app.cml            |
+| 小程序 app.js | CML 项目 src/app/app.cml            |
 | ------------- | ----------------------------------- |
 | app.js        | `<script></script>`                 |
 | app.wxss      | `<style></style>`                   |
@@ -149,7 +149,7 @@ app.json
 
 ### 新建页面
 
-如上所述，小程序 `app.json` 中 `pages` 每个字段，对应`router.config.json`中每条路由项，对应`cml`项目的每个页面
+如上所述，小程序 `app.json` 中 `pages` 每个字段，对应`router.config.json`中每条路由项，对应 CML 项目的每个页面
 
 ```javascript
 cml init page
@@ -208,16 +208,16 @@ cml init page
 
 - `wx` 代表微信小程序端特有的配置
 
-### 迁移页面 ———— [生命周期](../logic/lifecycle.md)映射
+### 迁移页面 ———— 生命周期映射
 
-| 小程序            | chameleon                                                     |
-| ----------------- | ------------------------------------------------------------- |
-| onLoad            | created                                                       |
-| onShow            | onShow                                                        |
-| onReady           | mounted                                                       |
-| onHide            | onHide                                                        |
-| onUnload          | destroyed                                                     |
-| onShareAppMessage | <a href="../logic/lifecycle.md#生命周期多态">生命周期多态</a> |
+| 小程序            | CML          |
+| ----------------- | ------------ |
+| onLoad            | created      |
+| onShow            | onShow       |
+| onReady           | mounted      |
+| onHide            | onHide       |
+| onUnload          | destroyed    |
+| onShareAppMessage | 生命周期多态 |
 
 总结
 
@@ -233,7 +233,7 @@ cml init page
 
 组件分为：`普通组件` 和 `多态组件`
 
-这里以`普通组件`为例，多态组件具体使用可以[参考](../framework/poly/component.md?h=%E5%A4%9A%E6%80%81%E7%BB%84%E4%BB%B6)
+这里以`普通组件`为例，多态组件具体使用可以[参考](poly.md)
 
 ```javascript
 cml init component
@@ -255,9 +255,9 @@ cml init component
 
 同`4.2 迁移页面配置`
 
-### 迁移组件 ———— [生命周期](../logic/lifecycle.md)映射
+### 迁移组件 ———— 生命周期映射
 
-| 小程序   | chameleon   |
+| 小程序   | CML         |
 | -------- | ----------- |
 | created  | created     |
 | attached | beforeMount |
@@ -274,7 +274,7 @@ cml init component
 
 ### `template`模板迁移
 
-这里以`cml`语法为例：[cml 基础语法](../view/cml.md)
+这里以 CML 语法为例：[CML 基础语法](cml.md)
 
 #### 数据绑定、条件渲染、循环、事件绑定的迁移
 
@@ -295,7 +295,7 @@ cml init component
 </view>
 ```
 
-那么，使用 `cml`语法后：
+那么，使用 CML 语法后：
 
 ```vue
 <view>
@@ -309,31 +309,31 @@ cml init component
   <view c-for="{{array}}" c-for-index="index" c-for-item="item"></view>
   事件绑定
   <view id="tapTest" data-hi="WeChat" bindtap="tapName">Click me!</view>
-  chameleon语法扩展了事件绑定，支持直接在函数中传参
+  CML 语法扩展了事件绑定，支持直接在函数中传参
   <view id="tapTest" bindtap="tapName('weChat',1,2,item)">Click me!</view>
 </view>
 ```
 
 #### 小程序内置组件 -> cml 内置组件
 
-| 小程序      | chameleon |
-| ----------- | --------- |
-| view        | view      |
-| text        | text      |
-| block       | block     |
-| scroll-view | scroller  |
-| list        | list      |
-| swiper      | carousel  |
-| button      | button    |
-| input       | input     |
-| textarea    | textarea  |
-| switch      | switch    |
-| radio       | radio     |
-| checkbox    | checkbox  |
-| image       | image     |
-| video       | video     |
+| 小程序      | CML      |
+| ----------- | -------- |
+| view        | view     |
+| text        | text     |
+| block       | block    |
+| scroll-view | scroller |
+| list        | list     |
+| swiper      | carousel |
+| button      | button   |
+| input       | input    |
+| textarea    | textarea |
+| switch      | switch   |
+| radio       | radio    |
+| checkbox    | checkbox |
+| image       | image    |
+| video       | video    |
 
-**注意：** 小程序和 cml 的内置组件传参是`不一样`的
+**注意：** 小程序和 CML 的内置组件传参是`不一样`的
 
 具体 cml 内置组件使用方式[参考](../components/base.md)
 
@@ -341,17 +341,17 @@ cml init component
 
 对于原生组件，需要在多态组件中调用，并且，需要找到其他端类似的组件。
 
-| 小程序       | chameleon                                                   |
+| 小程序       | CML                                                         |
 | ------------ | ----------------------------------------------------------- |
-| xxx.web.cml  | 可以再这里调用 vue 第三方库的组件                           |
+| xxx.web.cml  | 可以再这里调用 Vue 第三方库的组件                           |
 | xxx.wx.cml   | 可以在这里调用微信第三方组件库或者微信的原生组件（origin-） |
-| xxx.weex.cml | 可以在这里调用 weex 第三方组件库                            |
+| xxx.weex.cml | 可以在这里调用 Weex 第三方组件库                            |
 
-具体使用 [参考-多态组件](../framework/poly/component.md?h=%E5%A4%9A%E6%80%81%E7%BB%84%E4%BB%B6)
+具体使用[参考-多态组件](poly.md#多态组件)
 
-如果希望使用小程序端的原生组件，那么可以在原生标签前加上 `origin-`，`cml`框架会渲染原生组件[参考](../framework/linter/cml-template.md#%08%E5%BC%95%E7%94%A8%E5%B9%B3%E5%8F%B0%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6)
+如果希望使用小程序端的原生组件，那么可以在原生标签前加上 `origin-`，CML 框架会渲染原生组件。
 
-如果想要用微信小程序的第三方组件库，参考 [实现多态 ECharts](../tutorial/poly-echarts.md)
+如果想要用微信小程序的第三方组件库，参考[实现多态 ECharts](../tutorial/poly-component.md)
 
 假设，原有小程序代码，如下：
 
@@ -363,7 +363,7 @@ cml init component
 </picker-view>
 ```
 
-那么，使用`cml`语法后：
+那么，使用 CML 语法后：
 
 ```vue
 <origin-picker-view value="{{value}}" bindchange="bindChange">
@@ -375,7 +375,7 @@ cml init component
 
 #### 模板上需要替换的语法汇总
 
-| 小程序       | chameleon   |
+| 小程序       | CML         |
 | ------------ | ----------- |
 | wx:if        | c-if        |
 | wx:elif      | c-else-if   |
@@ -387,23 +387,23 @@ cml init component
 | bindtap      | c-bind:tap  |
 | catchtap     | c-catch:tap |
 
-#### chameleon 对于语法的扩展支持
+#### CML 对于语法的扩展支持
 
-指令的扩展 c-show、c-model、c-show [参考](../view/directive.md)
+指令的扩展 c-show、c-model、c-show[参考](cml.md#指令)
 
-component is 动态组件的扩展 [参考](../view/component.md)
+component is 动态组件的扩展[参考](cml.md#动态组件)
 
-事件绑定支持内联事件传参数 [参考](../view/event.md)
+事件绑定支持内联事件传参数[参考](cml.md#事件)
 
 总结
 
 1 对于小程序的语法，比如`wx:if wx:for`等要替换成 cml 对应的语法 `c-if c-for`
 
-2 对于小程序的事件绑定，要转化成 cml 的`c-bind c-catch`的形式，cml 扩展了支持事件传参
+2 对于小程序的事件绑定，要转化成 CML 的`c-bind c-catch`的形式，cml 扩展了支持事件传参
 
 ### JS 内容迁移
 
-#### 数据的迁移 [参考](../logic/logic.md)
+#### 数据的迁移[参考](logic.md)
 
 其中需要注意点 小程序中的 `properties` 对应于 cml 中的 `props`
 
@@ -418,7 +418,7 @@ component is 动态组件的扩展 [参考](../view/component.md)
   },
 ```
 
-cml 项目
+CML 项目
 
 ```javascript
 props = {
@@ -439,7 +439,7 @@ wx.redirectTo({
 });
 ```
 
-那么，使用`cml`语法后：
+那么，使用 CML 语法后：
 
 ```javascript
 import cml from 'chameleon-api';
@@ -453,51 +453,53 @@ cml.redirectTo({
 
 [小程序的 API 文档](https://developers.weixin.qq.com/miniprogram/dev/api/)
 
-[chameleon-api 的文档](../api/navigate.md#redirectto)
+[chameleon-api 的文档](../api/#redirectto)
 
-这里对于 API 小程序的 API 和 chameleon 的 API 的文档中对应细则做个简单的表格，如下
+这里对于 API 小程序的 API 和 CML 的 API 的文档中对应细则做个简单的表格，如下
 
-| 微信小程序 API                                                                                       | chameleon-api                              |
-| ---------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| [wx.canIUse](https://developers.weixin.qq.com/miniprogram/dev/api/wx.canIUse.html)                   | [canIUse](../api/caniuse.md)               |
-| [系统信息](https://developers.weixin.qq.com/miniprogram/dev/api/wx.getSystemInfoSync.html)           | [系统信息](../api/system.md)               |
-| [计时器](https://developers.weixin.qq.com/miniprogram/dev/api/clearInterval.html)                    | [计时器](../api/timer.md)                  |
-| [路由](https://developers.weixin.qq.com/miniprogram/dev/api/wx.switchTab.html)                       | [路由](../api/navigate.md)                 |
-| [交互](https://developers.weixin.qq.com/miniprogram/dev/api/wx.showToast.html)                       | [交互](../api/modal.md)                    |
-| [设置页面 title](https://developers.weixin.qq.com/miniprogram/dev/api/wx.setNavigationBarTitle.html) | [设置页面 title](../api/title.md#settitle) |
-| [动画](https://developers.weixin.qq.com/miniprogram/dev/api/wx.createAnimation.html)                 | [动画](../api/createAnimation/main.md)     |
-| [网络](https://developers.weixin.qq.com/miniprogram/dev/api/wx.request.html)                         | [网络](../api/request.md)                  |
-| [数据缓存](https://developers.weixin.qq.com/miniprogram/dev/api/wx.setStorageSync.html)              | [数据缓存](../api/storage.md)              |
-| [获取图片信息](https://developers.weixin.qq.com/miniprogram/dev/api/wx.chooseImage.html)             | [获取图片信息](../api/chooseImage.md)      |
-| [位置](https://developers.weixin.qq.com/miniprogram/dev/api/wx.openLocation.html)                    | [位置](../api/location.md)                 |
+| 微信小程序 API                                                                                       | chameleon-api                       |
+| ---------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| [wx.canIUse](https://developers.weixin.qq.com/miniprogram/dev/api/wx.canIUse.html)                   | [canIUse](../api/#caniuse)          |
+| [系统信息](https://developers.weixin.qq.com/miniprogram/dev/api/wx.getSystemInfoSync.html)           | [系统信息](../api/#getsysteminfo)   |
+| [计时器](https://developers.weixin.qq.com/miniprogram/dev/api/clearInterval.html)                    | [计时器](../api/#clearinterval)     |
+| [路由](https://developers.weixin.qq.com/miniprogram/dev/api/wx.switchTab.html)                       | [路由](../api/navigateto)           |
+| [交互](https://developers.weixin.qq.com/miniprogram/dev/api/wx.showToast.html)                       | [交互](../api/#showtoast)           |
+| [设置页面 title](https://developers.weixin.qq.com/miniprogram/dev/api/wx.setNavigationBarTitle.html) | [设置页面 title](../api/#settitle)  |
+| [动画](https://developers.weixin.qq.com/miniprogram/dev/api/wx.createAnimation.html)                 | [动画](../api/#createanimation)     |
+| [网络](https://developers.weixin.qq.com/miniprogram/dev/api/wx.request.html)                         | [网络](../api/#request)             |
+| [数据缓存](https://developers.weixin.qq.com/miniprogram/dev/api/wx.setStorageSync.html)              | [数据缓存](../api/#setstorage)      |
+| [获取图片信息](https://developers.weixin.qq.com/miniprogram/dev/api/wx.chooseImage.html)             | [获取图片信息](../api/#chooseimage) |
+| [位置](https://developers.weixin.qq.com/miniprogram/dev/api/wx.openLocation.html)                    | [位置](../api/#getlocationinfo)     |
 
-以上 `chameleon-api`提供的接口都是支持跨多端的，对于一些没有提供的跨多端的接口，而你的项目中又是必须用到的情况下，可以通过接口多态来实现 [参考](../framework/poly/api.md?h=%E5%A4%9A%E6%80%81%E6%8E%A5%E5%8F%A3)
+以上 `chameleon-api`提供的接口都是支持跨多端的，对于一些没有提供的跨多端的接口，而你的项目中又是必须用到的情况下，可以通过多态接口来实现。
 
 #### 小程序事件的迁移
 
 注意，自定义组件的事件的触发机制，映射如下：
 
-| 小程序                     | chameleon               |
+| 小程序                     | CML                     |
 | -------------------------- | ----------------------- |
 | this.triggerEvent(xxx,xxx) | this.\$cmlEmit(xxx,xxx) |
 
 事件对象参数
 
-- chameleon 对`web native wx`各个端的事件对象进行了统一代理 [参考](../view/event.md?h=%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1)；
+CML 对 `web` `native` `wx` 各个端的事件对象进行了统一代理[参考](cml.md#事件)。
 
-- 对于灰度区组件(多态组件) 各个端的事件对象还是**对应端的事件对象**，chameleon 框架不会对灰度区`origin-`开头的标签和第三方组件 标签上绑定的事件进行事件代理
+对于灰度区组件(多态组件) 各个端的事件对象还是**对应端的事件对象**，CML 框架不会对灰度区 `origin-` 开头的标签和第三方组件标签上绑定的事件进行事件代理
 
 #### 模块化的迁移
 
-小程序的模块化-[参考](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/module.html)
+小程序的模块化
 
-cml 的模块化
+- [参考](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/module.html)
+
+CML 的模块化
 
 假如 模块文件 `m1.js`
 
 ```javascript
 module.exports = {
-  info: 'I am chameleon',
+  info: 'I am CML',
 };
 ```
 
@@ -507,32 +509,32 @@ module.exports = {
 import cml from 'chameleon-api'; //node_modules中的模块
 console.log('cml', cml);
 const m1 = require('path/to/m1.js');
-console.log('m1', m1.info); // I am chameleon
+console.log('m1', m1.info); // I am CML
 ```
 
 总结
 
-1 小程序 JS 层用到的全局变量`wx`要通过[chameleon-api](../api/api.md)去替换成对应的,如果没有对应的 API，需要通过[多态接口](../framework/poly/api.md?h=%E5%A4%9A%E6%80%81%E6%8E%A5%E5%8F%A3)去实现
+1 小程序 JS 层用到的全局变量 `wx` 要通过 [chameleon-api](../api/) 去替换成对应的,如果没有对应的 API，需要通过多态接口
 
-2 小程序中的`properties data`对应于 cml 项目 `props` ,`data`
+2 小程序中的`properties data`对应于 CML 项目 `props`、`data`
 
-3 小程序中的除了生命周期之外的事件都对应在 cml 项目中的`methods`
+3 小程序中的除了生命周期之外的事件都对应在 CML 项目中的`methods`
 
-4 chameleon 提供了`chameleon-store`[参考](../logic/store.md?h=chameleon-store),可以用来存储一些全局的变量
+4 CML 提供了`chameleon-store`，可以用来存储一些全局的变量
 
-5 小程序触发视图更新的`setData`不能再使用，chameleon 自带了一套[响应式的数据视图绑定](../logic/data_bind.md)
+5 小程序触发视图更新的`setData`不能再使用，chameleon 自带了一套响应式的数据视图绑定
 
-6 模块化中引用的模块要保证多端的适用性，参考 [chameleon-api](https://github.com/chameleon-team/chameleon-api)
+6 模块化中引用的模块要保证多端的适用性，参考[chameleon-api](https://github.com/chameleon-team/chameleon-api)
 
 ### style 内容的迁移
 
 #### 页面布局的迁移
 
-由于 chameleon 应用是 跨多端`web native 小程序`框架，如果需要跨`native`，必须使用 `flexbox`进行样式布局，其他场景可以参考[只跨 web 和小程序的应用](cml-web-wx-only-app.md)
+由于 CML 应用是跨多端 Web Native 小程序框架，如果需要跨 `native`，必须使用 `flexbox` 进行样式布局，其他场景可以参考[只跨 Web 和小程序的应用](../tutorial/web-wx-only-app.md)
 
-关于样式的使用教程 [参考](cmss.md)
+关于样式的使用教程[参考](cmss.md)
 
-模板上的样式语法 [参考](cmss.md),基本和微信小程序是相同的；
+模板上的样式语法[参考](cmss.md),基本和微信小程序是相同的；
 
 #### 样式单位的迁移
 
@@ -562,7 +564,7 @@ console.log('m1', m1.info); // I am chameleon
 }
 ```
 
-那么，使用`cml`语法后：
+那么，使用 CML 语法后：
 
 ```css
 .demo-com {
@@ -586,8 +588,8 @@ console.log('m1', m1.info); // I am chameleon
 }
 ```
 
-以上，简单的介绍了微信小程序迁移到 chameleon 的简单步骤，如果还有任何疑问，欢迎随时在 chameleon 官方微信和官方 QQ 群里进行反馈，我们将随时解答你的困惑，再次感谢你对 chameleon 的支持~
+以上，简单的介绍了微信小程序迁移到 CML 的简单步骤，如果还有任何疑问，欢迎随时在 CML 官方微信和官方 QQ 群里进行反馈，我们将随时解答你的困惑，再次感谢你对 CML 的支持~
 
 ​ Best wishes
 
-​ Chameleon 团队
+​ CML 团队

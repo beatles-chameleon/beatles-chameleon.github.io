@@ -1,13 +1,12 @@
-# 使用分包
+# 使用项目分包
 
-**chameleon-tool@0.3.3 以上版本支持**
+**`chameleon-tool@0.3.3` 以上版本支持**
 
 ## 配置方法
 
-### 支持的分包目录结构如下，在`pages`文件夹下新建一个分包目录,比如下面的`subpage1 subpage2`
+支持的分包目录结构如下，在 `pages` 文件夹下新建一个分包目录,比如下面的 `subpage1 subpage2`
 
 ```
-
 ├── mock
 │   ├── api
 │   └── template
@@ -28,15 +27,13 @@
     │           └── page2.cml
     ├── router.config.json
     └── store
-
 ```
 
-### 开发者在 `src/app/app.cml`中`cml-type="json"`声明对应的小程序端分包结构
+开发者在 `src/app/app.cml` 中 `cml-type="json"` 声明对应的小程序端分包结构
 
 比如下面的结构将 `subpage1`进行了分包
 
 ```javascript
-
 <script cml-type="json">
 {
   "wx": {
@@ -80,10 +77,9 @@
   }
 }
 </script>
-
 ```
 
-`subPackages`支持的配置项如下
+`subPackages` 支持的配置项如下
 
 | 字段        | 类型    | 说明                           |
 | ----------- | ------- | ------------------------------ |
@@ -92,7 +88,7 @@
 | pages       | Array   | 分包页面路径，相对于分包根目录 |
 | independent | Boolean | 分包是否是独立分包             |
 
-### 开发者在 `router.config.json`中配置对应的路径
+开发者在 `router.config.json` 中配置对应的路径
 
 ```javascript
 {
@@ -121,11 +117,11 @@
 }
 ```
 
-### 小程序分包体积优化
+## 小程序分包体积优化
 
-具体参考:[小程序主包体积优化](https://github.com/beatles-chameleon/cml-subpage)
+具体参考：[小程序主包体积优化](https://github.com/beatles-chameleon/cml-subpage)
 
-### 分包预加载
+## 分包预加载
 
 开发者可以通过配置，在进入小程序某个页面时，由小程序相关框架自动预下载可能需要的分包，提升进入后续分包页面时的启动速度。
 

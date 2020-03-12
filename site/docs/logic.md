@@ -27,10 +27,10 @@
   <td>methods</td><td>Object</td><td>处理业务逻辑与交互逻辑的方法</td>
 </tr>
 <tr>
-  <td><a href="./watch.html">watch</a></td><td>Object</td><td>侦听属性，监听数据的变化，触发相应操作</td>
+  <td>watch</td><td>Object</td><td>侦听属性，监听数据的变化，触发相应操作</td>
 </tr>
 <tr>
-  <td><a href="./computed.html">computed</a></td><td>Object</td><td>CML模板可直接使用的计算属性数据,也是连接视图层的枢纽</td>
+  <td>computed</td><td>Object</td><td>CML模板可直接使用的计算属性数据,也是连接视图层的枢纽</td>
 </tr>
 <tr>
   <td>beforeCreate</td><td>Function</td><td>例初始化之后，数据和方法挂在到实例之前
@@ -82,16 +82,16 @@ export default new Index();
 </script>
 ```
 
-`框架`首先将逻辑层数据中的 name 与视图层的 name 进行了绑定，所以打开页面的时候会显示 Hello Chameleon!；
+`框架`首先将逻辑层数据中的 name 与视图层的 name 进行了绑定，所以打开页面的时候会显示 HelloCML；
 当点击按钮的时候，视图层会发送 changeName 的事件给逻辑层，逻辑层找到并执行对应的事件处理函数；
-回调函数触发后，逻辑层执行数据赋值的操作，将 data 中的 name 从 Chameleon 变为 CML，因为该数据和视图层已经绑定了，从而视图层会自动改变为 Hello CML!。
+回调函数触发后，逻辑层执行数据赋值的操作，将 data 中的 name 从 CML 变为 CML，因为该数据和视图层已经绑定了，从而视图层会自动改变为 Hello CML!。
 
 ## 生命周期
 
-每个 Chameleon 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到  节点 并在数据变化时更新  节点 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给开发者在不同阶段添加自己的代码的机会。
+每个 CML 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到  节点 并在数据变化时更新  节点 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给开发者在不同阶段添加自己的代码的机会。
 
 chameleon 为[组件](../components/base.md)和 页面 提供了一系列生命周期事件，保障应用有序执行。
-如果你想使用某个端特定的生命周期，请从业务出发使用 [接口多态](../framework/poly/api.md) 接收特定的生命周期事件回调。
+如果你想使用某个端特定的生命周期，请从业务出发使用[多态接口](poly.md#多态接口)接收特定的生命周期事件回调。
 
 <table>
   <tr>
@@ -261,7 +261,7 @@ export default new Index();
 
 ### 生命周期多态
 
-`cml` 在 <a href="../../framework/poly/component.html#webweexwxcml">\*.[web|weex|wx].cml</a> 文件中支持生命周期的多态，可以针对不同的平台添加专属钩子函数。
+CML 在 `*.[web|weex|wx].cml` 文件中支持生命周期的多态，可以针对不同的平台添加专属钩子函数。
 
 假设有一个页面`home.cml`，需要使用小程序页面分享生命周期[微信端 onShareAppMessage](https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onShareAppMessage-Object-object)，可以如下实现：
 
@@ -442,13 +442,9 @@ class Index {
 
 所以，不要滥用 watch ~
 
-### [API](/logic/API.md)
-
-调用各端原生能力的入口
-
 ## API
 
-chameleon 框架提供了丰富的多态接口，可以调起各端提供的原生能力，如系统信息、元素节点信息、动画效果、本地存储、网络请求、地理位置等。请参考 [API 文档](../api/)。
+CML 框架提供了丰富的多态接口，可以调起各端提供的原生能力，如系统信息、元素节点信息、动画效果、本地存储、网络请求、地理位置等。请参考[API 文档](../api/)。
 
 代码示例
 
@@ -460,7 +456,7 @@ cml.showToast({
 });
 ```
 
-通常，在 chameleon API 有以下几种类型：
+通常，在 CML API 有以下几种类型：
 
 ### 通用 API
 
@@ -503,7 +499,7 @@ export { a };
 
 ### 数据管理 Store API
 
-提供多端应用集中式管理状态数据的能力 [详细介绍](../api/#store)
+提供多端应用集中式管理状态数据的能力[详细介绍](../api/#store)
 
 代码示例
 

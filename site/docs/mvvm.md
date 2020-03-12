@@ -10,9 +10,9 @@
 
 ## MVVM+ 协议
 
-chameleon 基于对跨端工作的积累， 规范了一套跨端标准，称之为 MVVM+ 协议；开发者只需要按照标准扩展流程，即可快速扩展任意 MVVM 架构模式的终端。并让已有项目无缝运行新端。所以如果你希望让 chameleon 快速支持淘宝小程序、React Native？只需按标准实现即可扩展。
+chameleon 基于对跨端工作的积累， 规范了一套跨端标准，称之为 MVVM+ 协议；开发者只需要按照标准扩展流程，即可快速扩展任意 MVVM 架构模式的终端。并让已有项目无缝运行新端。所以如果你希望让 CML 快速支持淘宝小程序、React Native？只需按标准实现即可扩展。
 
-最终让开发者只需要用 chameleon 开发，就可以在任意端运行，再也不用学习新平台框架啦。
+最终让开发者只需要用 CML 开发，就可以在任意端运行，再也不用学习新平台框架啦。
 
 ### 新端接入情况
 
@@ -36,7 +36,7 @@ chameleon 基于对跨端工作的积累， 规范了一套跨端标准，称之
 
 ### 跨端标准协议
 
-我们再来看一张 chameleon 的设计图，能够实现标准化的扩展新端，得益于多态协议中对各层代码进行了接口的定义，各端代码按照接口定义进行实现，向用户代码提供统一调用，同时还提供”多态协议“让用户代码保障可维护性的前提下，直接触达各端原生能力的方式。
+我们再来看一张 CML 的设计图，能够实现标准化的扩展新端，得益于多态协议中对各层代码进行了接口的定义，各端代码按照接口定义进行实现，向用户代码提供统一调用，同时还提供”多态协议“让用户代码保障可维护性的前提下，直接触达各端原生能力的方式。
 
 <img src="../images/yuanli.png"  width="300px" />
 
@@ -56,7 +56,7 @@ chameleon 基于对跨端工作的积累， 规范了一套跨端标准，称之
 
 #### 实现 API 接口协议
 
-`chameleon-api`提供了网络请求，数据存储，获取系统信息，交互反馈等方法，用户需要创建一个 npm 包，结构参考[cml-demo-api](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-api)。将`chameleon-api`中提供的每个方法利用[多态接口扩展](../framework/poly/api_extend.md)语法扩展新端的实现。
+`chameleon-api`提供了网络请求，数据存储，获取系统信息，交互反馈等方法，用户需要创建一个 npm 包，结构参考[cml-demo-api](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-api)。将 `chameleon-api` 中提供的每个方法利用多态接口扩展语法扩展新端的实现。
 以扩展一个`alert`方法为例,`chameleon-api`中`alert`方法的接口定义文件为`chameleon-api/src/interfaces/alert.interface`，其中的接口定义内容如下：
 
 ```
@@ -97,11 +97,11 @@ export default new Method();
 
 #### 实现内置组件协议
 
-组件分为内置组件<a href="https://github.com/chameleon-team/chameleon-ui-builtin">chameleon-ui-builtin</a>和扩展组件<a href="https://github.com/chameleon-team/chameleon-ui-builtin">cml-ui</a>。所以用户需要创建两个 npm 包分别实现这两个组件库，结构参考[cml-demo-ui-builtin](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-ui-builtin)和[cml-demo-ui](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-ui)。利用[多态组件扩展](../framework/poly/component_extend.md)语法，对原有组件库中的每一个组件进行新端的实现。
+组件分为内置组件 `chameleon-ui-builtin` 和扩展组件 `cml-ui`。所以用户需要创建两个 npm 包分别实现这两个组件库，结构参考[cml-demo-ui-builtin](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-ui-builtin)和[cml-demo-ui](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-ui)。利用多态组件扩展语法，对原有组件库中的每一个组件进行新端的实现。
 
 原有组件库中的组件也分为两种，一种为各端都有分别实现的多态组件，例如`chameleon-ui-builtin`中的`button`组件。实现起来新端基本上也是要单独实现。另一种例如`chameleon-ui-builtin`中的`radio`组件，各端的实现都是用的`chameleon-ui-builtin/components/radio/radio.cml`。所以新端基本也可以复用这个实现，(还需要测试情况确实是否可以复用)。
 
-###### 新端独立实现
+**新端独立实现**
 
 例如：
 
@@ -129,9 +129,9 @@ export default new Method();
 </script>
 ```
 
-独立实现的`my-ui-builtin/components/button/button.demo.cml`文件属于<a href="https://cml.js.org/doc/framework/poly/component.html">多态组件</a>的灰度层，可以调用各端底层组件和 api，具体例子参见<a href="https://github.com/chameleon-team/chameleon-ui-builtin/tree/master/src/components/button">button</a>和<a href="https://github.com/chameleon-team/chameleon-ui-builtin/tree/master/src/components/scroller">scroller</a>的实现。
+独立实现的 `my-ui-builtin/components/button/button.demo.cml` 文件属于多态组件的灰度层，可以调用各端底层组件和 api，具体例子参见 [`button`](https://github.com/chameleon-team/chameleon-ui-builtin/tree/master/src/components/button) 和 [`scroller`](https://github.com/chameleon-team/chameleon-ui-builtin/tree/master/src/components/scroller) 的实现。
 
-###### 新端复用现有组件
+**新端复用现有组件**
 
 编写 `my-ui-builtin/components/radio/button.interface`
 
@@ -164,7 +164,7 @@ class CMLNode {
 
 ```
 
-用户只需要实现一个<a href="https://github.com/chameleon-team/cml-extplatform-demo/blob/master/packages/cml-demo-plugin/index.js">编译插件类</a>，利用钩子方法实现对节点的编译，所有节点编译完后再进行文件的组织。编译类如下：
+用户只需要实现一个[编译插件类](https://github.com/chameleon-team/cml-extplatform-demo/blob/master/packages/cml-demo-plugin/index.js)，利用钩子方法实现对节点的编译，所有节点编译完后再进行文件的组织。编译类如下：
 
 ```
 module.exports = class DemoPlugin {
@@ -232,7 +232,7 @@ import {createPage} from 'cml-demo-runtime';
 createPage(exports.default);
 ```
 
-`createApp、createPage、createComponent`方法,参考<a href="https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-runtime">cml-demo-runtime</a>的结构进行实现，需要`include` `chameleon-runtime`中相应的接口进行实现，才能够实现对`chameleon-runtime`的扩展。用户的工作量主要在于对逻辑对象的处理，可以参考<a href="https://github.com/chameleon-team/chameleon-runtime/tree/master/src/interfaces">chameleon-runtime</a>中的实现方式，一般需要如下方面的适配工作。
+`createApp、createPage、createComponent`方法,参考 [cml-demo-runtime](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-runtime) 的结构进行实现，需要 `include` 中相应的接口进行实现，才能够实现对 `chameleon-runtime` 的扩展。用户的工作量主要在于对逻辑对象的处理，可以参考 [`chameleon-runtime`](https://github.com/chameleon-team/chameleon-runtime/tree/master/src/interfaces) 中的实现方式，一般需要如下方面的适配工作。
 
 从宏观来看，运行时处理可分为：
 
@@ -241,13 +241,13 @@ createPage(exports.default);
 
 从微观来看，有以下处理：
 
-- 生命周期：[映射表参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/util/lifecycle.js) 和 [实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L91)
-- 组件 props 属性：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L89) 和 [变化监听参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L48)
+- 生命周期：[映射表参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/util/lifecycle.js) 和[实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L91)
+- 组件 props 属性：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L89) 和[变化监听参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L48)
 - 数据响应：[数据响应实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L63)
 - computed 计算能力：[实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L85)
-- watch 监听能力：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L126) 和 [实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L97)
+- watch 监听能力：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L126) 和[实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L97)
 - methods 方法属性：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L46)
-- mixins 能力：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L31) 和 [合并参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L42)
+- mixins 能力：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L31) 和[合并参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L42)
 - [生命周期多态](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L34)
 
 例如： createPage 方法的实现
@@ -271,13 +271,13 @@ createPage(exports.default);
 
 #### 实现框架数据管理
 
-`chameleon-store`提供了类似 Vuex 的数据管理解决方案，具体标准参见<a href="https://cml.js.org/doc/logic/store.html">数据管理</a>。同样利用多态协议实现其功能。
+`chameleon-store` 提供了类似 Vuex 的数据管理解决方案，具体标准参见[数据管理](store.md)。同样利用多态协议实现其功能。
 
 #### 更多
 
-- 扩展新端 demo 示例仓库: https://github.com/chameleon-team/cml-extplatform-demo。 实现了微信端的基本扩展，用户可以以此为模板进行开发。
+- 扩展新端 Demo 示例仓库: https://github.com/chameleon-team/cml-extplatform-demo。 实现了微信端的基本扩展，用户可以以此为模板进行开发。
 
-- 更详细的教程参见<a href="https://cml.js.org/doc/extend/quickstart.html">扩展新端操作教程</a>。
+- 更详细的教程参见[扩展新端操作教程](mvvm.md#扩展新端)。
 
 期待更多人的加入开源。
 
@@ -285,7 +285,7 @@ createPage(exports.default);
 
 ### 开发示例体验
 
-扩展新端 demo 示例仓库: https://github.com/chameleon-team/cml-extplatform-demo。 实现了微信端的基本扩展。
+扩展新端 Demo 示例仓库: https://github.com/chameleon-team/cml-extplatform-demo。 实现了微信端的基本扩展。
 
 #### 运行项目
 
@@ -296,7 +296,7 @@ createPage(exports.default);
 
 ### 开发流程
 
-采用 lerna 对开发的 npm 包进行管理，解决本地开发时多个 npm 包之间相互依赖的问题。lerna init 即可创建一个 lerna 项目，建议直接用<a href="https://github.com/chameleon-team/cml-extplatform-demo">示例仓库</a>进行修改。
+采用 lerna 对开发的 npm 包进行管理，解决本地开发时多个 npm 包之间相互依赖的问题。lerna init 即可创建一个 lerna 项目，建议直接用[示例仓库](https://github.com/chameleon-team/cml-extplatform-demo)进行修改。
 
 #### 确定名称，创建 npm 包
 
@@ -316,9 +316,9 @@ createPage(exports.default);
 
 在`packages`目录创建上述的 6 个 npm 包。
 
-#### 创建开发 cml 项目
+#### 创建开发 CML 项目
 
-在`packages`目录创建一个 cml 的项目作为测试项目，开发过程中可以进行调试代码。示例中为`cml-demo-project`。
+在`packages`目录创建一个 CML 的项目作为测试项目，开发过程中可以进行调试代码。示例中为`cml-demo-project`。
 
 1 `cml-demo-project`的`chameleon.config.js`需要 添加 extPlatform，babelPath，builtinNpmName 字段的配置，配置如下：
 
@@ -453,7 +453,7 @@ module.exports = function(content) {
 
 增删改的 api 参考 babel 插件编写文档`https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md#toc-replacing-a-node-with-multiple-nodes`。
 
-我们没有直接让用户采用 babel 系列 是因为对`generator和parser`内部都有做针对 cml 的改造。
+我们没有直接让用户采用 babel 系列 是因为对`generator和parser`内部都有做针对 CML 的改造。
 
 ##### 原生组件的处理
 
@@ -465,7 +465,7 @@ chameleon 中规定，在模板中使用`origin-组件名称`作为组件名称�
 </tempalte>
 ```
 
-代表使用原生的`<button></button>`组件，chameleon 对于模板的标准编译没有处理`origin-组件名称`这种标签名称，原因是能够让用户根据组件的名称区别组件是否是原生组件而做不同的处理，例如原生组件的事件不做代理。所以最后用户的模板编译中应该对`origin-组件名称`这种组件名称进行替换。替换方法如下：
+代表使用原生的`<button></button>`组件，CML 对于模板的标准编译没有处理`origin-组件名称`这种标签名称，原因是能够让用户根据组件的名称区别组件是否是原生组件而做不同的处理，例如原生组件的事件不做代理。所以最后用户的模板编译中应该对`origin-组件名称`这种组件名称进行替换。替换方法如下：
 
 ```
 traverse(ast, {
@@ -485,7 +485,7 @@ traverse(ast, {
 
 ##### 注
 
-模板编译总体上是要将所有的[CML 的语法](../view/cml.md)编译成目标端的语法，可以参考<a href="https://github.com/didi/chameleon/tree/master/packages/chameleon-template-parse">chameleon-template-parse</a>中的编译实现。
+模板编译总体上是要将所有的[CML 的语法](cml.md)编译成目标端的语法，可以参考 [`chameleon-template-parse`](ttps://github.com/didi/chameleon/tree/master/packages/chameleon-template-parse) 中的编译实现。
 比如微信端包括如下几方面的实现：
 
 - 标签的替换，比如`slider-item` 标签替换成`swiper-item`。
@@ -569,7 +569,7 @@ compiler.hook('compile-script', function(currentNode, parentNodeType) {
 })
 ```
 
-例如一个节点 source 如下，modId 为'./component/test.js'：
+例如一个节点 source 如下，modId 为 './component/test.js'：
 
 ```
 module.exports = function() {
@@ -606,15 +606,13 @@ cmldefine('./component/test.js', function(require, exports, module) {
 
 ```
 
-更多编译事件参考<a href="./start.html"> 扩展新端手册</a>。
-
 #### 编译打包与文件输出
 
 参考`cml-demo-plugin/index.js`中对`compiler.hook('pack', function(projectGraph) {})` `pack`事件的实现，编译编译图，拼接目标文件，调用`compiler.writeFile`输出文件。
 
 ### 开发 api 库
 
-用户需要创建一个 npm 包，结构参考[cml-demo-api](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-api)。将`chameleon-api`中提供的每个方法利用[多态接口扩展](../framework/poly/api_extend.md)语法扩展新端的实现。
+用户需要创建一个 npm 包，结构参考[cml-demo-api](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-api)。将`chameleon-api`中提供的每个方法利用多态接口扩展语法扩展新端的实现。
 
 ** 扩展新端 API（以头条小程序为例，假设端扩展标识为：tt）**
 
@@ -695,7 +693,7 @@ class PageIndex {
 export default new PageIndex();
 ```
 
-在<a href="./https://github.com/chameleon-team/cml-extplatform-demo/blob/master/packages/cml-demo-plugin/index.js">编译插件</a>的构造函数中添加上运行时 npm 包名称，`cml-demo-runtime`。
+在[编译插件](https://github.com/chameleon-team/cml-extplatform-demo/blob/master/packages/cml-demo-plugin/index.js)的构造函数中添加上运行时 npm 包名称，`cml-demo-runtime`。
 
 ```
   constructor(options) {
@@ -727,7 +725,7 @@ import {createPage} from 'cml-demo-runtime';
 createPage(exports.default);
 ```
 
-`createApp、createPage、createComponent`方法,参考<a href="https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-runtime">cml-demo-runtime</a>的结构进行实现，需要`include` `chameleon-runtime`中相应的接口进行实现，才能够实现对`chameleon-runtime`的扩展。用户的工作量主要在于对逻辑对象的处理，可以参考<a href="https://github.com/chameleon-team/chameleon-runtime/tree/master/src/interfaces">chameleon-runtime</a>中的实现方式，一般需要如下方面的适配工作。
+`createApp`、`createPage`、`createComponent` 方法，参考 [`cml-demo-runtime`](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-runtime) 的结构进行实现，需要 `include` `chameleon-runtime` 中相应的接口进行实现，才能够实现对 `chameleon-runtime` 的扩展。用户的工作量主要在于对逻辑对象的处理，可以参考 [chameleon-runtime](https://github.com/chameleon-team/chameleon-runtime/tree/master/src/interfaces) 中的实现方式，一般需要如下方面的适配工作。
 
 从宏观来看，运行时处理可分为：
 
@@ -736,13 +734,13 @@ createPage(exports.default);
 
 从微观来看，有以下处理：
 
-- 生命周期：[映射表参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/util/lifecycle.js) 和 [实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L91)
-- 组件 props 属性：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L89) 和 [变化监听参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L48)
+- 生命周期：[映射表参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/util/lifecycle.js) 和[实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L91)
+- 组件 props 属性：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L89) 和[变化监听参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L48)
 - 数据响应：[数据响应实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L63)
 - computed 计算能力：[实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L85)
-- watch 监听能力：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L126) 和 [实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L97)
+- watch 监听能力：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L126) 和[实现参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniRuntimeCore.js#L97)
 - methods 方法属性：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L46)
-- mixins 能力：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L31) 和 [合并参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L42)
+- mixins 能力：[适配参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L31) 和[合并参考](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L42)
 - [生命周期多态](https://github.com/chameleon-team/chameleon-runtime/blob/master/src/platform/common/proto/MiniVmAdapter.js#L34)
 
 例如： createPage 方法的实现
@@ -782,7 +780,7 @@ createPage(exports.default);
 
 ### 开发组件库
 
-组件分为内置组件<a href="https://github.com/chameleon-team/chameleon-ui-builtin">chameleon-ui-builtin</a>和扩展组件<a href="https://github.com/chameleon-team/chameleon-ui-builtin">cml-ui</a>。所以用户需要创建两个 npm 包分别实现这两个组件库，结构参考[cml-demo-ui-builtin](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-ui-builtin)和[cml-demo-ui](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-ui)。利用[多态组件扩展](../framework/poly/component_extend.md)语法，对原有组件库中的每一个组件进行新端的实现。
+组件分为内置组件 `chameleon-ui-builtin` 和扩展组件 `cml-ui`。所以用户需要创建两个 npm 包分别实现这两个组件库，结构参考[cml-demo-ui-builtin](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-ui-builtin)和[cml-demo-ui](https://github.com/chameleon-team/cml-extplatform-demo/tree/master/packages/cml-demo-ui)。利用多态组件扩展语法，对原有组件库中的每一个组件进行新端的实现。
 
 原有组件库中的组件也分为两种，一种为各端都有分别实现的多态组件，例如`chameleon-ui-builtin`中的`button`组件。实现起来新端基本上也是要单独实现。另一种例如`chameleon-ui-builtin`中的`radio`组件，各端的实现都是用的`chameleon-ui-builtin/components/radio/radio.cml`。所以新端基本也可以复用这个实现，(还需要测试情况确实是否可以复用)。
 
@@ -873,10 +871,10 @@ createPage(exports.default);
   <td>methods</td><td>Object</td><td>处理业务逻辑与交互逻辑的方法</td>
 </tr>
 <tr>
-  <td><a href="./watch.html">watch</a></td><td>Object</td><td>侦听属性，监听数据的变化，触发相应操作</td>
+  <td>watch</td><td>Object</td><td>侦听属性，监听数据的变化，触发相应操作</td>
 </tr>
 <tr>
-  <td><a href="./computed.html">computed</a></td><td>Object</td><td>CML模板可直接使用的计算属性数据,也是连接视图层的枢纽</td>
+  <td>computed</td><td>Object</td><td>CML模板可直接使用的计算属性数据,也是连接视图层的枢纽</td>
 </tr>
 <tr>
   <td>beforeCreate</td><td>Function</td><td>例初始化之后，数据和方法挂在到实例之前
@@ -907,13 +905,13 @@ createPage(exports.default);
 
 #### 生命周期 hook 映射
 
-每个 `cml` 实例(`App`、`Page`、`Component`)在被创建时都要经过一系列的初始化过程 ————
+每个 CML 实例(App、Page、Component)在被创建时都要经过一系列的初始化过程 ————
 
-例如，需要设置数据监听、编译模板、将实例挂载到 `CML节点` 并在数据变化时更新 `CML节点` 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给开发者在不同阶段添加自己的代码的机会。
+例如，需要设置数据监听、编译模板、将实例挂载到 CML 节点并在数据变化时更新 CML 节点等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给开发者在不同阶段添加自己的代码的机会。
 
-`cml` 为`App`、`页面Page`、`组件Component` 提供了一系列生命周期事件，保障应用有序执行。
+CML 为 App、Page、Component 提供了一系列生命周期事件，保障应用有序执行。
 
-另外，你还需要实现 [生命周期多态](../logic/lifecycle.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%A4%9A%E6%80%81)。
+另外，你还需要实现生命周期多态。
 
 #### methods
 
@@ -991,7 +989,7 @@ MVVM 标准中将`.cml`文件分为三类，`src/app/app.cml`为 app，`router.c
 
 #### 原生事件标准
 
-当用户点击该组件的时候会在该组件逻辑[vm 对象](vm.md)的`methods`中寻找相应的处理函数，该处理函数会收到一个事件对象。
+当用户点击该组件的时候会在该组件逻辑 VM 对象的 `methods` 中寻找相应的处理函数，该处理函数会收到一个事件对象。
 
 ##### 原生基础事件的类型
 
@@ -1094,12 +1092,12 @@ MVVM 标准中将`.cml`文件分为三类，`src/app/app.cml`为 app，`router.c
     <td>_originEvent</td>
     <td>Object</td>
     <td>
-      chameleon对各平台的事件对象进行统一，会把原始的事件对象放到_originEvent属性中，当需要特殊处理的可以进行访问。
+      CML 对各平台的事件对象进行统一，会把原始的事件对象放到_originEvent属性中，当需要特殊处理的可以进行访问。
     </td>
   </tr>
 </table>
 
-###### target && currentTarget 事件属性
+**target && currentTarget 事件属性**
 
 <table>
 <tr><th>属性</th><th>类型</th><th>说明</th></tr>
@@ -1109,7 +1107,7 @@ MVVM 标准中将`.cml`文件分为三类，`src/app/app.cml`为 app，`router.c
 <tr><td>offsetTop</td><td>Number</td><td>事事件源组件相对于窗口上侧的距离</td></tr> -->
 </table>
 
-###### touches && changedTouches 事件属性
+**touches && changedTouches 事件属性**
 
 数组中的对象具有如下属性：
 
@@ -1170,11 +1168,11 @@ MVVM 标准中将`.cml`文件分为三类，`src/app/app.cml`为 app，`router.c
 
 ## 多态扩展
 
-### 接口多态扩展
+### 多态接口扩展
 
 <b>(chameleon-tool@0.4.0 以上开始支持)</b>
 
-<a href="./api.html">接口多态</a>一节讲解了接口多态的使用，这一节讲解接口多态的一些扩展语法，更适用于扩展新端使用。
+多态接口一节讲解了多态接口的使用，这一节讲解多态接口的一些扩展语法，更适用于扩展新端使用。
 
 #### 扩展语法
 
@@ -1277,7 +1275,7 @@ export default new Method();
 
 ```
 
-`first.interface` 包括接口定义，web 和 weex 端的实现，内容如下：
+`first.interface` 包括接口定义，web 和 Weex 端的实现，内容如下：
 
 ```vue
 <script cml-type="interface">
@@ -1303,7 +1301,7 @@ export default new Method();
 </script>
 ```
 
-`second.interface` 包括对`first.interface`的`include` weex 端和 wx 端的实现，内容如下：
+`second.interface` 包括对`first.interface`的`include` Weex 端和 wx 端的实现，内容如下：
 
 ```vue
 <include src="../first/first.interface"></include>
@@ -1327,8 +1325,8 @@ export default new Method();
 
 当外部引用`second.interface`文件并调用 getMsg 方法时 各端编译获取方法如下：
 
-- web 端，因为`second.interface`中没有 web 端实现 所以查找到`first.interface`中 web 端 getMsg 方法
-- weex 端，因为`second.interface`中有 weex 端实现 所以使用`second.interface`中 weex 端 getMsg 方法
+- Web 端，因为`second.interface`中没有 Web 端实现 所以查找到`first.interface`中 Web 端 getMsg 方法
+- Weex 端，因为`second.interface`中有 Weex 端实现 所以使用`second.interface`中 Weex 端 getMsg 方法
 - wx 端，因为`second.interface`中有 wx 端实现 所以使用`second.interface`中 wx 端 getMsg 方法
 
 ##### 注意 cml-type interface 部分必须是唯一的
@@ -1369,11 +1367,11 @@ export default new Method();
 
 文件中引入了两个`interface`文件，但是他们内部找到的`<script cml-type="interface"></script>`定义部分都在`chameleon-api/src/interfaces/alert/index.interface`中，是同一文件。所以不认为是错误的。
 
-### 组件多态扩展
+### 多态组件扩展
 
 <b>(chameleon-tool@0.4.0 以上开始支持)</b>
 
-<a href="./api.html">组件多态</a>一节讲解了组件多态的使用，这一节讲解组件多态的一些扩展语法，更适用于扩展新端使用。
+多态组件一节讲解了多态组件的使用，这一节讲解多态组件的一些扩展语法，更适用于扩展新端使用。
 
 #### 扩展语法
 
@@ -1713,7 +1711,7 @@ class CMLNode {
 
 编译图由上节介绍的编译节点组成，以 nodeType 为 app 的节点开始形成编译图，内部会递归编译节点，根据节点的类型触发相应的用户编译。
 
-<img src="../images/projectgraph.png" />
+![]()
 
 ### 如何编写用户插件
 
@@ -1999,7 +1997,7 @@ compiler.hook(钩子名称, function(参数) {
 })
 ```
 
-###### compile-preCML
+**compile-preCML**
 
 参数列表：(currentNode，nodeType)
 
@@ -2010,7 +2008,7 @@ compiler.hook(钩子名称, function(参数) {
 
 这个钩子是编译 cml 文件节点之前触发，并且传递 cml 文件节点，可以通过该钩子去处理 cml 文件节点的`template、json、style、script`四个子节点之前需要的联系。
 
-###### compile-postCML
+**compile-postCML**
 
 参数列表：(currentNode，nodeType)
 
@@ -2021,7 +2019,7 @@ compiler.hook(钩子名称, function(参数) {
 
 这个钩子是编译完 cml 文件节点的依赖和子节点后触发，传递 cml 文件节点，可以通过该钩子去处理 cml 文件节点编译之后的处理。
 
-###### compile-script
+**compile-script**
 
 参数列表：(currentNode，parentNodeType)
 
@@ -2038,7 +2036,7 @@ compiler.hook('compile-script', function(currentNode, parentNodeType) {
 
 ```
 
-###### compile-template
+**compile-template**
 
 参数列表：(currentNode，parentNodeType)
 
@@ -2062,7 +2060,7 @@ compiler.hook('compile-template', function(currentNode, parentNodeType) {
 
 ```
 
-###### compile-style
+**compile-style**
 
 参数列表：(currentNode，parentNodeType)
 
@@ -2081,7 +2079,7 @@ compiler.hook('compile-style', function(currentNode, parentNodeType) {
 
 ```
 
-###### compile-json
+**compile-json**
 
 参数列表：(currentNode，parentNodeType)
 
@@ -2100,7 +2098,7 @@ compiler.hook('compile-json', function(currentNode, parentNodeType) {
 
 ```
 
-###### compile-other
+**compile-other**
 
 参数列表：(currentNode)
 
@@ -2109,7 +2107,7 @@ compiler.hook('compile-json', function(currentNode, parentNodeType) {
 说明：
 这个钩子用于处理`nodeType='module'`,`moduleType='other'`的节点。对于不是 cml 识别的模块类型进行编译。
 
-###### compile-asset
+**compile-asset**
 
 参数列表：(currentNode，parentNodeType)
 
@@ -2126,7 +2124,7 @@ compiler.hook('compile-script', function(currentNode, parentNodeType) {
 
 ```
 
-###### pack
+**pack**
 
 参数列表：(projectGraph)
 
@@ -2147,7 +2145,7 @@ compiler.hook('pack', function(projectGraph) {
 
 compiler.amd 对象提供了 js 语言的 AMD 模块化方案供开发者使用，
 
-###### ompiler.amd.amdWrapModule
+**ompiler.amd.amdWrapModule**
 
 参数列表 ({content, modId})
 
@@ -2183,7 +2181,7 @@ cmldefine('src/pages/index/index.cml', function(require, exports, module) {
 })
 ```
 
-###### compiler.amd.getGlobalBootstrap
+**compiler.amd.getGlobalBootstrap**
 
 参数列表 (globalName)
 
@@ -2232,7 +2230,7 @@ cmldefine('src/pages/index/index.cml', function(require, exports, module) {
 })($GLOBAL); // 全局变量
 ```
 
-###### compiler.amd.getModuleBootstrap
+**compiler.amd.getModuleBootstrap**
 
 无参数。
 
@@ -2382,13 +2380,13 @@ cml 文件节点的 dependencies 字段记录的就是这个 cml 文件引用的
 3 cml 节点的 json 子节点
 cml 节点的 children 字段存放 cml 文件的四个子节点，其中 moduleType 为 json 的节点 convert 字段为编译后的 json 对象。
 
-扩展新端 demo 仓库: https://github.com/chameleon-team/cml-extplatform-demo
+扩展新端 Demo 仓库: https://github.com/chameleon-team/cml-extplatform-demo
 
 ## CML 模板语言标准
 
 **CML 支持两种语法，在模板 `template` 标签中声明 `lang` 属性即可**
 
-声明模板中用 `cml` 语法
+声明模板中用 CML 语法
 
 ```vue
 <template lang="cml"> </template>
@@ -2417,7 +2415,7 @@ cml 节点的 children 字段存放 cml 文件的四个子节点，其中 module
 ```javascript
 class Index {
   data = {
-    message: 'hello chameleon',
+    message: 'helloCML,
   };
 }
 ```
@@ -2657,7 +2655,7 @@ class Index{
 ```javascript
 class Index {
   data = {
-    message: 'hello chameleon',
+    message: 'helloCML,
   };
 }
 ```

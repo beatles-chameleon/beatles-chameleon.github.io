@@ -2,7 +2,7 @@
 
 ## 背景介绍
 
-通常情况下，cml 框架会生成跨 H5、小程序、客户端的应用。为了 H5、小程序、客户端初始样式呈现效果一致，cml 会添加[一致性基础样式](../docs/cmss.md#一致性基础样式)。在开发模式下，构建会严格[校验 CMSS 语法](../framework/linter/cml-cmss.md)，只允许书写跨 H5、小程序、客户端都通用的 [CMSS](../docs/cmss.md) 规则。因此，受限于客户端的 CMSS 渲染能力，开发会有诸多限制，另一方面，当开发者只需要跨 H5 和小程序应用时，开发会变得很轻便。
+通常情况下，cml 框架会生成跨 H5、小程序、客户端的应用。为了 H5、小程序、客户端初始样式呈现效果一致，cml 会添加[一致性基础样式](../docs/cmss.md#一致性基础样式)。在开发模式下，构建会严格校验 CMSS 语法，只允许书写跨 H5、小程序、客户端都通用的 [CMSS](../docs/cmss.md) 规则。因此，受限于客户端的 CMSS 渲染能力，开发会有诸多限制，另一方面，当开发者只需要跨 H5 和小程序应用时，开发会变得很轻便。
 
 通过下面的表格，展示 CMSS 跨端 能力差异：
 
@@ -113,8 +113,9 @@
 
 ## 项目初始化与配置
 
-- [项目初始化](../quick_start/quick_start.md)
-- 以[merge config](../framework/config.html#配置api)的方式修改项目根目录下的 [chameleon.config.js](../framework/config.md)，如下：
+- [项目初始化](../docs/setup.md)
+
+- 以 merge config 的方式修改项目根目录下的 `chameleon.config.js`，如下：
 
 ```js
 cml.config.merge({
@@ -124,11 +125,11 @@ cml.config.merge({
 
 ## CMSS
 
-此时，CMSS 语法和可用属性，不再受限于客户端的渲染。CMSS 遵循 [W3C 层叠样式表](https://www.w3.org/TR/css-backgrounds-3/#introduction) (Cascading Style Sheets，缩写为 CSS）规范，在此基础上，小程序的标准样式会有一些限制。
+此时，CMSS 语法和可用属性，不再受限于客户端的渲染。CMSS 遵循 [W3C 层叠样式表](https://www.w3.org/TR/css-backgrounds-3/#introduction)(Cascading Style Sheets，缩写为 CSS）规范，在此基础上，小程序的标准样式会有一些限制。
 
 ## 一致性基础样式可选
 
-如果你希望去除小程序、客户端的的一致性基础样式，修改项目根目录下的 [chameleon.config.js](../framework/config.md)，如下：
+如果你希望去除小程序、客户端的的一致性基础样式，修改项目根目录下的 `chameleon.config.js`，如下：
 
 ```js
 cml.config.merge({

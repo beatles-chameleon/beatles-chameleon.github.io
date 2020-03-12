@@ -4,7 +4,7 @@
 
 含 titleBar 基础页面容器
 
-内置了 weex 端 titleBar 以及多端修改页面标题方法，titleBar 为固定高度<span style="color:red">88cpx</span>。
+内置了 Weex 端 titleBar 以及多端修改页面标题方法，titleBar 为固定高度<span style="color:red">88cpx</span>。
 
 ### 属性
 
@@ -91,6 +91,6 @@ export default new Page();
 ### Bug & Tips
 
 1. `<page>`组件为页面级基础容器组件，只能在页面组件中使用，在普通组件中使用不能保证正确显示，使用时需位于页面组件根结点位置。
-2. `<page>`组件在 weex 端 titlebar 高度为 88cpx，在使用定位时注意兼容。
-3. `<page>`组件内置 weex 端 titlebar 仅能满足常规使用，若需要复杂的 titlebar 则可通过 titlebar 插槽实现。
-4. 由于 android 和 ios 页面渲染差异，android 端是从状态栏以下开始渲染，而 ios 是从状态栏开始渲染页面，所以在 ios 端需要考虑状态栏高度
+2. `<page>`组件在 Weex 端 titlebar 高度为 88cpx，在使用定位时注意兼容。
+3. `<page>`组件内置 Weex 端 titlebar 仅能满足常规使用，若需要复杂的 titlebar 则可通过 titlebar 插槽实现。
+4. 由于 Android 和 iOS 页面渲染差异，android 端是从状态栏以下开始渲染，而 ios 是从状态栏开始渲染页面，所以在 ios 端需要考虑状态栏高度

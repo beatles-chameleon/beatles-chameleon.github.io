@@ -21,19 +21,19 @@ clone 下来以上仓库之后, 分支，执行 cml tt dev，在开发者工具�
 
 <div style="display: flex;flex-direction: row;justify-content: space-around; align-items: flex-end;">
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/mvvm/cml-tt-demo.png" width="200px" height="100%" />
+    <img src="../images/mvvm/cml-tt-demo.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;"></text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/mvvm/cml-tt-flexbox.png" width="200px" height="100%"/>
+    <img src="../images/mvvm/cml-tt-flexbox.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;"></text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/mvvm/cml-tt-yanxuan.png" width="200px" height="100%"/>
+    <img src="../images/mvvm/cml-tt-yanxuan.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;"></text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/mvvm/cml-tt-todomvc.png" width="200px" height="100%"/>
+    <img src="../images/mvvm/cml-tt-todomvc.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;"></text>
   </div>
 </div>
@@ -42,11 +42,11 @@ clone 下来以上仓库之后, 分支，执行 cml tt dev，在开发者工具�
 
 根据以下步骤配置之后，既有 CML 的项目可以直接在头条小程序运行。
 
-0、升级最新的 chameleon 包
+0、升级最新的 CML 包
 
 1、安装头条小程序端所依赖的库
 
-2、将原本引用依赖的 **chameleon 内置库** 改成头条小程序的库，头条的库会依赖原本的**chameleon 内置库**，所以依然可以运行原本的各种小程序、 web 端、weex 端。
+2、将原本引用依赖的 **CML 内置库** 改成头条小程序的库，头条的库会依赖原本的**CML 内置库**，所以依然可以运行原本的各种小程序、 Web 端、Weex 端。
 
 ## 安装头条扩展需要的仓库
 
@@ -100,17 +100,13 @@ babelPath: [
 
 以上配置解释
 
-builtinNpmName 字段是你定义的内置 npm 包名称
-extPlatform 是配置扩展新端的编译插件，key 值为端标识，value 为编译插件 npm 包名称。
-babelPath 配置的是哪些 npm 包要过 babel 处理
-
-具体解释[参考](https://cml.js.org/doc/extend/quickstart.html?h=builtinnpmname)
+`builtinNpmName` 字段是你定义的内置 npm 包名称
+`extPlatform` 是配置扩展新端的编译插件，key 值为端标识，value 为编译插件 npm 包名称。
+`babelPath` 配置的是哪些 npm 包要过 babel 处理
 
 扩展头条的核心实现具体可以[参考](https://github.com/chameleon-team/cml-tt-sets/tree/dev) 的 dev 分支
 
 ### 如果要引入基础样式,需要增加 `tt：true`的配置,默认导入基础样式
-
-[工程配置-baseStyle](https://cml.js.org/doc/framework/config.html?h=basestyle)
 
 ```javascript
 baseStyle:{

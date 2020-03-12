@@ -16,16 +16,15 @@
 
 ```
 cml init project
-
 ```
 
-初始化后，cml 项目如下：
+初始化后，CML 项目如下：
 
 <img src="../images/to_chameleon/cml-project.png" width="400px" />
 
-依具体情况 [配置构建平台](../framework/config.md?h=platforms) 和 [配置平台基础样式](cml-cml-web-wx-only-app-app.md)
+依具体情况配置构建平台和配置平台基础样式。
 
-可修改 [chameleon.config.js](../framework/config.md?h=chameleon.config.js) 的 platforms 和 baseStyle 字段，如下：
+可修改 `chameleon.config.js` 的 `platforms` 和 `baseStyle` 字段，如下：
 
 <img src="../images/to_chameleon/project-config.png" width="400px" />
 
@@ -35,28 +34,28 @@ cml init project
 
 components 下包含各个组件代码，router 下是路由配置，store 是数据管理中心，config 和 build 下是 vue 项目的 webpack 构建的基本配置
 
-接下来就一步步展示如何将这个项目迁移到 chameleon
+接下来就一步步展示如何将这个项目迁移到 CML
 
 ## 工程层面的迁移
 
 #### 迁移 —— webpack 配置
 
-chameleon 的工程配置具体[参考](../framework/settings.md)
+CML 的工程配置具体[参考](config.md)
 
-##### chameleon[命令行工具](../quick_start/cml_cmd.md)，提供了 `dev build`两种构建模式，可以对应到 vue 项目中的`dev build`
+CML 命令行工具，提供了 `dev` `build` 两种构建模式，可以对应到 Vue 项目中的 `dev` `build`
 
-| vue 项目      | cml 项目  |
+| vue 项目      | CML 项目  |
 | ------------- | --------- |
 | npm run dev   | cml dev   |
 | npm run build | cml build |
 
-##### chameleon 内置了对于 webpack 和项目的构建，[参考这里修改 chameleon 内置 webpack 构建](../framework/config.md#%E4%BF%AE%E6%94%B9webpack%E9%85%8D%E7%BD%AE)
+chameleon 内置了对于 webpack 和项目的构建，[参考这里修改 CML 内置 webpack 构建](config.md#修改-webpack-配置)
 
 #### 迁移 —— store
 
-chameleon 中的 store 使用[参考](../logic/store.md?h=store)
+CML 中的 store 使用[参考](store.md)
 
-cml 项目中的`store`和 vue 项目中的`store`文件下是对应的；
+CML 项目中的`store`和 vue 项目中的`store`文件下是对应的；
 
 假设 vue 项目中某个组件
 
@@ -67,7 +66,7 @@ export default {
 };
 ```
 
-那么在`cml`项目中
+那么在 CML 项目中
 
 ```javascript
 import store from '../path/to/store';
@@ -80,7 +79,7 @@ export default new Index();
 
 #### 迁移 —— router
 
-##### `router-view`出口的的对应关系
+`router-view`出口的的对应关系
 
 假设`vue项目`中入口文件 `src/App.vue`
 
@@ -100,7 +99,7 @@ export default new Index();
 </template>
 ```
 
-##### 路由配置对应关系
+路由配置对应关系
 
 `vue项目`中的路由 `src/router/index.js`
 
@@ -152,7 +151,7 @@ chameleon 会自动引入 component 字段配置的组件,不需要再配置 com
 
 **总结**
 
-**1 注意 cml 项目中不支持路由嵌套,如果有路由嵌套的情况需要考虑转化成组件去实现**
+**1 注意 CML 项目中不支持路由嵌套,如果有路由嵌套的情况需要考虑转化成组件去实现**
 
 **2 在迁移路由的时候，要一个一个路由对应着去迁移**
 
@@ -268,7 +267,7 @@ cml init page
 
 ```vue
 <template>
-  <view><text>Hello Chameleon!</text></view>
+  <view><text>HelloCML</text></view>
 </template>
 
 <script>
@@ -320,7 +319,7 @@ cml init component
 
 ```vue
 <template>
-  <view><text>Hello Chameleon!</text></view>
+  <view><text>HelloCML</text></view>
 </template>
 
 <script>
@@ -344,7 +343,7 @@ export default new Comp();
 
 假设 vue 项目`src/components/HelloWorld.vue`中引用了其他组件 `import comp from './comp.vue';`
 
-对应到 cml 项目 组件需要在 usingComponents 引用，不需要在配置 `components`字段
+对应到 CML 项目 组件需要在 usingComponents 引用，不需要在配置 `components`字段
 
 修改`src/pages/HelloWorld/HelloWorld.cml` 页面配置，如下：
 
@@ -372,7 +371,7 @@ export default new Comp();
 
 ### `template`模板迁移
 
-这里以 cml 的`vue` 语法为例：[cml 类 vue 基础语法](../view/vue.md)
+这里以 CML 的 Vue 语法为例：[CML 类 Vue 基础语法](cml-vue.md)
 
 #### 数据绑定、条件渲染、循环、事件绑定的迁移
 
@@ -393,7 +392,7 @@ export default new Comp();
 </div>
 ```
 
-那么，使用 `cml`的类 vue 语法后：整体基本上不用变,只需要将标签改成 cml 的内置标签即可[参考](../components/base.md)
+那么，使用 CML 的类 Vue 语法后：整体基本上不用变，只需要将标签改成 CML 的内置标签即可。
 
 注意需要声明`<template lang="vue"></template>`
 
@@ -415,38 +414,38 @@ export default new Comp();
 
 #### vue 项目标签 -> cml 标签
 
-| vue 项目  | cml                                             |
-| --------- | ----------------------------------------------- |
-| div       | view                                            |
-| text span | text                                            |
-| img       | image                                           |
-| input     | input [组件](../components/form/input.md)       |
-| button    | button [组件](../components/form/button.md)     |
-| textarea  | textarea [组件](../components/form/textarea.md) |
-| switch    | switch [组件](../components/form/switch.md)     |
-| radio     | radio [组件](../components/form/radio.md)       |
-| checkbox  | checkbox [组件](../components/form/checkbox.md) |
-| image     | image [组件](../components/media/image.md)      |
-| video     | video [组件](../components/media/video.md)      |
-|           |                                                 |
+| vue 项目  | cml                                       |
+| --------- | ----------------------------------------- |
+| div       | view                                      |
+| text span | text                                      |
+| img       | image                                     |
+| input     | input[组件](../components/input.md)       |
+| button    | button[组件](../components/button.md)     |
+| textarea  | textarea[组件](../components/textarea.md) |
+| switch    | switch[组件](../components/switch.md)     |
+| radio     | radio[组件](../components/radio.md)       |
+| checkbox  | checkbox[组件](../components/checkbox.md) |
+| image     | image[组件](../components/image.md)       |
+| video     | video[组件](../components/video.md)       |
+|           |                                           |
 
-##### 没有列出来的标签比如`head p main`等等只能在[多态组件](https://cml.js.org/doc/framework/poly/component.md?h=%E5%A4%9A%E6%80%81)中使用，不支持跨多端
+没有列出来的标签比如`head p main`等等只能在多态组件中使用，不支持跨多端
 
-##### 对于 `a`标签的 href,如果想要达到跨多端的效果，需要通过绑定事件使用 [chameleon-api](https://cml.js.org/doc/api/open.md)去跳转。
+对于 `a`标签的 href,如果想要达到跨多端的效果，需要通过绑定事件使用 `cml.open()` 去跳转。
 
-#### chameleon 对于语法的扩展支持
+#### CML 对于语法的扩展支持
 
-##### 指令的扩展 c-show、c-model、c-show [参考](../view/directive.md)
+指令的扩展 c-show、c-model、c-show[参考](cml.md#指令)
 
-##### component is 动态组件的扩展 [参考](../view/component.md)
+component is 动态组件的扩展[参考](cml.md#动态组件)
 
-##### 事件绑定支持内联事件传参数 [参考](../view/event.md)
+事件绑定支持内联事件传参数[参考](cml.md#事件)
 
 #### 迁移注意点
 
-- [cml 支持的类 vue 语法 ](../view/vue.md),只有在文档中列出的语法才支持多端，其他没有列出的语法仅可以在 web 端使用，跨端没有支持，比如 `v-htm class的对象语法 数组语法等`
+- [CML 支持的类 Vue 语法](cml-vue.md),只有在文档中列出的语法才支持多端，其他没有列出的语法仅可以在 Web 端使用，跨端没有支持，比如 `v-html` `class` 的对象语法 数组语法等。
 
-根据以上教程，我们可以迁移`HelloWorld.vue`和`comp.vue`中的模板内容了
+根据以上教程，我们可以迁移 `HelloWorld.vue` 和 `comp.vue` 中的模板内容了
 
 `HelloWorld.cml`
 
@@ -479,12 +478,12 @@ export default new Comp();
 
 #### 生命周期迁移 ：和 vue 保持一致
 
-#### 数据的迁移 [参考](../logic/logic.md)
+#### 数据的迁移[参考](logic.md)
 
 #### vue 项目 API 的迁移
 
 API 迁移包括 http 请求 路由跳转 本地存储等
-参考：[chameleon-api 的文档](../api/navigate.md#redirectto)
+参考：[chameleon-api 的文档](../api/)
 
 假设，原有 vue 项目代码，如下：
 
@@ -494,7 +493,7 @@ router.push({ path: '/pages/navigateBack/index' });
 
 跨多端的路由仅支持 传入 path 字段进行路由，不支持路由 `name`字段的路由
 
-那么，使用`cml`语法后：
+那么，使用 CML 语法后：
 
 ```javascript
 import cml from 'chameleon-api';
@@ -509,16 +508,17 @@ cml.redirectTo({
 | -------------------- | ----------------------- |
 | this.\$emit(xxx,xxx) | this.\$cmlEmit(xxx,xxx) |
 
-##### 事件对象参数
+事件对象参数
 
-- chameleon 对`web native wx`各个端的事件对象进行了统一代理 [参考](../view/event.md?h=%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1)；
-- 对于[灰度区组件(多态组件)](../framework/poly/component.md#webweexwxcml) 各个端的事件对象还是**对应端的事件对象**，chameleon 框架不会对灰度区`origin-`开头的标签和第三方组件 标签上绑定的事件进行事件代理
+CML 对 `web` `native` `wx` 各个端的事件对象进行了统一代理[参考](cml.md#事件)。
 
-##### 事件冒泡
+对于灰度区组件（多态组件）各个端的事件对象还是**对应端的事件对象**，CML 框架不会对灰度区`origin-`开头的标签和第三方组件标签上绑定的事件进行事件代理。
 
-###### chameleon 生成的 weex 项目默认都是开启了支持事件冒泡的机制
+事件冒泡
 
-###### 同时扩展了阻止事件冒泡的语法；
+#chameleon 生成的 Weex 项目默认都是开启了支持事件冒泡的机制
+
+#同时扩展了阻止事件冒泡的语法；
 
 vue 语法(仅仅支持 `.stop`)
 
@@ -534,7 +534,7 @@ cml 语法
 
 **总结**
 
-**1 由于 chameleon 是跨多端框架，所以在 web 端特有的全局变量，比如 `window document history location`等在 chameleon 中是不支持的**
+**1 由于 CML 是跨多端框架，所以在 Web 端特有的全局变量，比如 `window document history location`等在 CML 中是不支持的**
 
 **2 对于 vue 的一些全局 API 比如`Vue.extend Vue.set`以及一些文档中没有列出的指令，比如`v-html v-pre`等都是不支持跨多端的**
 
@@ -587,11 +587,11 @@ export default new Comp();
 
 #### 页面布局的迁移
 
-由于 chameleon 应用是 跨多端`web native 小程序`框架，如果需要跨`native`，必须使用 `flexbox`进行样式布局，其他场景可以参考[只跨 web 和小程序的应用](cml-web-wx-only-app.md)
+由于 CML 应用是 跨多端 Web Native 小程序框架，如果需要跨 Native，必须使用 `flexbox` 进行样式布局，其他场景可以参考[只跨 Web 和小程序的应用](../tutorial/web-wx-only-app.md)
 
-关于样式的使用教程 [参考](cmss.md)
+关于样式的使用教程[参考](cmss.md)
 
-模板上的样式语法 [参考](cmss.md)
+模板上的样式语法[参考](cmss.md)
 
 #### 样式单位的迁移
 
@@ -607,8 +607,8 @@ justify-content: center; } .title { align-self: center; color: #61c7fc; font-siz
 margin-bottom: 20cpx; }
 ```
 
-以上，简单的介绍了 vue 项目迁移到 chameleon 的步骤，如果还有任何疑问，欢迎随时在 chameleon 官方微信和官方 QQ 群里进行反馈，我们将随时解答你的困惑，再次感谢你对 chameleon 的支持~
+以上，简单的介绍了 vue 项目迁移到 CML 的步骤，如果还有任何疑问，欢迎随时在 CML 官方微信和官方 QQ 群里进行反馈，我们将随时解答你的困惑，再次感谢你对 CML 的支持~
 
 ​ Best wishes
 
-​ Chameleon 团队
+​ CML 团队

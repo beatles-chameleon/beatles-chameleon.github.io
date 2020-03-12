@@ -2,15 +2,15 @@
 
 ## 背景介绍
 
-这里考虑如下场景，很多基础组件是多端共用的，单独开发则需要维护多套代码，而使用 chameleon 维护一套跨端 ui 库，通过组件导出给某一端进行使用，这样提高的开发效率可想而知。本文将一步一步介绍如何导出某一端组件及应用。
+这里考虑如下场景，很多基础组件是多端共用的，单独开发则需要维护多套代码，而使用 CML 维护一套跨端 ui 库，通过组件导出给某一端进行使用，这样提高的开发效率可想而知。本文将一步一步介绍如何导出某一端组件及应用。
 
 ## 项目初始化
 
-关于 chameleon-cli 的安装及环境配置请参照[快速上手](/quick_start/quick_start.md)，首先使用项目初始化命令`cml init project`完成项目初始化，然后`cd projectName`进入项目目录使用`cml init component`初始化 diaolog 组件，这里选择普通组件。最终 dialog 组件效果如下图：
+关于 chameleon-cli 的安装及环境配置请参照[起步](../docs/setup.md)，首先使用项目初始化命令`cml init project`完成项目初始化，然后`cd projectName`进入项目目录使用`cml init component`初始化 diaolog 组件，这里选择普通组件。最终 dialog 组件效果如下图：
 
 <img src="../images/output/dialog.jpg"  style="width:600px;display:block">
 
-## web 端组件导出及应用
+## Web 端组件导出及应用
 
 ### 导出
 
@@ -18,8 +18,9 @@
 
 <img src="../images/output/config.png"  style="width:300px;display:block">
 
-更多配置请参照[组件导出应用](/framework/compont_export.md)
-完成配置后进入项目目录，使用`cml web export`命令执行 web 端组件导出，导出目录如下：
+更多配置请参照[组件导出应用](../docs/io.md#组件导出)
+
+完成配置后进入项目目录，使用`cml web export`命令执行 Web 端组件导出，导出目录如下：
 
 <img src="../images/output/web_dir.png"  style="width:300px;display:block">
 
@@ -72,24 +73,24 @@ export default {
 最终  效果如下图：
 <img src="../images/output/dialog_web.png"  style="width:300px;display:block">
 
-## weex 端组件导出及应用
+## Weex 端组件导出及应用
 
 ### 导出
 
-首先是配置 chameleon.config.js，为 weex 端增加如下配置：
+首先是配置 chameleon.config.js，为 Weex 端增加如下配置：
 
 <img src="../images/output/weex_config.png"  style="width:300px;display:block">
 
-更多配置信息请查看[组件导出应用](/framework/compont_export.md)，配置好之后在该项目目录下执行`cml weex export`命令执行 weex 端组件导出，导出目录如下：
+更多配置信息请查看[组件导出应用](../docs/io.md#组件导出)，配置好之后在该项目目录下执行`cml weex export`命令执行 Weex 端组件导出，导出目录如下：
 <img src="../images/output/weex_export_dir.png"  style="width:300px;display:block">
 
 ### 应用
 
-首先通过[weex 官网](http://weex-project.io/cn/guide/set-up-env.md)提供的`weex-toolkit`初始化 weex 项目，初始化项目如下图：
+首先通过[weex 官网](http://weex-project.io/cn/guide/set-up-env.md)提供的`weex-toolkit`初始化 Weex 项目，初始化项目如下图：
 <img src="../images/output/weex_init_dir.png"  style="width:300px;display:inline-block">
 <img src="../images/output/weex_init.jpg"  style="width:300px;display:inline-block">
 
-将前面导出的 dialog 组件拷贝值 weex 项目的组件目录下，拷贝后目录结构如下图：
+将前面导出的 dialog 组件拷贝值 Weex 项目的组件目录下，拷贝后目录结构如下图：
 <img src="../images/output/weex_dialog_dir.png"  style="width:300px;display:block">
 
 然后在 index.vue 组件中引入并使用 c-dialog 组件，代码如下：
@@ -165,7 +166,7 @@ export default {
 }
 ```
 
-更多配置信息请查看[组件导出应用](/framework/compont_export.md)，配置好之后在该项目目录下执行`cml wx export`命令执行 wx 端组件导出，导出目录如下：
+更多配置信息请查看[组件导出应用](../docs/io.md#组件导出)，配置好之后在该项目目录下执行`cml wx export`命令执行 wx 端组件导出，导出目录如下：
 <img src="../images/output/wx_export_dir.png"  style="width:300px;display:block">
 
 > 支付宝小程序组件导出命令为：`cml alipay export`, 百度小程序组件导出命令为：`cml baidu export`

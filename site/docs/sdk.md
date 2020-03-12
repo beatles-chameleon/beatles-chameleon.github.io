@@ -1,8 +1,8 @@
-# Chameleon SDK
+# CML SDK
 
 native sdk 目标让客户端上趋近于各类小程序引擎，使同一套代码平滑在客户端上运行。
 
-使用 Chameleon 的渲染能力，需要集成对应平台的 SDK。请在左侧目录中根据你需要接入的平台来查看文档。
+使用 CML 的渲染能力，需要集成对应平台的 SDK。请在左侧目录中根据你需要接入的平台来查看文档。
 
 ## iOS SDK
 
@@ -25,15 +25,14 @@ Chameleon 使用`Cocoapods`进行管理，使用`npm`管理`react_native`。
 
 当 sdk 下载下来后，首先进入`/chameleon-sdk-iOS/Chameleon/react_native`,并运行`npm install`进行更新。（这也是 react_native 的更新办法。）
 
-接下来我们以 demo 工程为例（要注意工程路径位置,在工程实际配置中需要注意 :path 的内容）。
+接下来我们以 Demo 工程为例（要注意工程路径位置,在工程实际配置中需要注意 :path 的内容）。
 在 Podfile 中，写入：
 
     platform :ios, '9.0'
 
     target 'Chameleon_Example' do
 
-        ## Chameleon
-        pod 'Chameleon', :path => '../Chameleon/'
+        ##CML        pod 'Chameleon', :path => '../Chameleon/'
 
         ## 如果需要Weex，则写入weex依赖。
         pod 'WeexSDK', '~> 0.19.0.2'
@@ -70,20 +69,20 @@ Chameleon 使用`Cocoapods`进行管理，使用`npm`管理`react_native`。
 
 ### 项目目录
 
-| 描述      | 作用                 |
-| --------- | -------------------- |
-| Chameleon | SDK 源码与依赖文件夹 |
-| Example   | react_native 依赖    |
+| 描述    | 作用                 |
+| ------- | -------------------- |
+| CML     | SDK 源码与依赖文件夹 |
+| Example | react_native 依赖    |
 
-#### Chameleon/sdk_src
+####CMLsdk_src
 
-| 目录            | 功能描述                                                           |
-| --------------- | ------------------------------------------------------------------ |
-| CMLSDKEngine 类 | 初始化 SDK、注册自定义的 Module 等功能                             |
-| CMLCommon       | Chameleon 抽象层。抽象了基础的渲染页面、缓存、配置、预加载等功能。 |
-| CMLReactNative  | 针对 ReactNative 额外配置的部分                                    |
-| CMLWeex         | 针对 Weex 额外配置的部分                                           |
-| CMLWeb          | 针对 WebView 额外配置的部分                                        |
+| 目录            | 功能描述                                                     |
+| --------------- | ------------------------------------------------------------ |
+| CMLSDKEngine 类 | 初始化 SDK、注册自定义的 Module 等功能                       |
+| CMLCommon       | CML 抽象层。抽象了基础的渲染页面、缓存、配置、预加载等功能。 |
+| CMLReactNative  | 针对 ReactNative 额外配置的部分                              |
+| CMLWeex         | 针对 Weex 额外配置的部分                                     |
+| CMLWeb          | 针对 WebView 额外配置的部分                                  |
 
 ### 提供功能
 
@@ -135,7 +134,7 @@ Chameleon 使用`Cocoapods`进行管理，使用`npm`管理`react_native`。
 
 #### 什么是 Module
 
-module 是 Native 提供给前端页面调用的，完成一组操作的方法集合，用于扩展 Native 的能力。在 Chameleon 页面中，开发者引入相关 js 库后即可调用 Module 中的方法。
+module 是 Native 提供给前端页面调用的，完成一组操作的方法集合，用于扩展 Native 的能力。在 CML 页面中，开发者引入相关 js 库后即可调用 Module 中的方法。
 
 ```
 import bridge from 'chameleon-bridge';
@@ -153,7 +152,7 @@ export function sayHello() {
 
 #### 使用 Module
 
-Module 的使用分两种情况，一种是使用 Chameleon SDK 内置的 Module，一种是用户自定义实现自己的 Module。
+Module 的使用分两种情况，一种是使用 CML SDK 内置的 Module，一种是用户自定义实现自己的 Module。
 
 ##### 使用内置的 Module
 
@@ -170,7 +169,7 @@ API 文档里描述的能力，部分实现就是由上述 Module 支撑的。
 
 ##### 自定义实现自己的 Module
 
-示例可参看 [CMLStorageModule 示例](../tutorial/use-ios-sdk.md)
+示例可参看[CMLStorageModule 示例](../tutorial/ios-sdk.md)
 
 注册自己的 Module 关联文件:
 
@@ -223,11 +222,11 @@ API 文档里描述的能力，部分实现就是由上述 Module 支撑的。
 
 ##### 预加载
 
-预加载是将下载 JSBundle 的动作提前完成，在需要用到的时候直接从本地读取并渲染。实际项目使用中，可以将需要预加载的 url 配置到预加载地址列表里，在 app 启动时提前从服务端获取，通过 Chameleon SDK 提供的预加载能力提前下载下来。
+预加载是将下载 JSBundle 的动作提前完成，在需要用到的时候直接从本地读取并渲染。实际项目使用中，可以将需要预加载的 url 配置到预加载地址列表里，在 app 启动时提前从服务端获取，通过 CML SDK 提供的预加载能力提前下载下来。
 
 ##### 缓存
 
-对于没有预加载的 JSBundle 在渲染前需要先下载，下载完成后 Chameleon SDK 会缓存此 JSBundle，下次渲染同一个 JSBundle 时，如果此 JSBundle 没有更新则不会下载新的，达到节省时间和流量提升渲染速度的目的。
+对于没有预加载的 JSBundle 在渲染前需要先下载，下载完成后 CML SDK 会缓存此 JSBundle，下次渲染同一个 JSBundle 时，如果此 JSBundle 没有更新则不会下载新的，达到节省时间和流量提升渲染速度的目的。
 
 #### CMLCache
 
@@ -260,9 +259,9 @@ jsBundle 的内存管理器，是加载、获取、缓存等处理的实际操�
 
 对 jsBundle 的封装，包括 jsBundle 文件在本地存储的路径、内存索引；CMLCacheInfo 就是通过 CMLCacheItem 来对 jsBundle 进行操作。
 
-##### 使用（以 weex 为例）
+##### 使用（以 Weex 为例）
 
-###### 缓存相关配置
+**缓存相关配置**
 
 缓存相关配置定义位于 CMLWeexConfig （CMLConfig）
 
@@ -276,7 +275,7 @@ Chameleon 功能和缓存功能都是默认开启的，如果有特殊需要，�
     [CMLEnvironmentManage chameleon].weexService.config.isFeatureAvailable = NO；
     [CMLEnvironmentManage chameleon].weexService.config.isEnableCacheFeature = NO;
 
-###### 预加载
+**预加载**
 
 //设置预加载 URL 列表
 
@@ -286,7 +285,7 @@ Chameleon 功能和缓存功能都是默认开启的，如果有特殊需要，�
  [[CMLEnvironmentManage chameleon].weexService setupPrefetch];
 ```
 
-###### 获取加载 jsBundle 的 URL
+**获取加载 jsBundle 的 URL**
 
 ```
 CMLWeexCache *cache = (CMLWeexCache *)[CMLEnvironmentManage chameleon].weexService.cache;
@@ -301,7 +300,7 @@ CMLWeexCache *cache = (CMLWeexCache *)[CMLEnvironmentManage chameleon].weexServi
 
 github 地址[点这里](https://github.com/beatles-chameleon/chameleon-sdk-android)
 
-Chameleon android SDK 是 Chameleon 整体框架的一部分，主要任务是完成 Chameleon JsBundle 在 android 端的本地渲染。SDK 底层采用 weex 作为渲染引擎，同时扩展一些一般工程通用的基础能力，如缓存能力、降级能力等。
+CML Android SDK 是 CML 整体框架的一部分，主要任务是完成 CML JsBundle 在 Android 端的本地渲染。SDK 底层采用 Weex 作为渲染引擎，同时扩展一些一般工程通用的基础能力，如缓存能力、降级能力等。
 
 ### 项目结构
 
@@ -309,9 +308,9 @@ Chameleon android SDK 是 Chameleon 整体框架的一部分，主要任务是�
 
 ```
 |+ app SDK使用示例
-|+ cmlsdk SDK接入层，抽象 Chameleon 引擎能力、实现通用扩展能力
-|+ cmlweex 包装 weex 渲染引擎
-|+ cmlweb 包装 web 渲染引擎
+|+ cmlsdk SDK接入层，抽象 CML 引擎能力、实现通用扩展能力
+|+ cmlweex 包装 Weex 渲染引擎
+|+ cmlweb 包装 Web 渲染引擎
 |+ js-bundle-mgr 实现 js bundle 预加载、缓存
 |+ rich-text-component 富文本组件
 |+ sdk-image 图片选择、图片拍摄组件
@@ -323,17 +322,17 @@ cmlsdk 模块单独拿出来看下目录结构：
 ```
 |- cmlsdk
     |+ adapter 定义了扩展能力的接口以及默认实现，无默认实现的能力需要第三方项目根据自己的实际业务需求去实现
-    |+ bridge 定义了 js 和 native 通信的接口，实现协议相关的处理能力，以及实现了协议层使用入口
+    |+ bridge 定义了 js 和 Native 通信的接口，实现协议相关的处理能力，以及实现了协议层使用入口
     |+ bundle js bundle 相关定义，目前只有一个类用来描述 js bundle 相关信息
     |+ common 通用能力的基础封装类
     |+ container 渲染容器的抽象能力定义
-    |+ extend Chameleon 提供的一些能力
+    |+ extend CML 提供的一些能力
     |+ Module 扩展能力管理，收集 sdk 默认提供的以及第三方用户自己实现的 Module，根据 bridge 层指令执行具体某个 Module 的某个 method
     |+ utils 工具类集合
     |+ widget 自定义的widget，目前只有一个 title bar，用做 webview 渲染容器的action bar
     |- CmlBaseLifecycle 生命周期的接口定义
     |- CmlConstant 常量定义
-    |- CmlEngine Chameleon SDK 使用入口
+    |- CmlEngine CML SDK 使用入口
     |- CmlEnvironment 运行环境和运行参数配置入口、扩展能力设置入口
     |- CmlInstanceManage 页面运行实例的管理类，每一个容器实例运行时，其对应的Instance会注册到这里
     |- ICmlEngine 引擎的抽象接口
@@ -346,17 +345,17 @@ cmlsdk 模块单独拿出来看下目录结构：
 
 ![image](../images/sdk/cml_doc_android_01.png)
 
-### Chameleon 使用
+### CML 使用
 
-Chameleon android SDK 的使用步骤如下:
+CML Android SDK 的使用步骤如下:
 
-- 引用 Chameleon 及工程需要的相关类库
-- 在项目中初始化 Chameleon SDK
+- 引用 CML 及工程需要的相关类库
+- 在项目中初始化 CML SDK
 - 加载 JS Bundle
 
-详细的使用方式可以参看手把手系列之 [CML Android SDK 使用范例](../tutorial/use-android-sdk.md)，建议<font color=#FF0000>先看使用范例</font>再阅读其他章节。
+详细的使用方式可以参看手把手系列之[Android CML SDK 使用范例](../tutorial/android-sdk.md)，建议<font color=#FF0000>先看使用范例</font>再阅读其他章节。
 
-如果需要自定义自己的 adapter，参看 [Adapter 的使用](#adapter-的使用) 一节。如果需要扩展 Module，参看 [Module 的使用](#module-的使用) 一节。
+如果需要自定义自己的 adapter，参看[Adapter 的使用](#adapter-的使用) 一节。如果需要扩展 Module，参看[Module 的使用](#module-的使用)一节。
 
 ### 基础类说明
 
@@ -382,13 +381,13 @@ CmlEnvironment 主要提供了开发期间需要的一些能力，如
 - 预加载的最大缓存
 - 运行时的最大缓存
 
-adapter 设置和获取，详情参看 [Adapter 的使用](#adapter-的使用) 一节
+adapter 设置和获取，详情参看[Adapter 的使用](#adapter-的使用)一节
 
 - 各种能力的自定义实现配置入口
 
 ### 富文本组件
 
-富文本是 Chameleon 里唯一一个默认注册的组件，主要有以下内容
+富文本是 CML 里唯一一个默认注册的组件，主要有以下内容
 
 ```
  |
@@ -415,11 +414,11 @@ adapter 设置和获取，详情参看 [Adapter 的使用](#adapter-的使用) �
 
 github 地址[点这里](https://github.com/beatles-chameleon/chameleon-sdk-android)
 
-<font color=#FF0000>根目录 assets 目录下的 cml-demo-say.zip</font> 是个简单的示例工程，用来演示 native 和 weex 容器或 web 容器的双向通信
+<font color=#FF0000>根目录 assets 目录下的 cml-demo-say.zip</font> 是个简单的示例工程，用来演示 Native 和 Weex 容器或 Web 容器的双向通信
 
 #### 什么是 Module
 
-module 是 Native 提供给前端页面调用的，完成一组操作的方法集合，用于扩展 Native 的能力。在 Chameleon 页面中，开发者引入相关 js 库后即可调用 Module 中的方法。
+module 是 Native 提供给前端页面调用的，完成一组操作的方法集合，用于扩展 Native 的能力。在 CML 页面中，开发者引入相关 js 库后即可调用 Module 中的方法。
 
 ```
 import bridge from 'chameleon-bridge';
@@ -437,7 +436,7 @@ export function sayHello() {
 
 #### 使用 Module
 
-Module 的使用分两种情况，一种是使用 Chameleon SDK 内置的 Module，一种是用户自定义实现自己的 Module。
+Module 的使用分两种情况，一种是使用 CML SDK 内置的 Module，一种是用户自定义实现自己的 Module。
 
 ##### 使用内置的 Module
 
@@ -454,7 +453,7 @@ API 里描述的能力，部分实现就是由上述 Module 支撑的。
 
 ##### 自定义实现自己的 Module
 
-示例可参看 [CML Android SDK 使用范例](../tutorial/use-android-sdk.md#初始化入口)
+示例可参看[Android CML SDK 使用范例](../tutorial/android-sdk.md#初始化入口)
 
 module 扩展 3 个重要的注解
 
@@ -613,10 +612,10 @@ Chameleon SDK 定义了如下的 Adapter 接口
 
 降级、对话框、提示浮层 Adapter 在 SDK 实际使用时替换可能性较大，分别说明。
 
-###### 降级
+**降级**
 
-ICmlDegradeAdapter 降级接口没有提供默认实现，[CML Android SDK 使用范例](../tutorial/use-android-sdk.md) 示例里示范了如何实现一个降级处理类 CmlDegradeDefault。
-CmlDegradeDefault 默认会关闭 native 渲染容器，并打开 Web 容器加载降级 url。
+ICmlDegradeAdapter 降级接口没有提供默认实现，[Android CML SDK 使用范例](../tutorial/android-sdk.md) 示例里示范了如何实现一个降级处理类 CmlDegradeDefault。
+CmlDegradeDefault 默认会关闭 Native 渲染容器，并打开 Web 容器加载降级 url。
 
 ```
 public class CmlDegradeDefault implements ICmlDegradeAdapter {
@@ -666,58 +665,58 @@ degradeActivity 会在如下降级场景发生时回调
 - 降级调试开关打开(在 CmlEnvironment 里设置)
 - 前端代码手动降级
 
-###### 对话框
+**对话框**
 
 此接口定义以下两种对话框能力
 
 - showAlert
 - showConfirm
 
-CmlModalTip 实现了此接口，通过 CmlModalModule 类暴露给 JS 侧调用，前端用法参考 API [交互反馈](../api/#交互反馈)
+CmlModalTip 实现了此接口，通过 CmlModalModule 类暴露给 JS 侧调用，前端用法参考 API[交互反馈](../api/#交互反馈)
 
-###### 提示浮层
+**提示浮层**
 
 此接口定义以下浮层提示能力
 
 - showToast
 
-CmlModalTip 实现了此接口，通过 CmlModalModule 类暴露给 JS 侧调用，前端用法参考 API [交互反馈](../api/#交互反馈)
+CmlModalTip 实现了此接口，通过 CmlModalModule 类暴露给 JS 侧调用，前端用法参考 API[交互反馈](../api/#交互反馈)
 
 ##### 其他 Adapter 说明
 
-###### 图片加载
+**图片加载**
 
 CmlDefaultImgLoaderAdapter ，默认使用 Glide，需要用户手动集成 Glide
 
-###### 日志打印
+**日志打印**
 
 CmlLoggerDefault，默认使用系统 log 输出
 
-###### 跳转
+**跳转**
 
 默认使用 Intent.ACTION_VIEW 处理
 
-###### 统计信息输出
+**统计信息输出**
 
 没有默认实现，不关心可以不用实现
 
-###### WebSocket
+**WebSocket**
 
 CmlDefaultWebSocketAdapter，默认使用 OkHttp3，需要用户手动集成 OkHttp3
 
-###### Http 请求
+**Http 请求**
 
 执行 http 请求，并监听 http 响应
 
-###### json 解析
+**json 解析**
 
 转换成 json 字符串和反解成 json 对象
 
-###### key->value 存储
+**key->value 存储**
 
-前端用法参考 API [数据存储](../api/#数据存储)
+前端用法参考 API[数据存储](../api/#数据存储)
 
-###### 线程
+**线程**
 
 定义工作线程和 ui 线程
 
@@ -729,11 +728,11 @@ CmlDefaultWebSocketAdapter，默认使用 OkHttp3，需要用户手动集成 OkH
 
 ##### 预加载
 
-预加载是将下载 JSBundle 的动作提前完成，在需要用到的时候直接从本地读取并渲染。实际项目使用中，可以将需要预加载的 url 地址列表在 app 启动时提前从服务端获取，通过 Chameleon SDK 提供的预加载能力提前下载下来。
+预加载是将下载 JSBundle 的动作提前完成，在需要用到的时候直接从本地读取并渲染。实际项目使用中，可以将需要预加载的 url 地址列表在 app 启动时提前从服务端获取，通过 CML SDK 提供的预加载能力提前下载下来。
 
 ##### 缓存
 
-对于没有预加载的 JSBundle 在渲染前需要先下载，下载完成后 Chameleon SDK 会缓存此 JSBundle，下次渲染同一个 JSBundle 时，如果此 JSBundle 没有更新则不会下载新的，达到节省时间和流量提升渲染速度的目的。
+对于没有预加载的 JSBundle 在渲染前需要先下载，下载完成后 CML SDK 会缓存此 JSBundle，下次渲染同一个 JSBundle 时，如果此 JSBundle 没有更新则不会下载新的，达到节省时间和流量提升渲染速度的目的。
 
 #### JsBundleMgr
 
@@ -790,13 +789,13 @@ JsBundleMgr 是一个对 js 进行下载、缓存的一个模块，根据协议�
 
 ##### 使用
 
-###### 添加依赖
+**添加依赖**
 
 ```gradle
 compile 'com.didiglobal.chameleon:js-bundle-mgr:latest.version'
 ```
 
-###### 预加载
+**预加载**
 
 ```java
         CmlJsBundleEnvironment.DEBUG = true;
@@ -814,7 +813,7 @@ compile 'com.didiglobal.chameleon:js-bundle-mgr:latest.version'
         CmlJsBundleEngine.getInstance().startPreload();
 ```
 
-###### 获取 Js 代码
+**获取 Js 代码**
 
 ```java
         CmlJsBundleEngine.getInstance().initConfig(this, new CmlJsBundleMgrConfig.Builder().build());
@@ -852,7 +851,7 @@ compile 'com.didiglobal.chameleon:js-bundle-mgr:latest.version'
 
 ### inSDK
 
-同步方法，判断 webview 或 native 页面是否在 sdk 环境中，目前只用于内部封装方法使用。
+同步方法，判断 webview 或 Native 页面是否在 sdk 环境中，目前只用于内部封装方法使用。
 
 #### 参数
 
@@ -871,11 +870,11 @@ const inSDK = bridge.inSDK(); // true/false
 
 ### rollbackWeb
 
-降级到[chameleon url](../framework/chameleon_url.md)对应的 h5 地址。
+降级到 cmlUrl 对应的 h5 地址。
 
 ### callNative(module:String, method:String, args:Object, callback:Function)
 
-js 调用 native sdk
+js 调用 Native sdk
 
 ```
 import bridge from 'chameleon-bridge';
@@ -931,7 +930,7 @@ export function listenTell() {
 ##### 如何配置
 
 - iOS
-- android
+- Android
 
 #### 类 HTTP 的协商式缓存(后续发布)
 
@@ -949,7 +948,7 @@ export function listenTell() {
 
 1. 配置文件指纹
 
-设置`chameleon.config.js`中的`hash: true`，具体可参考工程化配置之[文件指纹](../framework/config.md)，`chameleon`项目构建出的 JS 包文件名会类似如下
+设置`chameleon.config.js`中的`hash: true`，具体可参考工程化配置之[文件指纹](config.md)， CML 项目构建出的 JS 包文件名会类似如下
 
 ```bash
 test_project_c6bdf9074a821f01e70f.js
@@ -965,15 +964,15 @@ https://www.static.com/test_project_c6bdf9074a821f01e70f.js
 
 3. 替换入口资源地址
 
-将入口页面中的[chameleon url](../framework/chameleon_url.md)`cml_addr`替换成 encodeURIComponent 后的最新资源地址即可，比如
+将入口页面中的 cmlUrl `cml_addr` 替换成 `encodeURIComponent` 后的最新资源地址即可，比如
 
-原 chameleon url:
+原 cmlUrl:
 
 ```bash
 https://www.static.com/test_project.html?cml_addr=https%3A%2F%2Fwww.static.com%2Ftest_project_21f01e70fc6bdf9074a8.js
 ```
 
-新的 chameleon url
+新的 cmlUrl
 
 ```bash
 https://www.static.com/test_project.html?cml_addr=https%3A%2F%2Fwww.static.com%2Ftest_project_c6bdf9074a821f01e70f.js
@@ -981,15 +980,15 @@ https://www.static.com/test_project.html?cml_addr=https%3A%2F%2Fwww.static.com%2
 
 **最佳实践**
 
-由于强制缓存下每次修改都需要修改入口页面的 chameleon url 中的 cml_addr 参数，可能会导致修改频繁影响效率，所以建议通过后端读取[map.json](../framework/config.html#%E6%9E%84%E5%BB%BA%E7%BB%93%E6%9E%9C%E4%BF%A1%E6%81%AF)的方式下发跳转`chameleon url`进行统一管理。
+由于强制缓存下每次修改都需要修改入口页面的 cmlUrl 中的 `cml_addr` 参数，可能会导致修改频繁影响效率，所以建议通过后端读取 `map.json` 的方式下发跳转 cmlUrl 进行统一管理。
 
 具体请求过程如下图所示:
 
 ![示意图](../images/request_show.png)
 
 1. JS 包修改上线后，同时将`map.json`上线到服务器上
-2. 入口页面加载数据时，服务器从`map.json`文件中查询到要跳转的`chameleon url`，并与初始化数据合并和下发给入口页面。
-3. 入口页面逻辑将接受到的`chameleon url`作为需要跳转的链接进行使用。
+2. 入口页面加载数据时，服务器从`map.json`文件中查询到要跳转的 cmlUrl，并与初始化数据合并和下发给入口页面。
+3. 入口页面逻辑将接受到的 cmlUrl 作为需要跳转的链接进行使用。
 
 这样每次 bundle 修改后可以自动完成更新
 
@@ -1004,4 +1003,4 @@ https://www.static.com/test_project.html?cml_addr=https%3A%2F%2Fwww.static.com%2
 #### 如何配置
 
 - iOS
-- android 参考 [CML Android SDK 使用范例](../tutorial/use-android-sdk.md) 第 6 节
+- Android 参考[Android CML SDK 使用范例](../tutorial/android-sdk.md)第 6 节

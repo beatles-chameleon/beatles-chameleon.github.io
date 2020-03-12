@@ -1,11 +1,11 @@
-# CML iOS SDK 使用范例
+# iOS CML SDK 使用范例
 
-以一个一个小 Demo，讲述 CML iOS SDK 的使用方式，引领轻松入门。
+以一个一个小 Demo，讲述 iOS CML SDK 的使用方式，引领轻松入门。
 Demo 工程在根目录 “Example” 目录下，打开 “Chameleon.xcworkspace” 文件即可打开工程。
 
 ## 工程集成
 
-在你的 Podfile 文件中，添加如下代码（以 demo 工程为例）：
+在你的 Podfile 文件中，添加如下代码（以 Demo 工程为例）：
 
     platform :ios, '9.0'
 
@@ -60,7 +60,7 @@ Demo 工程在根目录 “Example” 目录下，打开 “Chameleon.xcworkspac
 
 #### 实例化一个 Weex 渲染页面
 
-以 demo 为例：
+以 Demo 为例：
 
     CMLWeexRenderPage *weexDemo = [[CMLWeexRenderPage alloc] initWithLoadUrl:encodeUrl];
     weexDemo.service = [CMLEnvironmentManage chameleon].weexService;

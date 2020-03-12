@@ -51,15 +51,15 @@
 
 <div style="display: flex;flex-direction: row;justify-content: space-around; align-items: flex-end;">
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/loading_wx_1.png" width="200px" height="100%" />
+    <img src="../images/loading_wx_1.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">wx</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/loading_web_1.png" width="200px" height="100%"/>
+    <img src="../images/loading_web_1.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">web</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/loading_weex_1.png" width="200px" height="100%"/>
+    <img src="../images/loading_weex_1.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">native</text>
   </div>
 </div>
@@ -89,15 +89,15 @@ export default new CLoading();
 
 <div style="display: flex;flex-direction: row;justify-content: space-around; align-items: flex-end;">
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/loading_wx_2.png" width="200px" height="100%" />
+    <img src="../images/loading_wx_2.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">wx</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/loading_web_2.png" width="200px" height="100%"/>
+    <img src="../images/loading_web_2.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">web</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/loading_weex_2.png" width="200px" height="100%"/>
+    <img src="../images/loading_weex_2.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">native</text>
   </div>
 </div>

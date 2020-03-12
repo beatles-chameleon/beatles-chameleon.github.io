@@ -88,7 +88,7 @@ export default new Index();
 
 ## 书写 CML 使用数据
 
-我们查看[CML 文档使用列表渲染](../view/iterator.md)，
+我们查看[CML 文档使用列表渲染](../docs/cml.md#列表渲染)，
 
 写进`/src/pages/index/index.cml`文件里面 CML 代码
 
@@ -163,7 +163,7 @@ export default new Index();
 
 ## 添加手势
 
-我们查看[事件绑定文档](../view/event.md)
+我们查看[事件绑定文档](../docs/cml.md#事件)
 
 给 box 元素添加事件绑定：
 

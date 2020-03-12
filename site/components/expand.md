@@ -14,4 +14,4 @@
 </script>
 ```
 
-查看 [cml-ui 扩展组件库](https://github.com/beatles-chameleon/cml-ui)。
+查看[cml-ui 扩展组件库](https://github.com/beatles-chameleon/cml-ui)。

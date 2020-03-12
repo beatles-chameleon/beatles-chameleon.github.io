@@ -130,7 +130,7 @@
     </tr>
 </table>
 
-#####type 的有效值：
+##### type 的有效值：
 
 <table>
     <tr>
@@ -151,7 +151,7 @@
     </tr>
 </table>
 
-#####return-key-type 的有效值：
+##### return-key-type 的有效值：
 
 <table>
     <tr>
@@ -211,15 +211,15 @@ export default new Textarea();
 
 <div style="display: flex;flex-direction: row;justify-content: space-around; align-items: flex-end;">
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/textarea.png" width="200px" height="100%" />
+    <img src="../images/textarea.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">wx</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/textarea_web.png" width="200px" height="100%"/>
+    <img src="../images/textarea_web.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">web</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/textarea_weex.jpeg" width="200px" height="100%"/>
+    <img src="../images/textarea_weex.jpeg" width="200px" />
     <text style="color: #fda775;font-size: 24px;">native</text>
   </div>
 </div>
@@ -227,5 +227,5 @@ export default new Textarea();
 ### Bug & Tips
 
 1. `<textarea>` wx 端不能包裹在`<scroller>`里面
-2. `<textarea>` web 端不支持自动 focus
-3. `<textarea>` return-key-type 字段 web 端不支持
+2. `<textarea>` Web 端不支持自动 focus
+3. `<textarea>` return-key-type 字段 Web 端不支持

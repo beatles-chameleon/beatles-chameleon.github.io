@@ -9,16 +9,18 @@
 
 ![Alt text](../images/chameleon-idea.png)
 
-Chameleon 的是多端的上层应用语言，在这样的目标下，用户扩展功能时，保障业务代码和各端通信一致性变得特别重要。
+## 介绍
+
+CML 的是多端的上层应用语言，在这样的目标下，用户扩展功能时，保障业务代码和各端通信一致性变得特别重要。
 
 > 用户也许只实现一个 API 跨 2 端，保障一致很简单，在一个超过 5 万行代码的复杂应用里，用户扩展了 100 个接口呢，如果你觉得还很简单，那跨 6 个端呢，在应用持续高速迭代中让用户人肉保障多端一致性实在太艰难，即使能做到，可维护性也会极差，跨端也会失去意义。
 
-以上，跨端很美好，最大风险是可维护性问题。`多态协议`是 Chameleon 业务层代码和各端底层组件和接口的分界点，Chameleon 会严格“管制”输入输出值的类型和结构，同时会严格检查业务层 JS 代码，避免直接使用某端特有的接口，不允许在公共代码处使用某个端特定的方法，即使这段代码不会执行，例如禁止使用`window`、`wx`、`my`、`swan`、`weex`等方法。
+以上，跨端很美好，最大风险是可维护性问题。多态协议是 CML 业务层代码和各端底层组件和接口的分界点，CML 会严格“管制”输入输出值的类型和结构，同时会严格检查业务层 JS 代码，避免直接使用某端特有的接口，不允许在公共代码处使用某个端特定的方法，即使这段代码不会执行，例如禁止使用`window`、`wx`、`my`、`swan`、 `weex` 等方法。
 
 统一多态协议设计的灵感来自于[Apache Thrift - 可伸缩的跨语言服务开发框架](https://zh.wikipedia.org/zh-hans/Thrift)，本质上跨端也属于跨语言。
-**它能让 Chameleon 开发者快速接入各个客户端底层功能，且不会因为各端接口差异、产品需求差异导致正常业务代码被打散，变得可读性差、难以维护，避免结果适得其反**，[具体 Case](../tutorial/chameleon-product-diff.md)；各个客户端底层功能实现可以一部分来自 Chameleon 提供的基础组件和基础 api 库，一部分来自 chameleon 开发者，一部分来自各端生态开源库（Chameleon 拥抱开源社区，你可以直接安装某个端的组件在使用多态协议扩展到某个端使用）。
+**它能让 CML 开发者快速接入各个客户端底层功能，且不会因为各端接口差异、产品需求差异导致正常业务代码被打散，变得可读性差、难以维护，避免结果适得其反**，[具体 Case](../tutorial/normal-vs-cml.md)；各个客户端底层功能实现可以一部分来自 CML 提供的基础组件和基础 api 库，一部分来自 CML 开发者，一部分来自各端生态开源库（Chameleon 拥抱开源社区，你可以直接安装某个端的组件在使用多态协议扩展到某个端使用）。
 
-## 接口多态
+## 多态接口
 
 ### 初始化多态接口
 
@@ -81,12 +83,12 @@ export default new Method();
 ```
 
 文件中利用<script></script>标签将各端代码进行物理隔离，利用 cml-type 属性指定平台。
-`cml-type="interface"`为接口定义部分，利用[接口校验语法](check.md)定义这个接口的方法及方法的参数与返回值。
+`cml-type="interface"`为接口定义部分，利用接口校验语法定义这个接口的方法及方法的参数与返回值。
 
 `cml-type="web|wx|weex|alipay|baidu"`为各端实现部分，按照 interface 接口的定义进行方法的实现输入输出。<b>注意要以`export default`的形式导出对象</b>。
 
 - cml-type="web"
-  可以调用 web 端任意方法和全局变量
+  可以调用 Web 端任意方法和全局变量
 
 - cml-type="wx"
   可以调用微信小程序端任意方法和全局变量
@@ -98,7 +100,7 @@ export default new Method();
   可以调用百度小程序端任意方法和全局变量
 
 - cml-type="weex"
-  可以调用 weex 端任意方法和全局变量
+  可以调用 Weex 端任意方法和全局变量
 
 - cml-type="qq"
   可以调用 QQ 小程序端任意方法和全局变量
@@ -121,16 +123,16 @@ let message = utils.getMsg();
 
 ### 扩展阅读
 
-#### 什么时候用到接口多态？
+#### 什么时候用到多态接口？
 
-<b>接口多态适用于因为端的不同而进行不同接口的调用或者不同业务逻辑处理的场景。</b>
+<b>多态接口适用于因为端的不同而进行不同接口的调用或者不同业务逻辑处理的场景。</b>
 例如:我们的页面现在需要一个本地存储功能的需求，我们已知各端的接口调用方法
 
-- web 端接口是`localStorage.setItem`
+- Web 端接口是`localStorage.setItem`
 - 微信小程序端的接口是`wx.setStorageSync`
-- weex 端的接口是`storage.setItem`
+- Weex 端的接口是`storage.setItem`
 
-如果不使用接口多态我们只能根据不同环境去调用各自的接口
+如果不使用多态接口我们只能根据不同环境去调用各自的接口
 
 ```javascript
 if (process.env.platform === 'web') {
@@ -153,7 +155,7 @@ if (process.env.platform === 'web') {
 3. 各端接口耦合在一起，bug 风险极高
 4. 没有做到各端代码的分离，增大代码体积
 
-利用了接口多态之后的使用方式如下：
+利用了多态接口之后的使用方式如下：
 
 ```javascript
 import utils from 'utils.interface';
@@ -252,25 +254,25 @@ export default new Method();
 </script>
 ```
 
-#### 接口多态的优势
+#### 多态接口的优势
 
 - **保证接口一致性**
-  chameleon 的目标是跨多端，接口多态的作用就是屏蔽各端差异，调用多态接口的代码运行在多端，如果保证不了一致性，很可能出现某一端的需求引起的接口改动影响到其他端的功能，导致线上问题。
+  CML 的目标是跨多端，多态接口的作用就是屏蔽各端差异，调用多态接口的代码运行在多端，如果保证不了一致性，很可能出现某一端的需求引起的接口改动影响到其他端的功能，导致线上问题。
   我们  设计了`cml-type="interface"`接口定义部分，目的就是做一致性的校验，各端模块的构造函数要实现该接口，我们在开发环境运行时提供了接口的校验。
 
 - **代码独立性**
-   接口多态中利用`<script></script>`标签对各端代码进行物理隔离，独立实现，每一端的编译只编译该端的代码，不会有任何影响。
+   多态接口中利用`<script></script>`标签对各端代码进行物理隔离，独立实现，每一端的编译只编译该端的代码，不会有任何影响。
 
 - ** 充分扩展性**
   在独立性的基础上，就可以在各端的代码中完全使用各端的接口，以及引用各自端的第三方 npm 包。
 
-## 组件多态
+## 多态组件
 
-chameleon 在跨端的统一性上做了很多的工作，但即使是做到了 99%的统一，仍然存在着 1%的差异，基于代码可维护性的考量，chameleon 引入了[多态协议](intro.md)。
+CML 在跨端的统一性上做了很多的工作，但即使是做到了 99%的统一，仍然存在着 1%的差异，基于代码可维护性的考量，CML 引入了多态协议。
 
 ![多态组件全景图](../images/polymorphism_widget.png)
 
-### 组件多态的使用
+### 多态组件的使用
 
 项目根目录下执行`cml init component`，选择`Polymorphic component`，输入组件名称，例如`c-list`，生成如下文件结构
 
@@ -288,7 +290,7 @@ chameleon 在跨端的统一性上做了很多的工作，但即使是做到了 
 
 ### interface 文件
 
-`.interface`文件利用[接口校验语法](check.md)对组件的属性和事件进行类型定义， 保证各端的组件和事件一致，框架在开发环境的运行时做校验。例如`c-list.interface`
+`.interface`文件利用接口校验语法对组件的属性和事件进行类型定义， 保证各端的组件和事件一致，框架在开发环境的运行时做校验。例如`c-list.interface`
 
 ```javascript
 type eventType = 'change';
@@ -312,7 +314,7 @@ export default Interface Clist {
 - 在灰度区的 template 模板中：
   - 调用下层全局组件或者引入的下层组件时，该组件传入的属性是各自下层端的语法，绑定的函数回调事件对象也是原始对象
     - 引入的下层组件通过可以直接调用，传递各端下层属性语法
-    - 下层全局组件需添加`origin-`前缀，例如`<组件/>`改成`<origin-组件名/>`，传递各端下层语法，[查看示例](../../framework/linter/cml-template.html#%08%E5%BC%95%E7%94%A8%E5%B9%B3%E5%8F%B0%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6)
+    - 下层全局组件需添加`origin-`前缀，例如`<组件/>`改成`<origin-组件名/>`，传递各端下层语法
   - 调用普通 CML 内置组件或者引入的 cml 组件时，正常使用 cml 模板属性语法
 
 * 在灰度区的 script 逻辑代码中：
@@ -326,21 +328,21 @@ export default Interface Clist {
   - 也可以正常调用 cmss 语法。
 
 * 在灰度区的 json 配置代码中：
-  - \*web.cml：`base.usingComponents`可以引入任意`.vue`扩展名的普通 vue 组件文件，路径规则见[组件配置](../../framework/json.md)
-  - \*wx.cml：`base.usingComponents`可以引入普通[微信小程序组件](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/)，路径规则见[组件配置](../../framework/json.md)
-  - \*alipay.cml：`base.usingComponents`可以引入普通[支付宝小程序组件](https://docs.alipay.com/mini/framework/custom-component-overview)，路径规则见[组件配置](../../framework/json.md)
-  - \*baidu.cml：`base.usingComponents`可以引入普通[百度小程序组件](https://smartprogram.baidu.com/docs/develop/framework/custom-component/)，路径规则见[组件配置](../../framework/json.md)
-  - \*weex.cml：`base.usingComponents`可以引入支持`.vue`扩展名的普通 weex 组件文件，路径规则见[组件配置](../../framework/json.md)
+  - \*web.cml：`base.usingComponents`可以引入任意`.vue`扩展名的普通 vue 组件文件，路径规则见组件配置
+  - \*wx.cml：`base.usingComponents`可以引入普通[微信小程序组件](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/)，路径规则见组件配置
+  - \*alipay.cml：`base.usingComponents`可以引入普通[支付宝小程序组件](https://docs.alipay.com/mini/framework/custom-component-overview)，路径规则见组件配置
+  - \*baidu.cml：`base.usingComponents`可以引入普通[百度小程序组件](https://smartprogram.baidu.com/docs/develop/framework/custom-component/)，路径规则见组件配置
+  - \*weex.cml：`base.usingComponents`可以引入支持 `.vue` 扩展名的普通 Weex 组件文件，路径规则见组件配置
 
 ### 使用举例
 
-[ 实现多态 echart ](../tutorial/poly-echarts.md)
+[实现多态 ECharts](../tutorial/poly-component.md)
 
 ### 扩展阅读
 
-#### 什么时候用到组件多态？
+#### 什么时候用到多态组件？
 
-chameleon 中的组件是采用单文件格式的 cml 文件，其中包括了一个组件所拥有的视图层、逻辑层及配置信息。考虑以下两种场景：
+CML 中的组件是采用单文件格式的 cml 文件，其中包括了一个组件所拥有的视图层、逻辑层及配置信息。考虑以下两种场景：
 
 - 场景一：当某个功能组件需要调用各端的原生组件，各端原生组件的属性不一致，或者一端有原生组件，其他端需要组合实现等。
 - 场景二：产品在需求上导致某一个组件在各端的结构表现不同。
@@ -382,7 +384,7 @@ chameleon 中的组件是采用单文件格式的 cml 文件，其中包括了�
 3. 各端组件耦合在一起，bug 风险极高
 4. 没有做到各端代码的分离，增大体积
 
-而利用了组件多态之后的使用方式如下：
+而利用了多态组件之后的使用方式如下：
 
 ```vue
 <c-list data="{{list}}"><c-list></c-list></c-list>
@@ -390,11 +392,11 @@ chameleon 中的组件是采用单文件格式的 cml 文件，其中包括了�
 
 可以看到我们只引用了一个`c-list`组件，该组件提供了统一的属性。
 
-## 模板多态
+## 多态模板
 
 `chameleon-tool@1.0.4-alpha.2` 开始支持
 
-### 模板多态的基本使用方式如下
+### 多态模板的基本使用方式如下
 
 ```vue
 <template class="demo-com">

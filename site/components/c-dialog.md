@@ -171,15 +171,15 @@ export default new C_dialog();
 
 <div style="display: flex;flex-direction: row;justify-content: space-around; align-items: flex-end;">
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/dialog_wx.png" width="200px" height="100%" />
+    <img src="../images/dialog_wx.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">wx</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/dialog_web.png" width="200px" height="100%"/>
+    <img src="../images/dialog_web.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">web</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/dialog_native.jpg" width="200px" height="100%"/>
+    <img src="../images/dialog_native.jpg" width="200px" />
     <text style="color: #fda775;font-size: 24px;">native</text>
   </div>
 </div>

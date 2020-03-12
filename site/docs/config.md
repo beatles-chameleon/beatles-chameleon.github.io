@@ -35,21 +35,21 @@
 
 - base 对象为各端共用的配置对象。
 - wx、web、weex 分别对应三端特有的配置对象，base 的配置会应用到每一端的配置，内部做的 merge。
-- `usingComponents`字段是目前最重要的配置，各端都会使用，小程序规定页面的 json 文件中配置使用到的组件。web 和 weex 端的构建时也是根据该字段去找到相应的组件进行自动化的注册。所以用到组件必须进行配置
+- `usingComponents`字段是目前最重要的配置，各端都会使用，小程序规定页面的 json 文件中配置使用到的组件。web 和 Weex 端的构建时也是根据该字段去找到相应的组件进行自动化的注册。所以用到组件必须进行配置
 - `usingComponents`中组件的引用地址。
   - 支持引用 src 和 node_modules 下的组件，地址**禁止包含后缀扩展名**：
     - src 下可以写相对路径，也可以写相对于 src 的绝对路径，例如`/components/**`,
     - node_modules 下的组件，不需要写 node_modules，直接从 npm 的包名称开始写例如`cml-test-ui/navi/navi`。
   - 引用的组件类型支持：
     - .cml 扩展名跨端组件
-    - .vue 扩展名的 vue、weex 组件，[仅在多态组件可用](../framework/poly/component.md)
-    - 小程序组件文件夹路径，[仅在多态组件可用](../framework/poly/component.md)
-    - .js 扩展名的 react 组件，[仅在多态组件可用](../framework/poly/component.md)
+    - .vue 扩展名的 vue、weex 组件，[仅在多态组件可用](poly.md#多态组件)
+    - 小程序组件文件夹路径，[仅在多态组件可用](poly.md#多态组件)
+    - .js 扩展名的 react 组件，[仅在多态组件可用](poly.md#多态组件)
 -  小程序端所需要的一些配置，写在各自的特有配置对象中
 
-## 路由管理
+## 路由配置
 
-项目统一路由配置，CML 项目内置了一套各端统一的路由管理方式。
+项目统一路由配置，CML 项目内置了一套各端统一的路由配置方式。
 
 ### 路由配置文件
 
@@ -69,17 +69,17 @@
 }
 ```
 
-- mode 为 web 端路由模式，分为`hash`或`history`。
-- domain，当 mode 为 hash 时 domain 为 web 端页面的最终访问地址，当 mode 为 history 时，domain 为 web 端页面的域名。
+- mode 为 Web 端路由模式，分为`hash`或`history`。
+- domain，当 mode 为 hash 时 domain 为 Web 端页面的最终访问地址，当 mode 为 history 时，domain 为 Web 端页面的域名。
 - routes 为路由配置
   - path 为路由对应的 cml 文件的路径,以 src 目录下开始的绝对路径，以/开头。
-  - url,当 mode 为 hash 时 url 为 web 端页面地址对应的 hash，当 mode 为 history 时，url 为 web 端页面的路径。
-  - mock 为该路由对应的[mock 文件](../framework/mock.md)(仅模拟模板下发需要)
+  - url,当 mode 为 hash 时 url 为 Web 端页面地址对应的 hash，当 mode 为 history 时，url 为 Web 端页面的路径。
+  - mock 为该路由对应的 Mock 文件(仅模拟模板下发需要)
 - 小程序端，构建时会将`router.config.json`的内容，插入到 app.json 的 pages 字段，实现小程序端的路由。
 
 - <b>注: `router.config.json`中的 domain 指定页面最终线上地址，只是用于 config.json 的生成,真正决定 web 页面访问地址的还是取决于 web 服务器的配置。</b>
 
-注：<a href="./deploy.html#apiPrefix、publicPath、router.config.json、chameleonUrl的关系">apiPrefix、publicPath、router.config.json、chameleonUrl 的关系</a>
+注：[apiPrefix、publicPath、router.config.json、cmlUrl 的关系](../tutorial/deploy-guide.md#apiPrefix、publicPath、router.config.json、cmlUrl的关系)
 
 ### 使用路由场景
 
@@ -276,7 +276,7 @@
 
 #### 平台内构建配置
 
-平台内构建配置是针对某一端执行命令构建时的特殊配置，<a href="../framework/platform-list">可用终端关键词列表</a>
+平台内构建配置是针对某一端执行命令构建时的特殊配置。
 
 <table>
   <tr>
@@ -350,7 +350,7 @@
     <td></td>
   </tr>
   <tr>
-    <td><a href="#babelPolyfill">babelPolyfill</a></td>
+    <td><a href="#babelpolyfill">babelPolyfill</a></td>
     <td>Boolean</td>
     <td>默认 false</td>
     <td>是否添加polyfill</td>
@@ -367,13 +367,13 @@
 
 ### 配置文件
 
-chameleon 的构建过程是配置化的，项目的根目录下提供一个 chameleon.config.js 文件，在该文件中可以使用全局对象 cml 的 api 去操作配置对象。例如：
+CML 的构建过程是配置化的，项目的根目录下提供一个 chameleon.config.js 文件，在该文件中可以使用全局对象 CML 的 api 去操作配置对象。例如：
 
 ```javascript
 // 设置静态资源的线上路径
 const publicPath = '//www.static.chameleon.com/static';
 
-// 设置api请求前缀
+// 设置 API 请求前缀
 const apiPrefix = 'https://api.chameleon.com';
 
 // 合并配置
@@ -419,10 +419,10 @@ cml.config.merge({
 
 下面就详细介绍配置中的功能。
 
-#### web 端页面文件  类型
+#### Web 端页面文件  类型
 
 `templateType`, String 类型。  
-该字段控制 web 端构建  出的页面文件类型。
+该字段控制 Web 端构建  出的页面文件类型。
 
 - `templateType: 'html'` 构建出.html 文件，纯前端模板
 - `templateType: 'smarty'` 构建出.tpl 文件
@@ -435,11 +435,11 @@ cml.config.merge({
 });
 ```
 
-#### web 端页面文件名称
+#### Web 端页面文件名称
 
 `projectName`, String 类型。
 
-该字段控制 web 端构建  出的模板文件名称，默认是当前项目的根目录文件夹名称。
+该字段控制 Web 端构建  出的模板文件名称，默认是当前项目的根目录文件夹名称。
 
 例如：
 
@@ -450,12 +450,12 @@ cml.config.merge({
 });
 ```
 
-web 端构建出 `test_cml.html`文件
+Web 端构建出 `test_cml.html`文件
 
 #### 模板语法
 
 `templateLang`, String 类型。  
-chameleon 的视图层支持两种模板语法，通过在 template 上的`lang`属性做区分，如果不写默认是`cml`语法。  
+CML 的视图层支持两种模板语法，通过在 template 上的`lang`属性做区分，如果不写默认是 CML 语法。  
 该字段控制`init page 和init component` 时生成的 cml 文件的 template 模板上的`lang属性`。  
 例如：
 
@@ -496,7 +496,7 @@ cml.config.merge({
 
 `enableLinter`, Boolean  类型。
 
-默认为 `true`，是否开启 chameleon 的语法检查，会在命令行提示语法错误。
+默认为 `true`，是否开启 CML 的语法检查，会在命令行提示语法错误。
 例如：
 
 ```javascript
@@ -508,7 +508,7 @@ cml.config.merge({
 #### 多态校验控制
 
 `check`, Object 类型。
-chameleon 提供了接口多态与组件多态的写法，同时为了保证代码的质量提供了多态校验的方法，可以通过`check`字段进行校验的控制。
+CML 提供了多态接口与多态组件的写法，同时为了保证代码的质量提供了多态校验的方法，可以通过`check`字段进行校验的控制。
 
 `check.enable`, Boolean 类型。 控制是否开启多态校验，默认`true`。
 
@@ -594,7 +594,7 @@ cml.config.merge({
 #### cmss 处理
 
 `cmss`，Object 类型。
-仅用于 web 端。其中包含 rem 及 scale 属性，web 端构建时默认将 cpx 转为 rem，当不需要时转为 rem 时，将 rem 置为 false，则 scale 参数生效，scale 为像素缩放倍数，默认为 1，会将 cpx 按照 scale 的设置进行缩放为 px。例如：
+仅用于 Web 端。其中包含 rem 及 scale 属性，Web 端构建时默认将 cpx 转为 rem，当不需要时转为 rem 时，将 rem 置为 false，则 scale 参数生效，scale 为像素缩放倍数，默认为 1，会将 cpx 按照 scale 的设置进行缩放为 px。例如：
 
 ```javascript
 cml.config.merge({
@@ -605,7 +605,7 @@ cml.config.merge({
 });
 ```
 
-该设置 web 端 cpx 不转为 rem，而缩小 1 倍转为 px，例如 10cpx 转为 5px。
+该设置 Web 端 cpx 不转为 rem，而缩小 1 倍转为 px，例如 10cpx 转为 5px。
 
 #### 禁用基础样式
 
@@ -622,7 +622,7 @@ cml.config.merge({
 });
 ```
 
-该设置 web、wx、weex 端均不插入基础样式。
+该设置 web、wx、Weex 端均不插入基础样式。
 
 #### 全局引用 npm 组件库
 
@@ -661,7 +661,7 @@ chameleon-tool@1.0.5-alpha.1 开始支持
 ```javascript
 cml.config.merge({
   optimize: {
-  watchNodeModules: false// 默认不对node_modules中的文件进行watch,提升编译性能
+  watchNodeModules: false // 默认不对 node_modules中的文件进行 watch,提升编译性能
 });
 ```
 
@@ -674,7 +674,7 @@ chameleon-tool@1.0.5-alpha.1 开始支持
 ```javascript
 cml.config.merge({
   globalStyleConfig: {
-    //globalCssPath 该路径下的样式对非 weex 端生效；
+    //globalCssPath 该路径下的样式对非 Weex 端生效；
     globalCssPath: path.join(__dirname, 'src/assets/global.config.less'),
     weexCssConfig: {
       //该文件内的样式会作为全局样式导入
@@ -743,10 +743,10 @@ cml.config.merge({
 
 #### 构建入口与页面 
 
-默认的入口与页面集成在命令行中，对于有特殊  需求的开发者，chameleon 提供了可以自定义 web 端构建入口与页面，weex 端构建入口的功能。
+默认的入口与页面集成在命令行中，对于有特殊  需求的开发者，CML 提供了可以自定义 Web 端构建入口与页面，Weex 端构建入口的功能。
 `entry`, Object  类型。
 `entry.template`, String 类型。 页面文件的绝对路径。
-`entry.web`, String 类型。 web 端入口文件的  绝对路径。
+`entry.web`, String 类型。 Web 端入口文件的  绝对路径。
 `entry.weex`, String 类型。 wewx 端入口文件的  绝对路径。
 例如：
 
@@ -804,12 +804,12 @@ cml.config.merge({
 });
 ```
 
-下图为 web 端开启文件指纹的打包结果。
+下图为 Web 端开启文件指纹的打包结果。
 <img src="../images/fingerprint.jpg" width="300px" />
 
 #### 代码压缩
 
-为了减少资源网络传输的大小，通过压缩器对 js、css、图片进行压缩是一直以来前端工程优化的选择。在 chameleon 中只需要  配置`minimize`参数。
+为了减少资源网络传输的大小，通过压缩器对 js、css、图片进行压缩是一直以来前端工程优化的选择。在 CML 中只需要  配置`minimize`参数。
 
 `minimize`, Boolean 类型。
 
@@ -830,7 +830,7 @@ cml.config.merge({
 #### 资源发布路径
 
 `publicPath`, String 类型。
- 控制代码中静态资源的引用路径， 线上发布需要用到，media 为 dev 时默认 小程序端是本地路径，web 和 weex 端是当前 dev 服务的  路径。
+ 控制代码中静态资源的引用路径， 线上发布需要用到，media 为 dev 时默认 小程序端是本地路径，web 和 Weex 端是当前 dev 服务的  路径。
 例如：
 
 ```javascript
@@ -843,15 +843,13 @@ cml.config.merge({
 });
 ```
 
-注：<a href="../tutoria/how-to-deploy.html#apiPrefix、publicPath、router.config.json、chameleonUrl的关系">apiPrefix、publicPath、router.config.json、chameleonUrl 的关系</a>
-
 #### 热更新与自动刷新
 
-热更新与自动刷新都是提高本地开发效率的手段，当项目中的源代码发生改变时， 能够自动的在页面看到改变，其中热更新不需要重新刷新预览的页面。目前只有 web 端的开发支持热更新，通过[hot 参数配置](config.md#代码热更新)。 `dev`模式默认自动刷新，web 端可以选择开启热更新。
+热更新与自动刷新都是提高本地开发效率的手段，当项目中的源代码发生改变时， 能够自动的在页面看到改变，其中热更新不需要重新刷新预览的页面。目前只有 Web 端的开发支持热更新，通过[hot 参数配置](config.md#代码热更新)。 `dev`模式默认自动刷新，Web 端可以选择开启热更新。
 
 `hot`, Boolean 类型。
 
-控制是否开启热更新，只在 web 端生效，开启热更新时，css 代码不会单独分离出来，如果进行线上 js 代理本地 js 调试问题时，请关闭热更新。
+控制是否开启热更新，只在 Web 端生效，开启热更新时，css 代码不会单独分离出来，如果进行线上 js 代理本地 js 调试问题时，请关闭热更新。
 
 例如：
 
@@ -887,7 +885,7 @@ cml.config.merge({
 
 `console`, Boolean 类型。
 
-控制是否打开页面上的调试窗口，只在 web 端有效，方便在真机上进行调试。
+控制是否打开页面上的调试窗口，只在 Web 端有效，方便在真机上进行调试。
 
 例如：
 
@@ -918,14 +916,14 @@ cml.config.merge({
 })
 ```
 
-#### api 请求前缀
+#### API 请求前缀
 
 `apiPrefix`, String 类型。
-这个配置与网络请求相关，在 wx 和 weex 项目中，ajax 的请求不能像 web 端一样只写相对路径，而是要写带有域名的绝对路径，`chameleon-api` 这个基础库，提供了网络请求的 api，`get、post、request`方法，该方法会在运行时将请求的相对路径上添加配置的`apiPrefix`。media 是 dev 时 默认为当前 dev 服务的地址,不需要配置。 例如：
+这个配置与网络请求相关，在 wx 和 Weex 项目中，ajax 的请求不能像 Web 端一样只写相对路径，而是要写带有域名的绝对路径，`chameleon-api` 这个基础库，提供了网络请求的 api，`get、post、request`方法，该方法会在运行时将请求的相对路径上添加配置的`apiPrefix`。media 是 dev 时 默认为当前 dev 服务的地址,不需要配置。 例如：
 `chameleon.config.js`
 
 ```
-// 设置api请求前缀
+// 设置 API 请求前缀
 const apiPrefix = 'http://api.chameleon.com';
 cml.config.merge({
   wx: {
@@ -965,11 +963,9 @@ export default new Index();
 </script>
 ```
 
-在执行`cml wx dev`命令构建的结果中，`cml.get`方法发送的请求是`http://172.22.137.29:8000/api/driver/getList`
+在执行 `cml wx dev` 命令构建的结果中，`cml.get()` 方法发送的请求是 `http://172.22.137.29:8000/api/driver/getList`
 
-在执行`cml wx build`命令构建的结果中，`cml.get`方法发送的请求是`http://api.chameleon.com/api/driver/getList`
-
-注：<a href="../tutoria/how-to-deploy.html#apiPrefix、publicPath、router.config.json、chameleonUrl的关系">apiPrefix、publicPath、router.config.json、chameleonUrl 的关系</a>
+在执行 `cml wx build` 命令构建的结果中，`cml.get()` 方法发送的请求是 `http://api.chameleon.com/api/driver/getList`
 
 #### 模块标识类型
 
@@ -979,8 +975,8 @@ export default new Index();
 - number 顺序排列的数组下标。
 - hash 利用 webpack.HashedModuleIdsPlugin() 模块的 id 类型为模块内容的 hash 值。
 - name 利用 webpack.NamedModulesPlugin() 模块的 id 类型为文件的路径。
-- chameleon 用于 build 模式，模块的 id 类型为模块内容的 hash，并且最终文件的 hash 也经过优化处理，根据文件内容绝对 hash 值。
-  默认 media 为 dev 时 取值  为 name 方便开发调试， media 为 build 时取值为 chameleon 保证 hash 值由文件内容决定，更好的做缓存持久化。
+- CML 用于 build 模式，模块的 id 类型为模块内容的 hash，并且最终文件的 hash 也经过优化处理，根据文件内容绝对 hash 值。
+  默认 media 为 dev 时 取值  为 name 方便开发调试， media 为 build 时取值为 CML 保证 hash 值由文件内容决定，更好的做缓存持久化。
 
 例如：
 
@@ -996,12 +992,12 @@ cml.config.merge({
 
 #### babelPolyfill
 
-> chameleon-tool@0.0.15 开始支持 web 端
+> chameleon-tool@0.0.15 开始支持 Web 端
 > chameleon-tool@0.3.0 开始支持 小程序端
-> chameleon-tool@0.3.3 开始支持 weex 端
+> chameleon-tool@0.3.3 开始支持 Weex 端
 
 `babelPolyfill`, Boolean 类型, 默认 false。
-一些 es6+的语法，babel 不会转义，例如 Object.sssign、Object.entries 等方法, 如果客户端运行环境不支持这些语法就会出错。其中 web 使用的是<a href="">@babel/polyfill</a>, 小程序端使用的是自写的一些方法的 polyfill，参见<a href="https://github.com/didi/chameleon/blob/v0.3.x-alpha/packages/chameleon-tool/configs/default/miniappPolyfill.js">miniappPolyfill</a>,weex 端使用的是自写的一些方法的 polyfill，参见<a href="https://github.com/didi/chameleon/blob/v0.3.x-alpha/packages/chameleon-tool/configs/default/weexPolyfill.js">weexPolyfill</a>。 注意添加 polyfill 后会增加一些文件体积。
+一些 es6+的语法，babel 不会转义，例如 Object.sssign、Object.entries 等方法, 如果客户端运行环境不支持这些语法就会出错。其中 Web 使用的是 `@babel/polyfill`, 小程序端使用的是自写的一些方法的 polyfill，参见 [miniappPolyfill](https://github.com/didi/chameleon/blob/v0.3.x-alpha/packages/chameleon-tool/configs/default/miniappPolyfill.js)，Weex 端使用的是自写的一些方法的 polyfill，参见 [weexPolyfill](https://github.com/didi/chameleon/blob/v0.3.x-alpha/packages/chameleon-tool/configs/default/weexPolyfill.js)。注意添加 polyfill 后会增加一些文件体积。
 
 例如：
 
@@ -1018,13 +1014,13 @@ cml.config.merge({
 })
 ```
 
-#### domain 多域名请求前缀
+#### Domain 多域名请求前缀
 
 > chameleon-tool@0.2.1
 > chameleon-api@0.3.1 开始支持
 
 `domain`, Object 类型。
-一般配置在 base 对象中，作为所有平台的公共配置，dev 模式中配置的`localhost`会替换成当前 dev 模式启动的 web 服务 ip+端口。 具体使用文档参见 <a href="./project.html#api-多域名-mock">API 多域名 Mock</a>
+一般配置在 base 对象中，作为所有平台的公共配置，dev 模式中配置的`localhost`会替换成当前 dev 模式启动的 web 服务 ip+端口。 具体使用文档参见 [API 多域名 Mock](build.md#api-多域名-mock)。
 
 例如：
 
@@ -1112,95 +1108,44 @@ cml.utils.plugin('webpackConfig', function({ type, media, webpackConfig }, cb) {
     <th>关键词</th>
     <th>说明</th>
   </tr>
-<tr>
-    <td>
-        <a href="https://doc.quickapp.cn">
-          快应用
-        </a>
-    </td>
-    <td>
-         quickapp
-    </td>
-    <td>
-      <a href="../tutorial/cml-quickapp-app.html">手动扩展接入</a>
-    </td>
+  <tr>
+    <td><a href="https://doc.quickapp.cn">快应用</a></td>
+    <td>quickapp</td>
+    <td><a href="../tutorial/cml-quickapp-app.html">手动扩展接入</a></td>
   </tr>
   <tr>
-    <td>
-        <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/">
-        微信小程序
-        </a>
-    </td>
+    <td><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/">微信小程序</a></td>
     <td>wx</td>
     <td></td>
   </tr>
   <tr>
-    <td>
-        <a href="https://docs.alipay.com/mini/developer/introduction">
-        支付宝小程序
-        </a>
-    </td>
-    <td>  alipay </td>
-    <td>
-    </td>
+    <td><a href="https://docs.alipay.com/mini/developer/introduction">支付宝小程序</a></td>
+    <td>alipay</td>
+    <td></td>
   </tr>
   <tr>
-    <td>
-        <a href="https://smartprogram.baidu.com/docs/develop/fuctionlist/list/">
-         百度小程序
-        </a>
-    </td>
-    <td>baidu </td>
-    <td>
-    </td>
+    <td><a href="https://smartprogram.baidu.com/docs/develop/fuctionlist/list/">百度小程序</a></td>
+    <td>baidu</td>
+    <td></td>
   </tr>
   <tr>
-    <td>
-        <a href="https://www.w3school.com.cn">
-          手机浏览器/webview
-        </a>
-    </td>
-    <td>
-        web
-    </td>
-    <td>
-    </td>
+    <td><a href="https://www.w3school.com.cn">手机浏览器 / WebView</a></td>
+    <td>web</td>
+    <td></td>
   </tr>
   <tr>
-    <td>
-        <a href="https://developer.toutiao.com/docs/framework/">
-          字节跳动小程序
-        </a>
-    </td>
-    <td>
-        tt
-    </td>
-    <td>
-       <a href="../tutorial/migrate-bytedance-to-cml.html">手动扩展接入</a>
-    </td>
+    <td><a href="https://developer.toutiao.com/docs/framework/">字节跳动小程序</a></td>
+    <td>tt</td>
+    <td><a href="../tutorial/migrate-bytedance-to-cml.html">手动扩展接入</a></td>
   </tr>
   <tr>
-    <td>
-        <a href="https://q.qq.com/wiki/develop/miniprogram/frame/">
-          QQ 小程序
-        </a>
-    </td>
-    <td>
-        qq
-    </td>
-    <td>
-    </td>
+    <td><a href="https://q.qq.com/wiki/develop/miniprogram/frame/">QQ 小程序</a></td>
+    <td>qq</td>
+    <td></td>
   </tr>
   <tr>
-    <td>
-        <a href="https://weex.apache.org/zh/guide/introduction.html">
-          weex 
-        </a>
-    </td>
-    <td>
-        weex
-    </td>
-    <td>
-    </td>
+    <td><a href="https://weex.apache.org/zh/guide/introduction.html">Weex </a></td>
+    <td>weex</td>
+    <td></td>
   </tr>
 </table>

@@ -129,15 +129,15 @@ export default new CCheckbox();
 
 <div style="display: flex;flex-direction: row;justify-content: space-around; align-items: flex-end;">
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/checkbox_group_wx.png" width="200px" height="100%" />
+    <img src="../images/checkbox_group_wx.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">wx</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/checkbox_group_web.png" width="200px" height="100%"/>
+    <img src="../images/checkbox_group_web.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">web</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/checkbox_group_weex.jpeg" width="200px" height="100%"/>
+    <img src="../images/checkbox_group_weex.jpeg" width="200px" />
     <text style="color: #fda775;font-size: 24px;">native</text>
   </div>
 </div>

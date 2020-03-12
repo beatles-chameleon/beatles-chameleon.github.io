@@ -4,7 +4,7 @@ sidebarDepth: 2
 
 # API
 
-chameleon 支持大量基础 API，对外提供统一的接口，以模块的方式引入`chameleon-api`进行使用。
+CML 支持大量基础 API，对外提供统一的接口，以模块的方式引入 `chameleon-api` 进行使用。
 
 例如:
 
@@ -18,16 +18,16 @@ cml.showToast({
 
 注意：
 
-- 接口均以 promise 形式进行返回，所以你可以结合[异步流程控制](async.md)如 async、await 进行操作。
+- 接口均以 promise 形式进行返回，所以你可以结合异步流程控制如 async、await 进行操作。
 - API 模块为按需加载模块，可有效减少包体积。
 -  失败回调的返回格式为{errMsg:string}，如果是自己扩展的方法也建议按照此结构进行构造。
-- 你还可以利用[接口多态](/framework/poly/api.md)来实现跨端的接口或差异化实现特定端接口。
+- 你还可以利用多态接口来实现跨端的接口或差异化实现特定端接口。
 
 ## 运行时
 
 ### export & import
 
-chameleon 框架的编译时加载方案是在 ES6 的 Module 能力基础上扩展的，主要由两个命令构成：export 和 import。
+CML 框架的编译时加载方案是在 ES6 的 Module 能力基础上扩展的，主要由两个命令构成：export 和 import。
 
 #### export 命令
 
@@ -58,7 +58,7 @@ import 命令和 require 命令用于输入其他模块提供的功能。
     <th>示例</th>
   </tr>
   <tr>
-    <td><a href="../docs/cml.html">.cml</a></td>
+    <td>.cml</td>
     <td>.js、.json</td>
     <td>
       import a from 'a.js'; <br/>
@@ -67,9 +67,9 @@ import 命令和 require 命令用于输入其他模块提供的功能。
   </tr>
   <tr>
     <td>
-    <a href="../../framework/poly/component.html#webweexwxcml">*.[web|weex|wx|alipay|baidu|tt|qq].cml</a>
+    *.[web|weex|wx|alipay|baidu|tt|qq].cml
     </td>
-    <td><a href="../../framework/poly/component.html#interface-文件">.interface</a>、.js、.json</td>
+    <td>.interface、.js、.json</td>
     <td>
       import a from 'a.js'; <br/>
       import b from 'b.json';<br/>
@@ -78,7 +78,7 @@ import 命令和 require 命令用于输入其他模块提供的功能。
   </tr>
   <tr>
     <td>.js</td>
-    <td><a href="../../framework/poly/component.html#interface-文件">.interface</a>、.js、.json</td>
+    <td><.interface、.js、.json</td>
     <td>
       import a from 'a.js';<br/>
       import b from 'b.json';<br/>
@@ -86,7 +86,7 @@ import 命令和 require 命令用于输入其他模块提供的功能。
     </td>
   </tr>
   <tr>
-    <td><a href="../../framework/poly/component.html#interface-文件">.interface</a></td>
+    <td>.interface</td>
     <td>.js、.json</td>
     <td>
       import a from 'a.js';
@@ -157,10 +157,10 @@ if (condition) {
 }
 ```
 
-#### 返回[图片线上资源地址](../framework/deploy.html#2-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8F%91%E5%B8%83%E8%B7%AF%E5%BE%84)
+#### 返回图片线上资源地址
 
 ```javascript
-let imgPath = require('../../imgs/iconA.png'); // imgPath形如 https://cmljs.org/assets/imgs/iconA.png，通过publicPath配置 https://cmljs.org
+let imgPath = require('../../imgs/iconA.png'); // imgPath形如 https://cml.js.org/assets/imgs/iconA.png，通过publicPath配置 https://cml.js.org
 ```
 
 ## 网络请求
@@ -177,8 +177,8 @@ let imgPath = require('../../imgs/iconA.png'); // imgPath形如 https://cmljs.or
 |    data     | Object |  否  |                                                                                                             |                                                                                                                 要传的参数，会拼接在请求的 url 中                                                                                                                  |
 |   header    | Object |  否  |                                                                                                             |                                                                                                                      设置 http 请求的 header                                                                                                                       |
 | resDataType | String |  否  |                                                    json                                                     |                                                                              设置 response 的数据类型, 为 json 时, 会尝试对返回值进行 JSON.parse(), 若不希望 parse, 则传入'text'即可                                                                               |
-|   setting   | Object |  否  | {jsonp: false(仅 web 端有效), apiPrefix: Boolean(根据传入 url 决定), credentials: 'include'(仅 web 端有效)} | 自定义了设置，apiPrefix 为是否添加 chameleon.config.js 中设置的 apiPrefix (以http://或https://或//开头的url默认不会拼接, 其他情况均会自动拼接); jsonp 为 true 时会发起一个 jsonp 请求; credentials 可选值'omit'/'same-origin'/'include', 对应 fetch 的 credentials |
-|   domain    | String |  否  |                                                                                                             |                                网络请求的域名前缀（chameleon-api@0.3.1 开始支持）具体参见<a href="../docs/project.html#api-多域名-mock">API 多域名 Mock</a><br/><b>如果设置了 domain 则 chameleon.config.js 中的 apiPrefix 失效</b>                                |
+|   setting   | Object |  否  | {jsonp: false(仅 Web 端有效), apiPrefix: Boolean(根据传入 url 决定), credentials: 'include'(仅 Web 端有效)} | 自定义了设置，apiPrefix 为是否添加 chameleon.config.js 中设置的 apiPrefix (以http://或https://或//开头的url默认不会拼接, 其他情况均会自动拼接); jsonp 为 true 时会发起一个 jsonp 请求; credentials 可选值'omit'/'same-origin'/'include', 对应 fetch 的 credentials |
+|   domain    | String |  否  |                                                                                                             |                                       网络请求的域名前缀（chameleon-api@0.3.1 开始支持）具体参见 [API 多域名 Mock](../docs/build.md#api-多域名-mock)<br/><b>如果设置了 domain 则 chameleon.config.js 中的 apiPrefix 失效</b>                                       |
 
 #### 返回值
 
@@ -220,8 +220,8 @@ cml
 |   header    | Object |  否  |                                                                                                             |                                                                                                                      设置 http 请求的 header                                                                                                                       |
 | contentType | String |  否  |                                                    form                                                     |                                                                 取值：form 或 json，决定 body 中 data 的格式，对应 header 中 content-type 为 application/x-www-form-urlencoded 或 application/json                                                                 |
 | resDataType | String |  否  |                                                    json                                                     |                                                                              设置 response 的数据类型, 为 json 时, 会尝试对返回值进行 JSON.parse(), 若不希望 parse, 则传入'text'即可                                                                               |
-|   setting   | Object |  否  | {jsonp: false(仅 web 端有效), apiPrefix: Boolean(根据传入 url 决定), credentials: 'include'(仅 web 端有效)} | 自定义了设置，apiPrefix 为是否添加 chameleon.config.js 中设置的 apiPrefix (以http://或https://或//开头的url默认不会拼接, 其他情况均会自动拼接); jsonp 为 true 时会发起一个 jsonp 请求; credentials 可选值'omit'/'same-origin'/'include', 对应 fetch 的 credentials |
-|   domain    | String |  否  |                                                                                                             |                                网络请求的域名前缀（chameleon-api@0.3.1 开始支持）具体参见<a href="../docs/project.html#api-多域名-mock">API 多域名 Mock</a><br/><b>如果设置了 domain 则 chameleon.config.js 中的 apiPrefix 失效</b>                                |
+|   setting   | Object |  否  | {jsonp: false(仅 Web 端有效), apiPrefix: Boolean(根据传入 url 决定), credentials: 'include'(仅 Web 端有效)} | 自定义了设置，apiPrefix 为是否添加 chameleon.config.js 中设置的 apiPrefix (以http://或https://或//开头的url默认不会拼接, 其他情况均会自动拼接); jsonp 为 true 时会发起一个 jsonp 请求; credentials 可选值'omit'/'same-origin'/'include', 对应 fetch 的 credentials |
+|   domain    | String |  否  |                                                                                                             |                                       网络请求的域名前缀（chameleon-api@0.3.1 开始支持）具体参见 [API 多域名 Mock](../docs/build.md#api-多域名-mock)<br/><b>如果设置了 domain 则 chameleon.config.js 中的 apiPrefix 失效</b>                                       |
 
 #### 返回值
 
@@ -267,8 +267,8 @@ cml
 |   header    | Object |  否  |                                                                                                             |                                                                                                                      设置 http 请求的 header                                                                                                                       |
 | contentType | String |  否  |                                                    form                                                     |                                                                 取值：form 或 json，决定 body 中 data 的格式，对应 header 中 content-type 为 application/x-www-form-urlencoded 或 application/json                                                                 |
 | resDataType | String |  否  |                                                    json                                                     |                                                                              设置 response 的数据类型, 为 json 时, 会尝试对返回值进行 JSON.parse(), 若不希望 parse, 则传入'text'即可                                                                               |
-|   setting   | Object |  否  | {jsonp: false(仅 web 端有效), apiPrefix: Boolean(根据传入 url 决定), credentials: 'include'(仅 web 端有效)} | 自定义了设置，apiPrefix 为是否添加 chameleon.config.js 中设置的 apiPrefix (以http://或https://或//开头的url默认不会拼接, 其他情况均会自动拼接); jsonp 为 true 时会发起一个 jsonp 请求; credentials 可选值'omit'/'same-origin'/'include', 对应 fetch 的 credentials |
-|   domain    | String |  否  |                                                                                                             |                                网络请求的域名前缀（chameleon-api@0.3.1 开始支持）具体参见<a href="../docs/project.html#api-多域名-mock">API 多域名 Mock</a><br/><b>如果设置了 domain 则 chameleon.config.js 中的 apiPrefix 失效</b>                                |
+|   setting   | Object |  否  | {jsonp: false(仅 Web 端有效), apiPrefix: Boolean(根据传入 url 决定), credentials: 'include'(仅 Web 端有效)} | 自定义了设置，apiPrefix 为是否添加 chameleon.config.js 中设置的 apiPrefix (以http://或https://或//开头的url默认不会拼接, 其他情况均会自动拼接); jsonp 为 true 时会发起一个 jsonp 请求; credentials 可选值'omit'/'same-origin'/'include', 对应 fetch 的 credentials |
+|   domain    | String |  否  |                                                                                                             |                                       网络请求的域名前缀（chameleon-api@0.3.1 开始支持）具体参见 [API 多域名 Mock](../docs/build.md#api-多域名-mock)<br/><b>如果设置了 domain 则 chameleon.config.js 中的 apiPrefix 失效</b>                                       |
 
 #### 返回值
 
@@ -322,14 +322,14 @@ cml
     <td>String</td>
     <td>是</td>
     <td>无</td>
-    <td>应用内页面的路径， <a href="../framework/router.html">路由</a>里面的path值 </td>
+    <td>应用内页面的路径，路由里面的path值 </td>
   </tr>
   <tr>
     <td>query</td>
     <td>Object</td>
     <td>否</td>
     <td>无</td>
-    <td>要传递的参数，可在<b>将进入页面</b>的<a href="../logic/lifecycle.html">beforeCreate</a>里面获取</td>
+    <td>要传递的参数，可在将进入页面的 `beforeCreate` 里面获取</td>
   </tr>
 </table>
 
@@ -368,14 +368,14 @@ cml.navigateTo({
     <td>String</td>
     <td>是</td>
     <td>无</td>
-    <td>应用内页面的路径， 即<a href="../framework/router.html">路由</a>里面的path值 </td>
+    <td>应用内页面的路径， 即路由里面的path值 </td>
   </tr>
   <tr>
     <td>query</td>
     <td>Object</td>
     <td>否</td>
     <td>无</td>
-    <td>要传递给<b>将进入页面</b>参数，可在<b>将进入页面</b>的<a href="../logic/lifecycle.html">beforeCreate</a>里面获取</td>
+    <td>要传递给<b>将进入页面</b>参数，可在<b>将进入页面</b>的 beforeCreate 里面获取</td>
   </tr>
 </table>
 
@@ -418,7 +418,7 @@ cml.redirectTo({
   </tr>
 </table>
 
-###### 举例
+**举例**
 
 ```javascript
 cml.navigateBack(-1);
@@ -504,7 +504,7 @@ cml.removeStorage('name').then(
 
 ## 地理位置
 
-> 注： 在 weex 端，接入 chameleon 客户端 sdk 之后才可以使用该方法
+> 注： 在 Weex 端，接入 CML 客户端 sdk 之后才可以使用该方法
 
 ### getLocationInfo()
 
@@ -548,7 +548,7 @@ cml.getLocationInfo().then((res) => {
 
 ### getSystemInfo()
 
-获取系统信息，至少返回系统类型，如 ios 或 android。
+获取系统信息，至少返回系统类型，如 iOS 或 Android。
 
 #### 参数
 
@@ -556,13 +556,13 @@ cml.getLocationInfo().then((res) => {
 
 #### 返回值
 
-|     返回值     |  类型  |                                                     说明                                                      |
-| :------------: | :----: | :-----------------------------------------------------------------------------------------------------------: |
-|       os       | String |                                    系统类型，ios 或 android。注意是小写。                                     |
-|      env       | String | 所处环境，web，weex，wx（微信小程序），alipay(支付宝小程序)，baidu（百度小程序）,qq(QQ 小程序),tt(头条小程序) |
-| viewportWidth  | Number |                                                    视口宽度                                                   |
-| viewportHeight | Number |                                                    视口高度                                                   |
-|  extraParams   | Object |                                  包含端内 bridge 或小程序 api 返回的所有信息                                  |
+|     返回值     |  类型  |                                                             说明                                                             |
+| :------------: | :----: | :--------------------------------------------------------------------------------------------------------------------------: |
+|       os       | String |                                          系统类型，`ios` 或 `android`。注意是小写。                                          |
+|      env       | String | 所处环境，`web`，`weex`，`wx`（微信小程序），`alipay`(支付宝小程序)，`baidu`（百度小程序）,`qq`(QQ 小程序)，`tt`(头条小程序) |
+| viewportWidth  | Number |                                                           视口宽度                                                           |
+| viewportHeight | Number |                                                           视口高度                                                           |
+|  extraParams   | Object |                                         包含端内 bridge 或小程序 api 返回的所有信息                                          |
 
 #### 举例
 
@@ -802,7 +802,7 @@ cml
 
 ### setTitle()
 
-设置当前页面的 title（在 weex 端请使用 page 组件的 title 属性来设置 title）
+设置当前页面的 title（在 Weex 端请使用 page 组件的 title 属性来设置 title）
 
 #### 参数
 
@@ -828,11 +828,11 @@ cml.setTitle('我是标题');
 
 #### 参数
 
-|      参数名       |  类型  | 必填 | 默认值 |                                说明                                |
-| :---------------: | :----: | :--: | :----: | :----------------------------------------------------------------: |
-|        url        | String |  是  |   无   | <a href="../framework/chameleon_url.html">chameleon 地址</a>带参数 |
-| commonPatchParams | Object |  否  |   无   |  额外传入的需要同时添加到各个端的参数 ，可用于业务代码自定义添加   |
-|   extraOptions    | Object |  否  |   无   |  额外传入的配置，closeCurrent: true 会关闭当前页面后再打开新页面   |
+|      参数名       |  类型  | 必填 | 默认值 |                              说明                               |
+| :---------------: | :----: | :--: | :----: | :-------------------------------------------------------------: |
+|        url        | String |  是  |   无   |                          cmlUrl 带参数                          |
+| commonPatchParams | Object |  否  |   无   | 额外传入的需要同时添加到各个端的参数 ，可用于业务代码自定义添加 |
+|   extraOptions    | Object |  否  |   无   | 额外传入的配置，closeCurrent: true 会关闭当前页面后再打开新页面 |
 
 #### 返回值
 
@@ -855,10 +855,10 @@ cml.open(
 
 ### close()
 
-这个方法设计的初衷是关闭当前“单页面应用”。如果是你要在页面应用中返回上个页面，请使用[navigate](navigate.md) api 来后退。
+这个方法设计的初衷是关闭当前“单页面应用”。如果是你要在页面应用中返回上个页面，请使用 `navigate` 来后退。
 注意：在浏览器端，该功能  属于部分支持。
 
-> 注： 在 weex 端，接入 chameleon 客户端 sdk 之后才可以使用该方法
+> 注： 在 Weex 端，接入 CML 客户端 sdk 之后才可以使用该方法
 
 #### 参数
 
@@ -878,7 +878,7 @@ cml.close();
 
 通过拍照，相册，拍照相册二选一 3 种方式选择照片数据
 
-> 注： 在 weex 端，接入 chameleon 客户端 sdk 之后才可以使用该方法
+> 注： 在 Weex 端，接入 CML 客户端 sdk 之后才可以使用该方法
 
 ### chooseImage()
 
@@ -887,7 +887,7 @@ cml.close();
 | 参数            | 类型     | 必填 | 说明                                                                                                       |
 | --------------- | -------- | ---- | ---------------------------------------------------------------------------------------------------------- |
 | params.type     | String   | 是   | 类型 camera(相机)，album(相册)，choice(菜单选择) 注意 web 在端外使用 js 方式，故默认使用拍照相册二选一方式 |
-| callbackSuccess | Function | 是   | 获取返回的数据回调，返回参数包含 web 和 weex 使用返回的 base64 数据, 小程序使用返回的 tempFilePaths 字段   |
+| callbackSuccess | Function | 是   | 获取返回的数据回调，返回参数包含 Web 和 Weex 使用返回的 base64 数据, 小程序使用返回的 tempFilePaths 字段   |
 | callbackFail    | Function | 否   | 调用发生失败信息                                                                                           |
 
 #### 示例
@@ -964,7 +964,7 @@ cml.getClipBoardData().then((res) => {
 
 ## WebSocket
 
-> 注： 在 weex 端，接入 chameleon 客户端 sdk 之后才可以使用该方法
+> 注： 在 Weex 端，接入 CML 客户端 sdk 之后才可以使用该方法
 
 ### initSocket()
 
@@ -1131,7 +1131,7 @@ clearInterval(timer);
 
 ## canIUse
 
-用来查询某个方法 chameleon 是否支持。调用此方法，并传入你想知道是否支持的方法名。
+用来查询某个方法 CML 是否支持。调用此方法，并传入你想知道是否支持的方法名。
 
 ### canIUse()
 
@@ -1165,7 +1165,7 @@ const promise = new Promise((resolve, reject) => {
 });
 ```
 
-### async，await
+### async, await
 
 ```javascript
 const sleep = function(time) {
@@ -1186,7 +1186,7 @@ start();
 
 ## 错误处理
 
-在跨端的代码的书写中，你可以使用 try catch，Promise.catch()来进行错误的处理，但不可以在小程序和 weex 端的代码里出现 window.onerror 方法 。
+在跨端的代码的书写中，你可以使用 try catch，Promise.catch()来进行错误的处理，但不可以在小程序和 Weex 端的代码里出现 window.onerror 方法 。
 
 ### promise.then().catch((e) => {})
 
@@ -1226,7 +1226,7 @@ try {
 
 ### requestAnimationFrame()
 
-方法告诉客户在下一次重绘之前需要调用的函数。（回调次数：web 端通常是每秒 60 次，大多数浏览器通常匹配 W3C 所建议的刷新频率，其它端为 60 次）
+方法告诉客户在下一次重绘之前需要调用的函数。（回调次数：Web 端通常是每秒 60 次，大多数浏览器通常匹配 W3C 所建议的刷新频率，其它端为 60 次）
 
 #### 参数
 
@@ -1252,7 +1252,7 @@ try {
 
 ### createAnimation()
 
-返回一个动画实例 [animation](/api/createAnimation/animation/main.md)。调用实例的方法来描述动画。最后通过实例的 export 方法导出动画数据传递给目标组件的 c-animation 属性。
+返回一个动画实例 animation。调用实例的方法来描述动画。最后通过实例的 export 方法导出动画数据传递给目标组件的 c-animation 属性。
 
 #### 参数
 
@@ -1276,9 +1276,9 @@ try {
 
 #### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 ### animation 方法
 
@@ -1325,9 +1325,9 @@ try {
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 #### animation.rotate()
 
@@ -1341,9 +1341,9 @@ try {
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1404,9 +1404,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1467,9 +1467,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1530,9 +1530,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1594,9 +1594,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1657,9 +1657,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1720,9 +1720,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1784,9 +1784,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1802,9 +1802,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1820,9 +1820,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1839,9 +1839,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1902,9 +1902,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -1965,9 +1965,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 > 注： 调用 export 方法后不会清除该样式
 
@@ -2028,9 +2028,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 ##### 示例
 
@@ -2089,9 +2089,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 ##### 示例
 
@@ -2150,9 +2150,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 ##### 示例
 
@@ -2211,9 +2211,9 @@ export default new Index();
 
 ##### 返回值
 
-|                        返回值                       |   类型    |   说明   |
-| :-------------------------------------------------: | :-------: | :------: |
-| [animation](/api/createAnimation/animation/main.md) | animation | 动画实例 |
+|   返回值  |   类型    |   说明   |
+| :-------: | :-------: | :------: |
+| animation | animation | 动画实例 |
 
 ##### 示例
 
@@ -2317,20 +2317,18 @@ export default new Index();
 
 <div style="display: flex;flex-direction: row;justify-content: space-around; align-items: flex-end;">
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/animation_wx.png" width="200px" height="100%" />
+    <img src="../images/animation_wx.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">wx</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/animation_web.png" width="200px" height="100%"/>
+    <img src="../images/animation_web.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">web</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/animation_weex.jpeg" width="200px" height="100%"/>
+    <img src="../images/animation_weex.jpeg" width="200px" />
     <text style="color: #fda775;font-size: 24px;">native</text>
   </div>
 </div>
-
-[查看完整示例](../tutorial/animation.md)
 
 ## Store
 
@@ -2351,7 +2349,7 @@ export default store;
 
 类型: Object
 
-chameleon store 实例的根 state 对象。[详细介绍](../docs/store.md#state)
+CML Store 实例的根 `state` 对象。[详细介绍](../docs/store.md#state)
 
 #### mutations
 
@@ -2435,7 +2433,7 @@ rootGetters, // 所有 getters
 
 #### store.commit()
 
-提交 mutation。 [详细介绍](../docs/store.md#mutation)
+提交 mutation。[详细介绍](../docs/store.md#mutation)
 
 ##### 参数说明
 
@@ -2538,7 +2536,7 @@ store.dispatch('incrementAsync');
 
 #### store.mapState()
 
-为组件创建计算属性以返回 chameleon store 中的状态。[详细介绍](../docs/store.md#state)
+为组件创建计算属性以返回 CML store 中的状态。[详细介绍](../docs/store.md#state)
 
 ##### 参数说明
 

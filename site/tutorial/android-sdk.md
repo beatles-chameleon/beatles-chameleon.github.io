@@ -1,10 +1,10 @@
-# CML Android SDK 使用范例
+# Android CML SDK 使用范例
 
-以一个小 Demo 工程，讲述 CML Android SDK 的使用方式，引领轻松入门。<font color=#FF0000>Demo 工程在根目录 app 目录下</font>，用 Android Studio 导入并 run 起来后，再对照以下说明文档看会好理解。
+以一个小 Demo 工程，讲述 Android CML SDK 的使用方式，引领轻松入门。<font color=#FF0000>Demo 工程在根目录 app 目录下</font>，用 Android Studio 导入并 run 起来后，再对照以下说明文档看会好理解。
 
 <font color=#FF0000>根目录 assets 目录下的 cml-demo-say.zip 是个简单的示例工程</font>
 
-用来演示 native 和 weex 容器或 web 容器的双向通信。app 目录下 demo 工程加载的 weex bundle 和 h5 页就是这个工程实现的。
+用来演示 Native 和 Weex 容器或 web 容器的双向通信。app 目录下 Demo 工程加载的 Weex bundle 和 H5 页就是这个工程实现的。
 
 ## compile 依赖添加
 
@@ -33,7 +33,7 @@ allprojects {
 }
 ```
 
-### 在 app 模块的 build.gradle 里添加依赖
+### 在 App 模块的 build.gradle 里添加依赖
 
 #### 首先添加如下依赖
 
@@ -50,7 +50,7 @@ dependencies {
 
 #### 添加渲染引擎依赖
 
-cml native sdk 采用 weex 作为渲染引擎，当前依赖的 weex 版本是
+CML Native SDK 采用 Weex 作为渲染引擎，当前依赖的 Weex 版本是
 
 - weex -> com.taobao.android:weex_sdk:0.20.0.2
 
@@ -63,9 +63,9 @@ dependencies {
 
 com.android.tools.build:gradle 3.0 以后的版本用 `implementation` 替换 `compile`，完整的依赖列表可参考示例工程。
 
-## 权限添加及 android 6.0 以上系统授权
+## 权限添加及 Android 6.0 以上系统授权
 
-Chameleon SDK 已经添加了如下权限，android 6.0 以上系统版本需要在调起相关页面后手动授权。
+CML SDK 已经添加了如下权限，android 6.0 以上系统版本需要在调起相关页面后手动授权。
 
 ```gradle
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -147,25 +147,25 @@ public class MyApplication extends Application implements CmlConfig {
 
 ### Module 的实现
 
-module 的基本概念可参看[这里](../chameleon_client/android/module.md), SDK 层实现在如下位置：
+module 的基本概念可参看[这里](../docs/sdk.md#module-的使用), SDK 层实现在如下位置：
 
 ![image](../images/sdk/cml_doc_android_03.png)
 
-module 的实现主要分两个步骤，一个是 native 侧的代码实现，一个是 js 侧的代码实现。同时，native 和 js 的通信是双向的，及 native 可以主动调用 js 侧的方法，js 侧也可以主动调用 native 侧的方法。
+module 的实现主要分两个步骤，一个是 Native 侧的代码实现，一个是 js 侧的代码实现。同时，native 和 js 的通信是双向的，及 Native 可以主动调用 js 侧的方法，js 侧也可以主动调用 Native 侧的方法。
 
 ![image](../images/sdk/cml_doc_android_04.png)
 
-#### native 侧的实现
+#### Native 侧的实现
 
-<font color=#FF0000>以下内容请在 Chameleon SDK demo 运行起来的前提下阅读，方便理解即将描述的内容。</font>
+<font color=#FF0000>以下内容请在 CML SDK Demo 运行起来的前提下阅读，方便理解即将描述的内容。</font>
 
 实现一个 Module 扩展需要如下几个步骤：
 
 - 根据需求和前端 RD 确定 module/method/args 参数
-- native RD 根据约定实现 Module 扩展，前端 RD 根据约定实现 js 并打包成 jsbundle
-- native RD 可以将 jsbundle 放到 assets 目录下加载调试，也可以远程加载调试
+- Native RD 根据约定实现 Module 扩展，前端 RD 根据约定实现 js 并打包成 jsbundle
+- Native RD 可以将 jsbundle 放到 assets 目录下加载调试，也可以远程加载调试
 
-demo 实现了双向通信，js 调用 native 接口约定如下 [(module 的概念)](../chameleon_client/android/module.md):
+demo 实现了双向通信，js 调用 Native 接口约定如下[(module 的概念)](../docs/sdk.md#module-的使用):
 
 - Module 名是 `moduleDemo`
 - method 名是 `sayHello`
@@ -179,7 +179,7 @@ native 调用 js 接口约定如下:
 - method 名是 `NaTellJS`
 - args 名是 `{"content":"测试"}`
 
-实现的效果是点击 native 侧的按钮，会动态改变 jsbundle 里的文字显示。
+实现的效果是点击 Native 侧的按钮，会动态改变 jsbundle 里的文字显示。
 
 module 的实现需要先了解 3 个注解
 
@@ -214,7 +214,7 @@ public class MyApplication extends Application implements CmlConfig {
 }
 ```
 
-从前端 RD 拿到 JSBundle， 进行渲染，重点关注 demo 工程里 CmlViewActivity
+从前端 RD 拿到 JSBundle， 进行渲染，重点关注 Demo 工程里 CmlViewActivity
 
 ```
 private static final String URL_JS_BUNDLE_OK = "https://www.example.com/degradle.html?cml_addr=http://172.22.138.92:8000/weex/cml-demo-say.js";
@@ -243,7 +243,7 @@ cml init project
 请输入项目名称 cml-demo-say
 ```
 
-2.打开项目下 src/pages/index/index.cml 文件，粘贴以下代码。以下代码主要是展示了 js 和 native 双向的通信的方法实现。先粘贴，然后我们在下面介绍通信封装的原理。
+2.打开项目下 src/pages/index/index.cml 文件，粘贴以下代码。以下代码主要是展示了 js 和 Native 双向的通信的方法实现。先粘贴，然后我们在下面介绍通信封装的原理。
 
 ```
 <template>
@@ -285,7 +285,7 @@ class Index {
       cmlBridge.callNative(
         'moduleDemo', // 模块名
         'sayHello', // 方法名
-        { content: 'Hello Chameleon!' }, // 参数
+        { content: 'HelloCML' }, // 参数
         res => {
           this.callbackRes = res;
         } // 回调方法
@@ -331,7 +331,7 @@ export default new Index();
 </script>
 ```
 
-3.你可以运行`cml weex dev`或者`cml weex build`命令，将 jsbundle 文件的在线地址或本地文件给到 Native 同学，按照上面 Native 部分提到的集成方式（本地或远程地址）进行联调。点击第一项的按钮你可以看到，客户端弹出了"Hello Chameleon!"的弹框。同时在`callback返回内容:`后返回了内容。点击 Native 端的“改变文字”按钮，在页面上的“状态：”后显示了客户端发来的“测试”字样。
+3.你可以运行`cml weex dev`或者`cml weex build`命令，将 jsbundle 文件的在线地址或本地文件给到 Native 同学，按照上面 Native 部分提到的集成方式（本地或远程地址）进行联调。点击第一项的按钮你可以看到，客户端弹出了"HelloCML"的弹框。同时在`callback返回内容:`后返回了内容。点击 Native 端的“改变文字”按钮，在页面上的“状态：”后显示了客户端发来的“测试”字样。
 
 4.接下来我们看一下原理：
 
@@ -342,14 +342,14 @@ export default new Index();
 
 ##### JS 主动调用 Native 方法
 
-首先看 methods 里我们通过`chameleon-bridge`提供的 callNative 方法实现了 sayHello 方法，让 js 与 native 主动通信。
+首先看 methods 里我们通过`chameleon-bridge`提供的 callNative 方法实现了 sayHello 方法，让 js 与 Native 主动通信。
 
 ```
 sayHello() {
     cmlBridge.callNative(
         'moduleDemo', // 模块名
         'sayHello', // 方法名
-        { content: 'Hello Chameleon!' }, // 参数
+        { content: 'HelloCML' }, // 参数
         res => {
             this.callbackRes = res;
         } // 回调方法
@@ -357,7 +357,7 @@ sayHello() {
 }
 ```
 
-这样就调用到了 native 的模块名为 moduleDemo 的模块的 sayHello 方法，同时 native 会回调我们。**当然你还可以封装到其他目录，作为统一扩展的 api 来存放并引入到项目文件中使用。**
+这样就调用到了 Native 的模块名为 moduleDemo 的模块的 sayHello 方法，同时 Native 会回调我们。**当然你还可以封装到其他目录，作为统一扩展的 api 来存放并引入到项目文件中使用。**
 
 ##### 监听 Native 调用 js
 
@@ -404,7 +404,7 @@ public void configAdapter() {
 
 ## 页面调起
 
-### 整个页面使用 Chameleon 容器实现
+### 整个页面使用 CML 容器实现
 
 ```java
 CmlEngine.getInstance().launchPage(activity, url, options);
@@ -480,7 +480,7 @@ CmlView 用在和原生 Native View 混合布局的场景，
 
 ### 打开 JS Bundle
 
-如果打开的是 JS Bundle URL，则会自动使用 native 渲染引擎调起 native Container，渲染 JS Bundle
+如果打开的是 JS Bundle URL，则会自动使用 Native 渲染引擎调起 Native Container，渲染 JS Bundle
 
 ```
     // 这是一个可以正常打开的 JS_BUNDLE
@@ -501,7 +501,7 @@ CmlView 用在和原生 Native View 混合布局的场景，
 
 ### 预加载
 
-如果打开的是一个已经预加载过的 JS Bundle URL，则会忽略下载过程，直接使用 native 渲染引擎渲染界面
+如果打开的是一个已经预加载过的 JS Bundle URL，则会忽略下载过程，直接使用 Native 渲染引擎渲染界面
 
 ```
     // 这是一个测试预加载的 JS_BUNDLE
@@ -524,7 +524,7 @@ CmlView 用在和原生 Native View 混合布局的场景，
 
 如果打开的是一个错误的 JS Bundle URL，则会自动降级，使用 CmlWebEngine 调起 Web Container，渲染前面 H5 地址页面，具体可以查看
 
-- 工程化 -> Chameleon URL 一节关于，Chameleon URL 的定义
+- 工程化 -> cmlUrl 一节关于，cmlUrl 的定义
 - Native 渲染能力接入 -> 自动降级 一节，关于自动降级的详细说明
 
 ```

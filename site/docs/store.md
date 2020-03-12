@@ -18,7 +18,7 @@ Chameleon 内置 store 并不限制你的代码结构。但是，它规定了一
 
 只要你遵守以上规则，如何组织代码随你便。如果你的 store 文件太大，只需将 action、mutation 和 getter 分割到单独的文件。
 
-对于大型应用，我们会希望把 Chameleon 相关代码分割到模块中。下面是项目结构示例：
+对于大型应用，我们会希望把 CML 相关代码分割到模块中。下面是项目结构示例：
 
 ```bash
 ├── app
@@ -45,7 +45,7 @@ Chameleon 内置 store 并不限制你的代码结构。但是，它规定了一
 
 “store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state)。store 和单纯的全局对象有以下两点不同：
 
-1. store 的状态存储是响应式的。当 chameleon 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。
+1. store 的状态存储是响应式的。当 CML 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。
 
 2. 你不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。
 
@@ -81,7 +81,7 @@ console.log(store.state.count); // -> 1
 
 由于 store 中的状态是响应式的，在组件中调用 store 中的状态简单到仅需要在计算属性中返回即可。触发变化也仅仅是在组件的 methods 中提交 mutation。
 
-接下来，我们将会更深入地探讨一些核心概念。让我们先从 [State](state.md) 概念开始。
+接下来，我们将会更深入地探讨一些核心概念。让我们先从[State](#state)概念开始。
 
 类似 Vuex 数据理念和语法规范，chameleon-store 主要有以下核心概念：
 
@@ -93,9 +93,9 @@ chameleon-store 用一个对象就包含了全部的应用层级状态。单一�
 
 单状态树和模块化并不冲突——在后面的章节里我们会讨论如何将状态和状态变更事件分布到各个子模块中。
 
-### 在 chameleon 组件中获得 store 状态
+### 在 CML 组件中获得 store 状态
 
-那么我们如何在 chameleon 组件中展示状态呢？由于 chameleon 内置的 store 的状态存储是响应式的，从 store 实例中读取状态最简单的方法就是在计算属性中返回某个状态：
+那么我们如何在 CML 组件中展示状态呢？由于 CML 内置的 store 的状态存储是响应式的，从 store 实例中读取状态最简单的方法就是在计算属性中返回某个状态：
 
 ```js
 import store from '../store';
@@ -116,7 +116,7 @@ const Counter = {
 当一个组件需要获取多个状态时候，将这些状态都声明为计算属性会有些重复和冗余。为了解决这个问题，我们可以使用 `mapState` 辅助函数帮助我们生成计算属性，让你少按几次键：
 
 ```js
-// 在单独构建的版本中辅助函数为 chameleon内置的store.mapState
+// 在单独构建的版本中辅助函数为 CML 内置的store.mapState
 import store from '../store';
 
 class Index {
@@ -174,7 +174,7 @@ export default new Index();
 
 ### 组件仍然保有局部状态
 
-使用 chameleon 内置的 store 并不意味着你需要将**所有的**状态放入`store`。虽然将所有的状态放到 chameleon 内置的 store 会使状态变化更显式和易调试，但也会使代码变得冗长和不直观。如果有些状态严格属于单个组件，最好还是作为组件的局部状态。你应该根据你的应用开发需要进行权衡和确定。
+使用 CML 内置的 store 并不意味着你需要将**所有的**状态放入`store`。虽然将所有的状态放到 CML 内置的 store 会使状态变化更显式和易调试，但也会使代码变得冗长和不直观。如果有些状态严格属于单个组件，最好还是作为组件的局部状态。你应该根据你的应用开发需要进行权衡和确定。
 
 ## Getter
 
@@ -292,7 +292,7 @@ store.mapGetters({
 
 ## Mutation
 
-更改 chameleon 内置 store 的 store 中的状态的唯一方法是提交 mutation。chameleon 内置 store 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 **事件类型 (type)** 和 一个 **回调函数 (handler)**。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数：
+更改 CML 内置 store 的 store 中的状态的唯一方法是提交 mutation。chameleon 内置 store 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 **事件类型 (type)** 和 一个 **回调函数 (handler)**。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数：
 
 ```js
 import createStore from 'chameleon-store';
@@ -352,9 +352,9 @@ store.commit('increment', {
 });
 ```
 
-### Mutation 需遵守 Chameleon 的响应规则
+### Mutation 需遵守 CML 的响应规则
 
-既然 chameleon 内置 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 Chameleon 组件也会自动更新。这也意味着 chameleon 内置 store 中的 mutation 也需要与使用 Chameleon 一样遵守一些注意事项：
+既然 CML 内置 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 CML 组件也会自动更新。这也意味着 CML 内置 store 中的 mutation 也需要与使用 CML 一样遵守一些注意事项：
 
 1. 最好提前在你的 store 中初始化好所有所需属性。
 
@@ -435,7 +435,7 @@ createComponent({
 
 ### 下一步：Action
 
-在 mutation 中混合异步调用会导致你的程序很难调试。例如，当你调用了两个包含异步回调的 mutation 来改变状态，你怎么知道什么时候回调和哪个先回调呢？这就是为什么我们要区分这两个概念。在 chameleon 内置 store 中，**mutation 都是同步事务**：
+在 mutation 中混合异步调用会导致你的程序很难调试。例如，当你调用了两个包含异步回调的 mutation 来改变状态，你怎么知道什么时候回调和哪个先回调呢？这就是为什么我们要区分这两个概念。在 CML 内置 store 中，**mutation 都是同步事务**：
 
 ```js
 store.commit('increment');
@@ -474,7 +474,7 @@ export default store;
 
 Action 函数接受一个 context 对象，因此你可以调用 `context.commit` 提交一个 mutation，或者通过 `context.rootState`、`context.state` 和 `context.getters` 来获取全局 state、局部 state 和 全局 getters。
 
-实践中，我们会经常用到 ES2015 的 [参数解构](https://github.com/lukehoban/es6features#destructuring) 来简化代码（特别是我们需要调用 `commit` 很多次的时候）：
+实践中，我们会经常用到 ES2015 的[参数解构](https://github.com/lukehoban/es6features#destructuring)来简化代码（特别是我们需要调用 `commit` 很多次的时候）：
 
 ```js
 actions: {
@@ -599,7 +599,7 @@ actions: {
 }
 ```
 
-最后，如果我们利用 [async / await](https://tc39.github.io/ecmascript-asyncawait/)，我们可以如下组合 action：
+最后，如果我们利用[async / await](https://tc39.github.io/ecmascript-asyncawait/)，我们可以如下组合 action：
 
 ```js
 // 假设 getData() 和 getOtherData() 返回的是 Promise
@@ -714,7 +714,7 @@ store.registerModule('myModule', {
 
 ## API
 
-查看 [chameleon-store 相关 API](../api/#Store)。
+查看[chameleon-store 相关 API](../api/#store)。
 
 **`ChameleonStore.createStore(options: Object): Object`**
 

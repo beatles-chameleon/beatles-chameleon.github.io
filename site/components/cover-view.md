@@ -33,7 +33,7 @@ cover-view 标签在各端的映射如下
 </template>
 ```
 
-web/weex 端渲染结果
+web/Weex 端渲染结果
 
 ```vue
 <template>

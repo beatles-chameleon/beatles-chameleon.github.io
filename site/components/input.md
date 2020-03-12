@@ -138,7 +138,7 @@
     </tr>
 </table>
 
-#####type 的有效值：
+##### type 的有效值：
 
 <table>
     <tr>
@@ -159,7 +159,7 @@
     </tr>
 </table>
 
-#####return-key-type 的有效值：
+##### return-key-type 的有效值：
 
 <table>
     <tr>
@@ -220,20 +220,20 @@ export default new Input();
 
 <div style="display: flex;flex-direction: row;justify-content: space-around; align-items: flex-end;">
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/input.png" width="200px" height="100%" />
+    <img src="../images/input.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">wx</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/input_web.png" width="200px" height="100%"/>
+    <img src="../images/input_web.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">web</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/input_weex.jpeg" width="200px" height="100%"/>
+    <img src="../images/input_weex.jpeg" width="200px" />
     <text style="color: #fda775;font-size: 24px;">native</text>
   </div>
 </div>
 
 ### Bug & Tips
 
-1. `<input>`web 端不支持自动 focus
-2. `<input>`return-key-type 字段 web 端不支持
+1. `<input>`Web 端不支持自动 focus
+2. `<input>`return-key-type 字段 Web 端不支持

@@ -1,15 +1,15 @@
-## 快应用体验
+# 快应用体验
 
-### 快应用初试
+## 快应用初试
 
-Chameleon 官方的体验 demo 项目源仓库如下：
+CML 官方的体验 Demo 项目源仓库如下：
 
-[cml-demo](https://github.com/beatles-chameleon/cml-demo/tree/master-quickapp)
-[cml-flexbox](https://github.com/chameleon-team/cml-flexbox/tree/master-quickapp)
-[cml-yanxuan](https://github.com/chameleon-team/cml-yanxuan/tree/master-tt)
-[cml-todomvc](https://github.com/chameleon-team/cml-todomvc/tree/master-quickapp)
+- [cml-demo](https://github.com/beatles-chameleon/cml-demo/tree/master-quickapp)
+- [cml-flexbox](https://github.com/chameleon-team/cml-flexbox/tree/master-quickapp)
+- [cml-yanxuan](https://github.com/chameleon-team/cml-yanxuan/tree/master-tt)
+- [cml-todomvc](https://github.com/chameleon-team/cml-todomvc/tree/master-quickapp)
 
-**注意：需要切换到 `master-quickapp`分支**
+**注意：需要切换到 `master-quickapp` 分支**
 
 以上四个项目编译打包后的快应用 `.rpk` 文件地址如下：
 
@@ -20,12 +20,12 @@ Chameleon 官方的体验 demo 项目源仓库如下：
 对于普通用户或开发者来说，如果想要在快应用端进行体验，需要满足以下条件：
 
 - 拥有一台 Android 操作系统的移动设备
-- 在移动设备上下载并安装最新版 [快应用预览版 APP](https://www.quickapp.cn/docCenter/post/69) ，当前最新版本为[1050.10](https://statres.quickapp.cn/quickapp/quickapp/201806/file/quickapp_platform_preview_release_v1050.01.apk)
-- 将以上 demo 项目编译打包生成的 `.rpk` 文件放入移动设备的 `/sdcard/rpks` 文件夹，再次打开预览版即可体验
+- 在移动设备上下载并安装最新版[快应用预览版 APP](https://www.quickapp.cn/docCenter/post/69)，当前最新版本为[1050.10](https://statres.quickapp.cn/quickapp/quickapp/201806/file/quickapp_platform_preview_release_v1050.01.apk)
+- 将以上 Demo 项目编译打包生成的 `.rpk` 文件放入移动设备的 `/sdcard/rpks` 文件夹，再次打开预览版即可体验
 
 <div style="display: flex;flex-direction: row;justify-content: space-around">
-	<img src="https://raw.githubusercontent.com/quickappcn/cml-extplatform-quickapp/master/rpks.jpg" width="200px" height="100%" />
-	<img src="https://raw.githubusercontent.com/quickappcn/cml-extplatform-quickapp/master/preview.jpg" width="200px" height="100%" />
+	<img src="https://raw.githubusercontent.com/quickappcn/cml-extplatform-quickapp/master/rpks.jpg" width="200px" />
+	<img src="https://raw.githubusercontent.com/quickappcn/cml-extplatform-quickapp/master/preview.jpg" width="200px" />
 </div>
 
 在快应用端的预览效果如下：
@@ -37,19 +37,19 @@ Chameleon 官方的体验 demo 项目源仓库如下：
   <img src="https://raw.githubusercontent.com/quickappcn/cml-extplatform-quickapp/master/todo.png" width="200px"  height="400px"/>
 </div>
 
-### 接入快应用
+## 接入快应用
 
-首先要求具备一整套快应用开发工具链，参考链接：https://www.quickapp.cn/docCenter/post/69，这其中包括快应用调试器、快应用预览版、hap-toolkit 构建工具等；使用 [快应用示例代码](https://github.com/quickappcn/sample) 可以检验环境是否就绪；快应用的开发环境就绪之后才开始进行 chameleon 项目的引入和部署。
+首先要求具备一整套快应用开发工具链，参考链接：https://www.quickapp.cn/docCenter/post/69，这其中包括快应用调试器、快应用预览版、hap-toolkit 构建工具等；使用[快应用示例代码](https://github.com/quickappcn/sample)可以检验环境是否就绪；快应用的开发环境就绪之后才开始进行 CML 项目的引入和部署。
 
 **基于以下步骤配置之后，既有的 CML 项目可以直接在快应用运行**
 
-#### 全局安装最新的 chameleon-tool 工具
+### 全局安装最新的 chameleon-tool 工具
 
 ```javascript
 npm i -g chameleon-tool
 ```
 
-#### 启动快应用服务
+### 启动快应用服务
 
 此处以及下文均以 `quickapp-demo` 为例命名该快应用项目，并以 `~` 目录为例启动快应用服务，此外，建议开发者在快应用项目根目录 `~/quickapp-demo/` 执行 `hap watch`，进行代码热更新。
 
@@ -61,9 +61,9 @@ cd ~/quickapp-demo
 hap watch # 热更新
 ```
 
-#### 安装和更新 package
+### 安装和更新 package
 
-克隆 chameleon 官方的 demo 项目到本地，此处以 [cml-flexbox](https://github.com/chameleon-team/cml-flexbox/tree/master-quickapp) 项目为例。切换到 `master-quickapp` 分支，修改 `package.json` 文件。
+克隆 CML 官方的 Demo 项目到本地，此处以[cml-flexbox](https://github.com/chameleon-team/cml-flexbox/tree/master-quickapp)项目为例。切换到 `master-quickapp` 分支，修改 `package.json` 文件。
 
 ```bash
 git clone https://github.com/chameleon-team/cml-flexbox.git
@@ -92,7 +92,7 @@ git checkout master-quickapp
 "cml-quickapp-store": "1.0.0"
 ```
 
-#### 修改 **`app.cml`** 文件，增加快应用 **`manifest.json` 文件对应的配置**
+### 修改 **`app.cml`** 文件，增加快应用 **`manifest.json` 文件对应的配置**
 
 ```bash
 vim ~/cml-flexbox/src/app/app.cml
@@ -248,9 +248,9 @@ vim ~/cml-flexbox/src/app/app.cml
 </script>
 ```
 
-此配置对应快应用项目中的 **`manifest.json`** 文件，详细文档参考：[manifest 文件](https://doc.quickapp.cn/framework/manifest.md)
+此配置对应快应用项目中的 **`manifest.json`** 文件，详细文档参考：[manifest 文件](https://doc.quickapp.cn/framework/manifest.html)
 
-#### 修改 chameleon.config.js 配置文件
+### 修改 chameleon.config.js 配置文件
 
 **1. 引入 path 模块**
 
@@ -292,7 +292,7 @@ babelPath：要过 babel 处理的 npm 包
 
 **3. 导入基础样式**
 
-如果需要引入基础样式，需要增加 `quickapp: true` 的配置，参考 [工程配置-baseStyle](https://cml.js.org/doc/framework/config.html?h=basestyle)
+如果需要引入基础样式，需要增加 `quickapp: true` 的配置。
 
 ```json
 baseStyle:{
@@ -306,7 +306,7 @@ baseStyle:{
 },
 ```
 
-#### 修改项目代码
+### 修改项目代码
 
 **1. 修改项目中相关包的引用**
 
@@ -455,7 +455,7 @@ export default new Method();
 </script>
 ```
 
-#### 快应用启动命令
+### 快应用启动命令
 
 快应用支持的命令有
 

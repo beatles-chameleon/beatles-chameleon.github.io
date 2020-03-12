@@ -103,11 +103,11 @@ export default new Index();
 
 chameleon 布局模型基于 CSS Flexbox，以便所有页面元素的排版能够一致可预测，同时页面布局能适应各种设备或者屏幕尺寸。
 
-Flexbox 包含 flex 容器和 flex 成员项。如果一个 chameleon 元素可以容纳其他元素，那么它就成为 flex 容器。需要注意的是，flexbox 的老版规范相较新版有些出入，比如是否能支持 wrapping。这些都描述在 W3C 的工作草案中了，你需要注意下新老版本之间的不同。
+Flexbox 包含 flex 容器和 flex 成员项。如果一个 CML 元素可以容纳其他元素，那么它就成为 flex 容器。需要注意的是，flexbox 的老版规范相较新版有些出入，比如是否能支持 wrapping。这些都描述在 W3C 的工作草案中了，你需要注意下新老版本之间的不同。
 
 #### 容器
 
-在 chameleon 中，Flexbox 是默认且唯一的布局模型，所以你不需要手动为元素添加 display: flex; 属性。
+在 CML 中，Flexbox 是默认且唯一的布局模型，所以你不需要手动为元素添加 display: flex; 属性。
 
 - flex-direction：
 
@@ -208,7 +208,7 @@ export default new Index();
 
 ## 定位
 
-chameleon 支持 position 定位，用法与 CSS position 类似。为元素设置 position 后，可通过 top、right、bottom、left 四个属性设置元素坐标。
+CML 支持 position 定位，用法与 CSS position 类似。为元素设置 position 后，可通过 top、right、bottom、left 四个属性设置元素坐标。
 
 - position {string}：
 
@@ -281,7 +281,7 @@ chameleon 中盒模型`box-sizing`默认为`border-box`，即宽度包含内容�
 
 <img src="../images/css-boxmodel.png" style="margin-left:150px;">
 
-chameleon 盒模型基于 CSS 盒模型，每个 chameleon 元素都可视作一个盒子。我们一般在讨论设计或布局时，会提到「盒模型」这个概念。
+chameleon 盒模型基于 CSS 盒模型，每个 CML 元素都可视作一个盒子。我们一般在讨论设计或布局时，会提到「盒模型」这个概念。
 
 盒模型描述了一个元素所占用的空间。每一个盒子有四条边界：外边距边界 margin edge, 边框边界 border edge, 内边距边界 padding edge 与内容边界 content edge。这四层边界，形成一层层的盒子包裹起来，这就是盒模型大体上的含义。
 
@@ -403,9 +403,9 @@ chameleon 盒模型的 box-sizing 默认为 border-box，即盒子的宽高包�
 
 为了统一多端尺寸单位，呈现效果一致，同时页面响应式，项目中统一采用`cpx`作为尺寸单位，规定以屏幕 750px（占满屏幕）视觉稿作为标准。
 
-禁止 [`.cml`](cml.md) 组件中使用 `px`，若要使用请使用[多态协议](#样式多态)。
+禁止[`.cml`](cml.md)组件中使用 `px`，若要使用请使用多态协议。
 
-在 chameleon 项目中，我们使用`cpx`作为统一的长度单位。`cpx`可以根据  屏幕宽度自适应，我们规定屏幕宽度为 750cpx。你也可以在  多态组件灰度层使用某一端的长度单位。
+在 CML 项目中，我们使用`cpx`作为统一的长度单位。`cpx`可以根据  屏幕宽度自适应，我们规定屏幕宽度为 750cpx。你也可以在  多态组件灰度层使用某一端的长度单位。
 
 ### 使用 cpx 设置元素宽度高度
 
@@ -492,8 +492,6 @@ export default new Test()
 
 - rgb(a,b,c) 或 rgba(a,b,c,d) 的性能比其他颜色格式差很多，请选择合适的颜色格式。
 
-颜色名称可查看：[颜色列表](#颜色)
-
 ### number 单位
 
 仅仅一个数字。用于 opacity，lines 等。
@@ -504,7 +502,7 @@ export default new Test()
 
 表示百分比值，如“50％”，“66.7％”等。
 
-它是 CSS 标准的一部分，但 chameleon 暂不支持。
+它是 CSS 标准的一部分，但 CML 暂不支持。
 
 ## 颜色
 
@@ -1159,8 +1157,8 @@ export default new Test()
 <style>
 ```
 
-其中`支持的平台`为可以用逗号分隔多个平台，可选平台  为`web,weex,wx,alipay,baidu`和<a href="../framework/platform-list.html">其他</a>。
-demo 示例，`class1`在各端的差异实现。
+其中支持的平台为可以用逗号分隔多个平台，可选平台为 `web, weex, wx, alipay, baidu`。
+demo 示例，`class1` 在各端的差异实现。
 
 ```vue
 <template>
@@ -1372,16 +1370,16 @@ demo 示例，`class1`在各端的差异实现。
   </tr>
   <tr>
     <td>.cml-view</td>
-    <td><a href="../components/view">view元素</a></td>
+    <td>view 元素</td>
   </tr>
   <tr>
     <td>.cml-text</td>
-    <td><a href="../components/text">text元素</a></td>
+    <td>text 元素</td>
   </tr>
 </table>
 
-## 只跨 web 和小程序的应用
+## 只跨 Web 和小程序的应用
 
-查看 [只跨 web 和小程序的应用](cml-web-wx-only-app.md)。
+查看[只跨 Web 和小程序的应用](../tutorial/web-wx-only-app.md)。
 
 受限于客户端的 CMSS 渲染能力，开发会有诸多限制。如果你只需要跨 H5 和小程序应用时，开发会变得很轻便。

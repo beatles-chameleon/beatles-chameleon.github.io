@@ -1,6 +1,6 @@
 # 自定义组件
 
-`cml`支持简洁的组件化编程。
+CML 支持简洁的组件化编程。
 
 开发者可以将页面内的功能模块抽象成自定义组件，以便在不同的页面中重复使用；也可以将复杂的页面拆分成多个低耦合的模块，有助于代码维护。
 
@@ -8,7 +8,7 @@
 
 类似页面，自定义组件由 `<template>` `<script>` `<style>` `<script cml-type="json">` 4 部分组成。
 
-要编写一个自定义组件，可以在 `json` 中进行自定义组件声明（将 `component` 字段设为 `true`，这是可选操作，因为`cml`会在引用这个文件时自动识别`自定义组件`）：
+要编写一个自定义组件，可以在 `json` 中进行自定义组件声明（将 `component` 字段设为 `true`，这是可选操作，因为 CML 会在引用这个文件时自动识别`自定义组件`）：
 
 ```json
 {
@@ -16,7 +16,7 @@
 }
 ```
 
-接下来，在 `<template>` 中编写组件模板，在 `<style>` 中加入组件样式，它们的写法与页面的写法类似。具体细节和注意事项参见 [组件模板和样式](cml-cmss.md) 。
+接下来，在 `<template>` 中编写组件模板，在 `<style>` 中加入组件样式，它们的写法与页面的写法类似。具体细节和注意事项参见[组件模板和样式](cml.md)。
 
 _代码示例：_
 
@@ -37,7 +37,7 @@ _代码示例：_
 
 **注意：在组件 CMSS 中不应使用 ID 选择器、属性选择器和标签名选择器。**
 
-组件的属性值和内部数据将被用于组件 CML 的渲染，其中，属性值是可由组件外部传入的。更多细节参见 [组件 VM](comp-vm.md) 。
+组件的属性值和内部数据将被用于组件 CML 的渲染，其中，属性值是可由组件外部传入的。
 
 _代码示例：_
 
@@ -118,7 +118,7 @@ _代码示例：_
 
 类似于页面，自定义组件拥有自己的 `<template>` 模板和 `<style>` 样式。
 
-首先我们通过 `cml init project` 生成一个 cml 项目，然后按照以下操作指引，看下如何使用 cml 的组件
+首先我们通过 `cml init project` 生成一个 CML 项目，然后按照以下操作指引，看下如何使用 CML 的组件
 
 ``` 
 cml init component
@@ -184,9 +184,9 @@ cml init component
 
 ### 组件 \<template\> 的 slot
 
-在组件的 `<template>` 中可以包含 `slot` 节点，用于承载组件使用者提供的 `cml` 结构。
+在组件的 `<template>` 中可以包含 `slot` 节点，用于承载组件使用者提供的 CML 结构。
 
-支持通过具名插槽的方式在模板中使用多个`slot`
+支持通过具名插槽的方式在模板中使用多个 `slot`
 
 ```vue
 <!-- component-tag-name.cml -->
@@ -238,7 +238,7 @@ view {
 
 ### 样式多态
 
-chameleon 扩展了多态样式，用于针对对于不同端有不同的样式需求的情况 [参考](../docs/cmss.md#样式多态)
+CML 扩展了多态样式，用于针对对于不同端有不同的样式需求的情况[参考](cmss.md#样式多态)
 
 ### 引用外部样式
 
@@ -256,19 +256,19 @@ cml init component
 
 定义如下：
 
-| 字段名                           | 类型     | 说明                                                                                       |
-| -------------------------------- | -------- | ------------------------------------------------------------------------------------------ |
-| props                            | Object   | 声明当前组件可接收数据属性 props = { type, default } type 为数据类型，default 为数据默认值 |
-| data                             | Object   | CML 模板可直接使用的响应数据，是连接视图层的枢纽                                           |
-| methods                          | Object   | 处理业务逻辑与交互逻辑的方法                                                               |
-| [watch](../logic/watch.md)       | Object   | 侦听属性，监听数据的变化，触发相应操作                                                     |
-| [computed](../logic/computed.md) | Object   | CML 模板可直接使用的计算属性数据,也是连接视图层的枢纽                                      |
-| beforeCreate                     | Function | 例初始化之后，数据和方法挂在到实例之前 一个页面只会返回一次                                |
-| created                          | Function | 数据及方法挂载完成                                                                         |
-| beforeMount                      | Function | 开始挂载已经编译完成的 cml 到对应的节点时                                                  |
-| mounted                          | Function | cml 模板编译完成,且渲染到 dom 中完成                                                       |
-| beforeDestroy                    | Function | 实例销毁之前                                                                               |
-| destroyed                        | Function | 实例销毁后                                                                                 |
+| 字段名        | 类型     | 说明                                                                                       |
+| ------------- | -------- | ------------------------------------------------------------------------------------------ |
+| props         | Object   | 声明当前组件可接收数据属性 props = { type, default } type 为数据类型，default 为数据默认值 |
+| data          | Object   | CML 模板可直接使用的响应数据，是连接视图层的枢纽                                           |
+| methods       | Object   | 处理业务逻辑与交互逻辑的方法                                                               |
+| watch         | Object   | 侦听属性，监听数据的变化，触发相应操作                                                     |
+| computed      | Object   | CML 模板可直接使用的计算属性数据,也是连接视图层的枢纽                                      |
+| beforeCreate  | Function | 例初始化之后，数据和方法挂在到实例之前 一个页面只会返回一次                                |
+| created       | Function | 数据及方法挂载完成                                                                         |
+| beforeMount   | Function | 开始挂载已经编译完成的 cml 到对应的节点时                                                  |
+| mounted       | Function | cml 模板编译完成,且渲染到 dom 中完成                                                       |
+| beforeDestroy | Function | 实例销毁之前                                                                               |
+| destroyed     | Function | 实例销毁后                                                                                 |
 
 ### 组件间的通信
 
@@ -319,7 +319,7 @@ export default new ComponentTagName();
 </script>
 ```
 
-#### 子组件 -> 父组件：事件通讯 [参考](../view/event.md)
+#### 子组件 -> 父组件：事件通讯
 
 **代码示例**
 

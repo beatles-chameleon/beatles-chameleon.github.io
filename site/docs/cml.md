@@ -1,4 +1,4 @@
-# CML 介绍
+# CML 语法
 
 CML（Chameleon Markup Language）用于描述页面的结构，我们知道 HTML 是有一套标准的语义化标签，例如  文本是 `<span>`  按钮是 `<button>`。CML 同样具有一套标准的标签，我们将标签定义为组件，CML 为用户提供了一系列基础组件。同时 CML 中还支持<b>模板语法</b>，例如条件渲染、列表渲染，数据绑定等等。
 
@@ -97,7 +97,7 @@ CML（Chameleon Markup Language）用于描述页面的结构，我们知道 HTM
 
 ### 特殊属性
 
-chameleon 提供了 [内置组件]../components/base.md) 及 [扩展组件]../components/expand.md)，根据组件特殊性几乎每个组件都有自己的特殊属性，详细属性请查看组件文档。
+CML 提供了 [内置组件]../components/base.md) 及 [扩展组件]../components/expand.md)，根据组件特殊性几乎每个组件都有自己的特殊属性，详细属性请查看组件文档。
 
 ## 数据绑定
 
@@ -379,7 +379,7 @@ c-key 的值以两种形式提供
 
 ## 事件
 
-Chameleon 支持一些基础的事件，保障各端效果一致运行。如果你想要使用某个端特定的事件，请从业务出发使用 [组件多态](../framework/poly/component.md)或者[接口多态](../framework/poly/api.md)差异化实现功能。
+Chameleon 支持一些基础的事件，保障各端效果一致运行。如果你想要使用某个端特定的事件，请从业务出发使用[多态组件](poly.md#多态组件)或者[多态接口](poly.md#多态接口)差异化实现功能。
 
 ### 什么是事件
 
@@ -513,7 +513,7 @@ chameleon 所有元素都支持基础事件类型如下：
     <td>_originEvent</td>
     <td>Object</td>
     <td>
-      chameleon对各平台的事件对象进行统一，会把原始的事件对象放到_originEvent属性中，当需要特殊处理的可以进行访问。
+      CML 对各平台的事件对象进行统一，会把原始的事件对象放到_originEvent属性中，当需要特殊处理的可以进行访问。
     </td>
   </tr>
 </table>

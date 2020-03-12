@@ -6,7 +6,7 @@
 
 依赖环境：node >= 8.10.0、npm >= 5.6.0
 
-建议使用 [nvm](https://github.com/creationix/nvm) 管理 Node 版本，**暂不支持使用 yarn、cnpm 等进行安装。**
+建议使用[nvm](https://github.com/creationix/nvm)管理 Node 版本，**暂不支持使用 yarn、cnpm 等进行安装。**
 
 ```shell
 npm i -g chameleon-tool
@@ -18,28 +18,28 @@ npm i -g chameleon-tool
 
 - 执行 `cml init project`
 - 输入项目名称
-- 等待自动执行 npm install 依赖
+- 等待自动执行 `npm install` 依赖
 - 切换到项目根目录执行`cml dev`
 - 会自动打开预览界面 预览界面如下：
 
 ![](../images/home2.png)
 
-web 端可以点击模拟器内页面右上角打开  新的浏览器窗口。
+Web 端可以点击模拟器内页面右上角打开  新的浏览器窗口。
 
-native 端的效果请  下载[chameleon playground](https://beatles-chameleon.github.io/playground/download.md)(目前可下载 Android 端，IOS 端即将发布)或者下载[weex playground](http://weex.apache.org/cn/tools/playground.md)扫码预览
+Native 端的效果请下载 [Chameleon Playground](https://beatles-chameleon.github.io/playground/download.html) (目前可下载 Android 端，iOS 端即将发布)或者下载 [Weex Playground](https://weex.apache.org/zh/guide/playground.html) 扫码预览
 
-小程序端请下载对应小程序开发工具，打开项目根目录下的<a href="../framework/platform-list.html">`/dist/[wx|alipay|baidu|其他]`</a>目录预览。
+小程序端请下载对应小程序开发工具，打开项目根目录下的 `/dist/[wx|alipay|baidu|其他]` 目录预览。
 
-[微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.md)、
-[支付宝开发者具](https://docs.alipay.com/mini/ide/download)、
-[百度开发者工具](https://smartprogram.baidu.com/docs/develop/tutorial/index_first/)
-[QQ 开发者工具](https://q.qq.com/wiki/#编码开发小程序)
+- [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html)、
+- [支付宝开发者具](https://docs.alipay.com/mini/ide/download)、
+- [百度开发者工具](https://smartprogram.baidu.com/docs/develop/tutorial/index_first/)
+- [QQ 开发者工具](https://q.qq.com/wiki/#编码开发小程序)
 
-对于字节跳动小程序，需要按照 [字节跳动小程序接入教程](https://cml.js.org/doc/tutorial/migrate-bytedance-to-cml.md)配置完毕之后，可以在 `dist/tt`下用[字节跳动小程序开发者工具](https://microapp.bytedance.com/docs/devtool/versionUpdate.md)打开对应的应用程序
+对于字节跳动小程序，需要按照[字节跳动小程序接入教程](../tutorial/bytedance-cml-app.md)配置完毕之后，可以在 `dist/tt` 下用[字节跳动小程序开发者工具](https://developer.toutiao.com/dev/cn/mini-app/develop/developer-instrument/developer-instrument-update-and-download)打开对应的应用程序
 
 ### 目录与文件结构
 
-生成的目录结构如下，详细介绍参见 [目录结构](folder.md)。
+生成的目录结构如下，详细介绍参见[目录结构](folder.md)。
 
 ```bash
 ├── chameleon.config.js                 // 项目的配置文件
@@ -61,18 +61,18 @@ native 端的效果请  下载[chameleon playground](https://beatles-chameleon.
     └── store                           // 全局状态管理
 ```
 
->  编辑器中使用`.cml`的插件语法高亮，参见<a href="../tutorial/use-editor-plugin.html">编辑器插件</a>，插件持续覆盖更多编辑器。
+>  编辑器中使用`.cml`的插件语法高亮，参见[编辑器插件](../tutorial/editor-plugin.md)，插件持续覆盖更多编辑器。
 
 ## 编辑器插件
 
-- Idea、Webstorm 插件`cml-language-support`
-- Vscode 插件`cml`
-- Atom 插件`language-cml`
-- sublime 插件审核中，敬请期待...
+- idea、WebStorm 插件 `CML Language Support`
+- VS Code 插件 `cml`
+- Atom 插件 `language-cml`
+- Sublime 插件审核中，敬请期待...
 
 ## 语法体验
 
-替换`src/pages/index/index.cml`文件，删除`src/pages/index/index.cml`文件中的所有代码，然后替换为下面的代码，体验 chameleon 语法。
+替换`src/pages/index/index.cml`文件，删除`src/pages/index/index.cml`文件中的所有代码，然后替换为下面的代码，体验 CML 语法。
 
 ### 数据绑定
 
@@ -98,7 +98,7 @@ native 端的效果请  下载[chameleon playground](https://beatles-chameleon.
 <script>
 class Index {
   data = {
-    message: 'Hello Chameleon!',
+    message: 'HelloCML',
     array: [
       {
         city: '北京',
@@ -209,7 +209,7 @@ template 中使用 first-com 组件。
 </template>
 ```
 
-经过以上操作，你已经学会了组件的引用，[丰富的组件](../components/base/)等待着你去学习!
+经过以上操作，你已经学会了组件的引用，丰富的组件等待着你去学习!
 
 ## 项目配置
 
@@ -233,7 +233,7 @@ module.exports = [
         total: 0,
         message: [
           {
-            name: 'Hello chameleon!',
+            name: 'HelloCML',
           },
         ],
       });
@@ -248,13 +248,13 @@ module.exports = [
 
 ![](../images/todo_preview2.png)
 
-经过以上的介绍和实践操作，相信你已经了解了 chameleon 的基本使用，本文档其余部分将涵盖剩余功能和其他高级功能的详尽细节，所以请务必完整阅读整个文档！
+经过以上的介绍和实践操作，相信你已经了解了 CML 的基本使用，本文档其余部分将涵盖剩余功能和其他高级功能的详尽细节，所以请务必完整阅读整个文档！
 
 ## FAQ
 
-**我想使用 chameleon，是否需要大刀阔斧的重构项目？**
+**我想使用 CML 是否需要大刀阔斧的重构项目？**
 
-不需要，可以使用 chameleon 开发公用组件，<a href="./io">导出</a>到各端原有项目中使用。
+不需要，可以使用 CML 开发公用组件，[导出](io.md) 到各端原有项目中使用。
 
 **用 CML 标准编写代码，是否增加调试成本？**
 
@@ -270,7 +270,7 @@ module.exports = [
 **框架有多大，性能是否有影响？**
 
 1、小程序的主要运行性能瓶颈是 webview 和 js 虚拟机的传输性能，我们在这里会做优化，尽可能 diff 出修改的部分进行传输，性能会更好。
-2、包大小，小程序有包大小限制，web 端包大小也是工程师关心的点。首先基于多态协议，产出包纯净保留单端代码；其次框架的 api 和组件会按需打包。包大小是我们重点发力点，会持续优化到极致。目前 build 模式包大小测试结果如下:
+2、包大小，小程序有包大小限制，Web 端包大小也是工程师关心的点。首先基于多态协议，产出包纯净保留单端代码；其次框架的 api 和组件会按需打包。包大小是我们重点发力点，会持续优化到极致。目前 build 模式包大小测试结果如下:
 <span style="color: #ff534d;">minimize</span><span style="color: #edd0be;"> | </span><span style="color: #25c6fc;">minimize + gzip</span>
 
 <table style="color: #edd0be;">
@@ -380,7 +380,6 @@ module.exports = [
 
 </table>
 
-**我只想跨 web 和各类小程序，是否可以不使用 Flexbox 布局模型？**
+**我只想跨 Web 和各类小程序，是否可以不使用 Flexbox 布局模型？**
 
-可以，如果你的项目不在 快应用、react-native、weex 等平台运行，可以更便捷开发项目，特别是 CSS 的限制更少：
-<a href="../example/cml-web-wx-only-app">只跨 web 和小程序的应用</a>
+可以，如果你的项目不在快应用、React Native、Weex 等平台运行，可以更便捷开发项目，特别是 CSS 的限制更少：[只跨 Web 和小程序的应用](../tutorial/web-wx-only-app.md)

@@ -308,7 +308,7 @@ v-if="condition"
 
 ## 事件
 
-Chameleon 支持一些基础的事件，保障各端效果一致运行。如果你想要使用某个端特定的事件，请从业务出发使用 [组件多态](../framework/poly/component.md)或者[接口多态](../framework/poly/api.md)差异化实现功能。
+Chameleon 支持一些基础的事件，保障各端效果一致运行。如果你想要使用某个端特定的事件，请从业务出发使用[多态组件](poly.md#多态组件)或者[多态接口](poly.md#多态接口)差异化实现功能。
 
 主要扩展了事件的绑定：加强了符合 vue 语法的事件绑定；
 
@@ -374,7 +374,7 @@ export default new Index();
 | currentTarget  | Object | 绑定事件的目标元素 且 currentTarget = {id,dataset}                                                                |
 | changedTouches | Array  | 触摸事件中的属性，当前变化的触摸点信息的数组 且 changedTouches = [{ identifier, pageX, pageY, clientX, clientY }] |
 | detail         | Object | 自定义事件所携带的数据。 通过`$cmlEmit`方法触发自定义事件，可以传递自定义数据即 detail。具体下面`自定义事件`      |
-| \_originEvent  | Object | chameleon 对各平台的事件对象进行统一，会把原始的事件对象放到\_originEvent 属性中，当需要特殊处理的可以进行访问。  |
+| \_originEvent  | Object | CML 对各平台的事件对象进行统一，会把原始的事件对象放到\_originEvent 属性中，当需要特殊处理的可以进行访问。        |
 
 #### target && currentTarget
 

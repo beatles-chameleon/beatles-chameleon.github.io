@@ -98,15 +98,15 @@ export default new Index();
 
 <div style="display: flex;flex-direction: row;justify-content: space-around; align-items: flex-end;">
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/radio_wx.png" width="200px" height="100%" />
+    <img src="../images/radio_wx.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">wx</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/radio_web.png" width="200px" height="100%"/>
+    <img src="../images/radio_web.png" width="200px" />
     <text style="color: #fda775;font-size: 24px;">web</text>
   </div>
   <div style="display: flex;flex-direction: column;align-items: center;">
-    <img src="../images/radio_weex.jpeg" width="200px" height="100%"/>
+    <img src="../images/radio_weex.jpeg" width="200px" />
     <text style="color: #fda775;font-size: 24px;">native</text>
   </div>
 </div>
