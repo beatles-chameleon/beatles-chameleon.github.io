@@ -33,7 +33,7 @@
 
 <script>
 import config from '@/config';
-import logo from '@/public/logo_dark.svg';
+import logo from '@/public/brand/logo_dark.svg';
 import qrWeixin from '../images/qr_weixin.png';
 import qrQQ from '../images/qr_qq.jpg';
 import qrDeer from '../images/qr_deer.png';

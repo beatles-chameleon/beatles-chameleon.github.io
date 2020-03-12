@@ -136,7 +136,7 @@ module.exports = {
   description: '小程序跨端开发统一解决方案',
   head: [['link', { rel: 'shortcut icon', type: 'image/x-icon', href: `/favicon.ico` }]],
   dest: './dist',
-  themeConfig: { logo: '/logo.svg', nav, sidebar, activeHeaderLinks: false },
+  themeConfig: { logo: '/brand/logo.svg', nav, sidebar, activeHeaderLinks: false },
   plugins: ['@vuepress/back-to-top'],
   configureWebpack: {
     resolve: {
