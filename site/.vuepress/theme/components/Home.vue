@@ -286,7 +286,7 @@ export default {
   },
   mounted() {
     document.title = `${title} - ${description}`;
-    this.headerLogo = document.querySelector('.logo');
+    this.navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', this.onScroll);
   },
   destroyed() {
@@ -299,15 +299,15 @@ export default {
     onScroll() {
       const { scrollY } = window;
 
-      if (!this.headerLogoShow && scrollY > 270) {
-        this.headerLogoShow = true;
-        this.headerLogo.classList.add('show');
+      if (!this.navbarAdded && scrollY > 270) {
+        this.navbarAdded = true;
+        this.navbar.classList.add('scroll');
         return;
       }
 
-      if (this.headerLogoShow && scrollY <= 270) {
-        this.headerLogoShow = false;
-        this.headerLogo.classList.remove('show');
+      if (this.navbarAdded && scrollY <= 270) {
+        this.navbarAdded = false;
+        this.navbar.classList.remove('scroll');
       }
     },
   },
@@ -404,8 +404,8 @@ export default {
     }
   }
   .hero {
-    padding-top: 8rem;
-    padding-bottom: 8.5rem;
+    padding-top: 8.5rem;
+    padding-bottom: 8rem;
     +desktop() {
       display: flex;
     }
