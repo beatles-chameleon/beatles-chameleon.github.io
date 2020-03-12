@@ -97,7 +97,7 @@ CML（Chameleon Markup Language）用于描述页面的结构，我们知道 HTM
 
 ### 特殊属性
 
-CML 提供了 [内置组件]../components/base.md) 及 [扩展组件]../components/expand.md)，根据组件特殊性几乎每个组件都有自己的特殊属性，详细属性请查看组件文档。
+CML 提供了[内置组件](../components/base.md)及[扩展组件](../components/expand.md)，根据组件特殊性几乎每个组件都有自己的特殊属性，详细属性请查看组件文档。
 
 ## 数据绑定
 
