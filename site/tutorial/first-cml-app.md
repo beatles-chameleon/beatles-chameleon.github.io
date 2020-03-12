@@ -461,7 +461,7 @@ cml.config.merge({
 
 ## 端渲染能力接入
 
-如果你需要跨 Native 端渲染，则需要接入 CML SDK，目前支持的渲染引擎是 Weex，即将支持 React Native，使用时二者选其一作为项目的 Native 渲染引擎。CML SDK 包括对原生组件和本地 api 能力的扩展，对性能和稳定性的优化。使用方式可以参见 [Android CML SDK](android-sdk.md) 与 [iOS CML SDK](ios-sdk.md)。
+如果你需要跨 Native 端渲染，则需要接入 CML SDK，目前支持的渲染引擎是 Weex，即将支持 React Native，使用时二者选其一作为项目的 Native 渲染引擎。CML SDK 包括对原生组件和本地 api 能力的扩展，对性能和稳定性的优化。使用方式可以参见 [CML Android SDK](android-sdk.md) 与 [CML iOS SDK](ios-sdk.md)。
 
 ## 智能规范校验
 
@@ -486,6 +486,6 @@ CML 提供了多种规范校验，对这些规范的学习可以提高开发效�
 
 - [只跨 Web 和小程序的应用](web-wx-only-app.md)
 
-- [Android CML SDK](android-sdk.md)
+- [CML Android SDK](android-sdk.md)
 
-- [iOS CML SDK](ios-sdk.md)
+- [CML iOS SDK](ios-sdk.md)

@@ -1,6 +1,6 @@
-# iOS CML SDK 使用范例
+# CML iOS SDK 使用范例
 
-以一个一个小 Demo，讲述 iOS CML SDK 的使用方式，引领轻松入门。
+以一个一个小 Demo，讲述 CML iOS SDK 的使用方式，引领轻松入门。
 Demo 工程在根目录 “Example” 目录下，打开 “Chameleon.xcworkspace” 文件即可打开工程。
 
 ## 工程集成

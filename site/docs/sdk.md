@@ -1,31 +1,32 @@
 # CML SDK
 
-native sdk 目标让客户端上趋近于各类小程序引擎，使同一套代码平滑在客户端上运行。
+Native SDK 目标让客户端上趋近于各类小程序引擎，使同一套代码平滑在客户端上运行。
 
 使用 CML 的渲染能力，需要集成对应平台的 SDK。请在左侧目录中根据你需要接入的平台来查看文档。
 
 ## iOS SDK
 
-Chameleon iOS SDK 使用 Weex、ReactNative 与 WebView 作为基础渲染引擎，提供了基础的组件功能之外，还支持用户扩展自己的功能组件。
+CML iOS SDK 使用 Weex、React Native 与 WebView 作为基础渲染引擎，提供了基础的组件功能之外，还支持用户扩展自己的功能组件。
 
 ### 环境要求
 
-Chameleon 最低支持的 iOS deployment target 为：**`iOS 9.0`**
-Chameleon 使用`Cocoapods`进行管理，使用`npm`管理`react_native`。
+CML 最低支持的 iOS deployment target 为：**`iOS 9.0`**
+CML 使用`Cocoapods`进行管理，使用`npm`管理`react_native`。
 
 | 组件名       | 依赖版本       | 备注 |
 | ------------ | -------------- | ---- |
 | Cocoapods    | **`1.3.1`**    | -    |
 | npm          | 最新版本即可   | -    |
-| WeexSDK      | **`0.19.0.2`** | -    |
-| react_native | **`0.57.6`**   | -    |
-| react        | **`16.6.1`**   | -    |
+| Weex SDK     | **`0.19.0.2`** | -    |
+| React Native | **`0.57.6`**   | -    |
+| React        | **`16.6.1`**   | -    |
 
 ### 详细集成
 
-当 sdk 下载下来后，首先进入`/chameleon-sdk-iOS/Chameleon/react_native`,并运行`npm install`进行更新。（这也是 react_native 的更新办法。）
+当 SDK 下载下来后，首先进入`/chameleon-sdk-iOS/Chameleon/react_native`,并运行`npm install`进行更新。（这也是 React Native 的更新办法。）
 
 接下来我们以 Demo 工程为例（要注意工程路径位置,在工程实际配置中需要注意 :path 的内容）。
+
 在 Podfile 中，写入：
 
     platform :ios, '9.0'
@@ -298,7 +299,7 @@ CMLWeexCache *cache = (CMLWeexCache *)[CMLEnvironmentManage chameleon].weexServi
 
 ## Android SDK
 
-github 地址[点这里](https://github.com/beatles-chameleon/chameleon-sdk-android)
+[Github 地址](https://github.com/beatles-chameleon/chameleon-sdk-android)
 
 CML Android SDK 是 CML 整体框架的一部分，主要任务是完成 CML JsBundle 在 Android 端的本地渲染。SDK 底层采用 Weex 作为渲染引擎，同时扩展一些一般工程通用的基础能力，如缓存能力、降级能力等。
 
@@ -353,9 +354,9 @@ CML Android SDK 的使用步骤如下:
 - 在项目中初始化 CML SDK
 - 加载 JS Bundle
 
-详细的使用方式可以参看手把手系列之[Android CML SDK 使用范例](../tutorial/android-sdk.md)，建议<font color=#FF0000>先看使用范例</font>再阅读其他章节。
+详细的使用方式可以参看手把手系列之[CML Android SDK 使用范例](../tutorial/android-sdk.md)，建议<font color=#FF0000>先看使用范例</font>再阅读其他章节。
 
-如果需要自定义自己的 adapter，参看[Adapter 的使用](#adapter-的使用) 一节。如果需要扩展 Module，参看[Module 的使用](#module-的使用)一节。
+如果需要自定义自己的 Adapter，参看[Adapter 的使用](#adapter-的使用) 一节。如果需要扩展 Module，参看[Module 的使用](#module-的使用)一节。
 
 ### 基础类说明
 
@@ -453,7 +454,7 @@ API 里描述的能力，部分实现就是由上述 Module 支撑的。
 
 ##### 自定义实现自己的 Module
 
-示例可参看[Android CML SDK 使用范例](../tutorial/android-sdk.md#初始化入口)
+示例可参看[CML Android SDK 使用范例](../tutorial/android-sdk.md#初始化入口)
 
 module 扩展 3 个重要的注解
 
@@ -614,7 +615,7 @@ Chameleon SDK 定义了如下的 Adapter 接口
 
 **降级**
 
-ICmlDegradeAdapter 降级接口没有提供默认实现，[Android CML SDK 使用范例](../tutorial/android-sdk.md) 示例里示范了如何实现一个降级处理类 CmlDegradeDefault。
+ICmlDegradeAdapter 降级接口没有提供默认实现，[CML Android SDK 使用范例](../tutorial/android-sdk.md) 示例里示范了如何实现一个降级处理类 CmlDegradeDefault。
 CmlDegradeDefault 默认会关闭 Native 渲染容器，并打开 Web 容器加载降级 url。
 
 ```
@@ -1003,4 +1004,4 @@ https://www.static.com/test_project.html?cml_addr=https%3A%2F%2Fwww.static.com%2
 #### 如何配置
 
 - iOS
-- Android 参考[Android CML SDK 使用范例](../tutorial/android-sdk.md)第 6 节
+- Android 参考[CML Android SDK 使用范例](../tutorial/android-sdk.md)第 6 节
