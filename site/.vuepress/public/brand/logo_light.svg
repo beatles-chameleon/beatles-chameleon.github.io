@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
-  <title>CML Logo</title>
-  <polygon fill="#FFF" fill-opacity="0.6" points="200,0 0,320 1000,320" />
-  <polygon fill="#FFF" fill-opacity="0.6" points="800,0 0,320 1000,320" />
-  <polygon fill="#FFF" fill-opacity="0.6" points="1000,320 500,1000 0,320 500,0" />
-  <polygon fill="#FFF" fill-opacity="0.6" points="0,320 500,1000 500,0" />
-</svg>

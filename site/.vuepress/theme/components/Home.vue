@@ -7,7 +7,6 @@
       <div class="right">
         <h1 class="title">
           <span>{{ title }}</span>
-          <sup>原 Chameleon</sup>
         </h1>
         <p class="desc">{{ description }}</p>
         <div class="links">
@@ -103,6 +102,23 @@
       <a class="btn btn-primary" :href="docsEntry">快速开始</a>
       <a class="btn btn-default" :href="gitHubUrl" target="_blank" rel="noopener">GitHub</a>
     </section>
+    <!-- 大牛评语 -->
+    <!-- <section class="comment-wrap">
+      <div class="comment">
+        <div class="comment-icon"><img class="comment-icon-img" :src="commentItem.icon" alt=""/></div>
+          <div class="comment-content"><img class="comment-quot" :src="commentItem.commentQuot"></img>{{commentItem.content}}</div>
+          <div class="comment-name">{{commentItem.name}}</div>
+          <div class="comment-title">{{commentItem.title}}</div>
+          <div class="comment-link">
+              <div class="comment-dot-wrap">
+                  <span v-for="(item,index) in CONFIG.content.comments"
+                  :class="[commentActiveIndex === index ? 'comment-active' : 'comment-unactive', 'comment-dot']"
+                  @click="changeComment(index)"
+                  ></span>
+              </div>
+          </div>
+      </div>
+    </section> -->
     <Footer />
   </div>
 </template>
@@ -115,7 +131,7 @@ import Footer from './Footer';
 
 import config from '@/config';
 // Brand
-import logo from '@/public/brand/logo.svg';
+import logo from '@/public/brand/logo.png';
 // 多端支持
 import appH5 from '../images/app_h5.png';
 import appHybrid from '../images/app_hybrid.png';
@@ -175,8 +191,8 @@ export default {
       gitHubUrl,
       // 多端支持
       apps: [
-        { name: 'Web 端', icon: appH5 },
-        { name: 'Hybrid (iOS, Android)', icon: appHybrid },
+        { name: 'H5 端', icon: appH5 },
+        { name: 'Weex(iOS, Android)', icon: appHybrid },
         { name: '微信小程序', icon: appWeixin },
         { name: '支付宝小程序', icon: appAlipay },
         { name: '百度小程序', icon: appBaidu },
