@@ -15,6 +15,7 @@
         </div>
       </div>
     </section>
+    <!-- 多端支持 -->
     <section class="cards gray">
       <div class="card sticks">
         <h2>多端支持</h2>
@@ -48,6 +49,7 @@
         </ul>
       </div>
     </section>
+    <!-- 组件生态圈 -->
     <section v-for="group in eco" class="bars" :class="group.className">
       <h2>{{ group.name }}</h2>
       <ul>
@@ -67,6 +69,7 @@
         </li>
       </ul>
     </section>
+    <!-- MVVM标准 -->
     <section class="grid">
       <h2>MVVM+ 跨端标准协议</h2>
       <ul>
@@ -77,7 +80,8 @@
         </li>
       </ul>
     </section>
-    <section class="slider">
+    <!-- 应用案例 -->
+    <section class="slider gray">
       <h2>应用案例</h2>
       <ClientOnly>
         <component
@@ -98,12 +102,8 @@
         </component>
       </ClientOnly>
     </section>
-    <section class="entry gray">
-      <a class="btn btn-primary" :href="docsEntry">快速开始</a>
-      <a class="btn btn-default" :href="gitHubUrl" target="_blank" rel="noopener">GitHub</a>
-    </section>
     <!-- 大牛评语 -->
-    <!-- <section class="comment-wrap">
+    <section class="comment-wrap">
       <div class="comment">
         <div class="comment-icon"><img class="comment-icon-img" :src="commentItem.icon" alt=""/></div>
           <div class="comment-content"><img class="comment-quot" :src="commentItem.commentQuot"></img>{{commentItem.content}}</div>
@@ -111,14 +111,18 @@
           <div class="comment-title">{{commentItem.title}}</div>
           <div class="comment-link">
               <div class="comment-dot-wrap">
-                  <span v-for="(item,index) in CONFIG.content.comments"
+                  <span v-for="(item,index) in CONFIG.comments"
                   :class="[commentActiveIndex === index ? 'comment-active' : 'comment-unactive', 'comment-dot']"
                   @click="changeComment(index)"
                   ></span>
               </div>
           </div>
       </div>
-    </section> -->
+    </section>
+    <section class="entry gray">
+      <a class="btn btn-primary" :href="docsEntry">快速开始</a>
+      <a class="btn btn-default" :href="gitHubUrl" target="_blank" rel="noopener">GitHub</a>
+    </section>
     <Footer />
   </div>
 </template>
@@ -165,6 +169,12 @@ import case3 from '../images/case_3.png';
 import case4 from '../images/case_4.png';
 import case5 from '../images/case_5.png';
 import case6 from '../images/case_6.png';
+import case7 from '../images/case_7.png';
+import case8 from '../images/case_8.png';
+import case9 from '../images/case_9.png';
+//大牛评语
+const wanghuiIcon = require('../images/tengxun-wanghui.png')
+const commentQuot = require('../images/quot.png')
 
 const { title, description } = config;
 
@@ -172,7 +182,16 @@ const docsEntry = '/docs/introduction.html';
 const gitHubUrl = 'https://github.com/didi/chameleon';
 const baseUIUrl = '/components/base.html';
 const expandUIUrl = '/components/expand.html';
-
+const lightUIUrl = 'https://github.com/chameleon-team/light-ui';
+const CONFIG = {
+  comments:[{
+    icon:wanghuiIcon,
+    commentQuot:commentQuot,
+    content:"认为跨平台开发一直是大前端技术中一个很重要的领域，从移动互联网的兴起开始到现在，探索之路就没有停止过，特别是随着移动用户的增长趋于稳定，用户新增、流量获取的成本越来越高，各个公司都在推出自己的跨平台解决方案，以抢占更多流量入口，从而进一步导致了跨端开发的严重碎片化。Chameleon的优点在于抽象出了万变不离其中的MVVM架构，目标让MVVM跨端环境大统一，通过定义统一的语言框架+统一多态协议，从多端业务中抽离出自成体系、连续性强、可维护性强的“前端中台服务”,思路新颖，并初步解决了当前的问题，形成了一套完整的解决方案，值得参考。",
+    name:'王辉',
+    title:'腾讯 在线教育部技术负责人'
+  }]
+}
 export default {
   components: {
     Footer,
@@ -239,7 +258,7 @@ export default {
             {
               name: 'Light UI',
               desc: '配置灵活多样，可定制化程度高',
-              link: '',
+              link: lightUIUrl,
               icon: ecoLight,
             },
           ],
@@ -260,7 +279,7 @@ export default {
             },
             {
               name: 'GitHub 社区',
-              desc: '7000+ Star，氛围活跃，有问必答',
+              desc: '7300+ Star，氛围活跃，有问必答',
               link: gitHubUrl,
               icon: ecoGitHub,
             },
@@ -301,7 +320,11 @@ export default {
         },
       ],
       // 应用案例
-      cases: [case1, case2, case3, case4, case5, case6],
+      cases: [case1, case2, case3, case4, case5, case6,case7,case8,case9],
+      //大牛评语
+      CONFIG:CONFIG,
+      commentActiveIndex:0,//默认激活第一个评论
+      commentItem:{}
     };
   },
   mounted() {
@@ -317,6 +340,7 @@ export default {
     // 添加滚动事件监听
     this.navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', this.onScroll);
+    this.changeComment(0);//初始化大牛评论
   },
   destroyed() {
     // 删除滚动事件监听
@@ -340,6 +364,10 @@ export default {
         this.navbar.classList.remove('scroll');
       }
     },
+    changeComment(index){
+      this.commentItem  = this.CONFIG.comments[index]
+      this.commentActiveIndex = index;
+    }
   },
 };
 </script>
@@ -418,7 +446,71 @@ export default {
     }
   }
 }
-
+.comment{
+    padding-left:150px;
+    padding-right:150px;
+    // margin-bottom:140px;
+    // margin-top: -100px;
+    .comment-icon{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom:48px;
+    }
+    .comment-icon-img{
+        width:100px;
+        height:100px;
+    }
+    .comment-quot{
+        color: #D8D8D8;
+        width:48px;
+        margin-right: 10px;
+    }
+    .comment-content{
+        font-family: PingFangSC-Regular;
+        font-size: 21px;
+        color: #2A2D3C;
+        text-align: left;
+        line-height: 40px;
+        margin-bottom:50px;
+    }
+    .comment-name{
+        font-family: PingFangSC-Regular;
+        font-size: 36px;
+        color: #2A2D3C;
+        text-align: center;
+        margin-bottom:16px;
+    }
+    .comment-title{
+        font-family: PingFangSC-Regular;
+        font-size: 18px;
+        color: #7E838B;
+        text-align: center;
+        line-height: 40px;
+    }
+    .comment-link{
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        .comment-dot-wrap{
+            .comment-dot{
+                display:inline-block;
+                width:15px;
+                height:15px;
+                border-radius:50%;
+                margin-left:10px;
+            }
+            .comment-active{
+                background-color:#0C8DFF;
+                
+            }
+            .comment-unactive{
+                background-color:#D8D8D8;
+                
+            }
+        }
+    }
+}
 /* Sections
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .home {
@@ -801,7 +893,6 @@ export default {
     }
   }
   .slider {
-    background: linear-gradient($grayBg, #fff);
     h2 {
       text-align: center;
       +desktop() {
@@ -881,4 +972,5 @@ export default {
     }
   }
 }
+
 </style>
