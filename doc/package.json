@@ -19,6 +19,6 @@
   "dependencies": {
     "gitbook-plugin-insert-logo": "^0.1.5",
     "gitbook-plugin-theme-custom": "0.0.8",
-    "glob": "^7.1.3"
+    "glob": "^13.0.6"
   }
 }
